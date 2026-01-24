@@ -1,0 +1,102 @@
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn-datasheet {
+    @include button-primary;
+}
+
+/* ============================================
+   ICON BUTTONS
+   ============================================ */
+.icon-bar-btn {
+    width: 36px;
+    height: 36px;
+    background: var(--bg-button);
+    border: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    @include border-radius(6px);
+    @include transition(all, 0.3s, ease);
+    @include flex-center;
+}
+
+.icon-bar-btn:hover {
+    background-color: rgba(56, 189, 248, 0.2);
+    @include hover-scale(1.1);
+}
+
+/* ============================================
+   THEME TOGGLE BUTTON
+   ============================================ */
+#theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    background: var(--bg-button);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1.1rem;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+    @include border-radius(6px);
+    @include transition(all, 0.3s, ease);
+    z-index: 100;
+}
+
+#theme-toggle:hover {
+    background-color: var(--bg);
+    @include hover-scale(1.1);
+}
+
+/* ============================================
+   FONT SIZE CONTROL
+   ============================================ */
+.font-size-control {
+    position: fixed;
+    top: 1rem;
+    right: 5.5rem;
+    display: flex;
+    z-index: 100;
+}
+
+.font-size-btn {
+    background: var(--bg-button);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 1rem;
+    padding: 0.35rem 0.7rem;
+    cursor: pointer;
+    @include transition(all, 0.3s, ease);
+    
+    &:hover {
+        background-color: var(--bg);
+        @include hover-scale(1.05);
+    }
+    
+    &:active {
+        transform: scale(0.95);
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        
+        &:hover {
+            background: var(--bg-button);
+            transform: none;
+        }
+    }
+}
+
+#font-decrease {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    border-right: none;
+}
+
+#font-increase {
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+    border-left: 1px solid var(--border);
+}

@@ -1,0 +1,13 @@
+{% comment %}
+  Renderiza um ícone do breadcrumb
+  Parâmetros:
+    - config: configuração da seção do breadcrumb
+{% endcomment %}
+
+{% if include.config.icon_type == "svg" %}
+  <svg class="breadcrumb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+    <path d="{{ include.config.svg_path }}" />
+  </svg>
+{% elsif include.config.icon_type == "emoji" %}
+  <span class="breadcrumb-emoji">{{ include.config.emoji }}</span>
+{% endif %}

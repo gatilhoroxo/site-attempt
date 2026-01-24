@@ -1,0 +1,15 @@
+---
+---
+
+// Importar módulos SCSS na ordem correta
+// 1. Variáveis (devem vir primeiro)
+@import "variables";
+
+// 2. Mixins (usados por base e components)
+@import "mixins";
+
+// 3. Estilos base
+@import "base";
+
+// 4. Componentes (dependem de variables, mixins e base)
+@import "components";

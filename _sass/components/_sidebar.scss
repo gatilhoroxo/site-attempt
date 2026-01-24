@@ -1,0 +1,213 @@
+/* ============================================
+   BARRA LATERAL DE ÍCONES
+   ============================================ */
+.icon-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 100vh;
+    background: var(--bg-light);
+    border-right: 1px solid var(--border);
+    z-index: 1001;
+    @include flex-column;
+    align-items: center;
+    padding-top: 20px;
+    gap: 12px;
+    box-shadow: inset -1px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   SIDEBAR NAVIGATION
+   ============================================ */
+.sidebar {
+    position: fixed;
+    left: 36px;
+    top: 0;
+    width: 244px;
+    height: 100vh;
+    background-color: var(--bg-light);
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    @include transition(transform, 0.3s, ease);
+    z-index: 1000;
+    padding-top: 0.75rem;
+    @include box-shadow(4);
+}
+
+.sidebar.collapsed {
+    transform: translateX(-244px);
+}
+
+/* ============================================
+   SIDEBAR TOGGLE
+   ============================================ */
+.sidebar-toggle {
+    position: relative;
+    width: 36px;
+    height: 50px;
+    background: none;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+    @include transition(all, 0.3s, ease);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 8px;
+    border-radius: 0;
+}
+
+.sidebar-toggle::before {
+    content: '☰';
+    display: block;
+    font-size: 1.4rem;
+    transform: rotate(0deg);
+    @include transition(all, 0.3s, ease);
+}
+
+.sidebar-toggle::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 8px;
+    transform: translateY(0);
+    width: 3px;
+    height: 31px;
+    background: var(--accent);
+    opacity: 0.7;
+    @include transition(opacity, 0.3s, ease);
+    @include border-radius(2px);
+}
+
+.sidebar-toggle:hover::after {
+    opacity: 1;
+}
+
+.sidebar-toggle:hover {
+    background-color: rgba(56, 189, 248, 0.2);
+}
+
+body.sidebar-collapsed .sidebar-toggle::before {
+    color: var(--link-hover);
+}
+
+body.sidebar-collapsed .sidebar-toggle::after {
+    opacity: 0.5;
+}
+
+/* ============================================
+   SIDEBAR CONTENT
+   ============================================ */
+.sidebar-nav {
+    padding: 0.75rem;
+}
+
+.sidebar-section {
+    margin-bottom: 0.6rem;
+}
+
+.sidebar-section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-section ul {
+    @include reset-list;
+}
+
+.sidebar-section > ul > li {
+    margin: 0;
+}
+
+.sidebar-section a {
+    display: block;
+    padding: 0.35rem 0.65rem;
+    @include border-radius(8px);
+    @include transition(all, 0.2s, ease);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.sidebar-section a:hover {
+    background-color: var(--bg);
+    text-decoration: none;
+}
+
+.sidebar-submenu {
+    padding-left: 1rem !important;
+    margin-top: 0.1rem !important;
+}
+
+.sidebar-submenu li {
+    margin: 0 !important;
+}
+
+/* ============================================
+   DETAILS ELEMENTS
+   ============================================ */
+details summary {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    @include border-radius(6px);
+    user-select: none;
+    @include transition(background, 0.2s, ease);
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0.5rem;
+    @include transition(transform, 0.2s, ease);
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details summary:hover {
+    background-color: var(--bg);
+}
+
+details[open] summary {
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@include respond-to('tablet') {
+    .sidebar-toggle {
+        position: relative;
+        width: 36px;
+        height: 50px;
+        border-radius: 0;
+    }
+    
+    .sidebar-toggle::before {
+        transform: rotate(0deg);
+        font-size: 1.4rem;
+    }
+    
+    .sidebar {
+        left: 36px;
+        width: 244px;
+        border-left: 1px solid var(--border);
+        transform: translateX(-280px);
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0);
+        @include box-shadow(5);
+    }
+}

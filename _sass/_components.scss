@@ -1,0 +1,17 @@
+/* ============================================
+   COMPONENTES - ARQUIVO DE IMPORTAÇÃO
+   ============================================
+   Este arquivo importa todos os componentes modulares
+   para facilitar a manutenção e organização
+*/
+
+/* Componentes UI */
+@import 'components/badges';
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/tables';
+@import 'components/breadcrumb';
+@import 'components/sidebar';
+
+/* Layouts de Páginas */
+@import 'layouts/projeto-page';

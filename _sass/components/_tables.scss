@@ -1,0 +1,51 @@
+/* ============================================
+   TABLES - COMPONENT TABLE
+   ============================================ */
+.component-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    @include border-radius(8px);
+    overflow: hidden;
+    @include box-shadow(1);
+}
+
+.component-table thead {
+    background-color: var(--table-header-bg);
+    color: var(--table-header-text);
+    font-weight: bold;
+}
+
+.component-table th,
+.component-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.component-table tbody tr:nth-child(even) {
+    background-color: var(--table-row-even);
+}
+
+.component-table tbody tr:nth-child(odd) {
+    background-color: var(--table-row-odd);
+}
+
+.component-table tbody tr:hover {
+    background-color: var(--table-hover-bg);
+    @include transition(background, 0.2s, ease);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@include respond-to('tablet') {
+    .component-table {
+        font-size: 0.85rem;
+    }
+
+    .component-table th,
+    .component-table td {
+        padding: 8px 10px;
+    }
+}

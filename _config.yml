@@ -1,0 +1,39 @@
+title: Template de Site Pessoal
+description: Coisas possíveis a ser feitas em um site
+markdown: kramdown
+
+# Customização
+permalink: pretty
+
+# Sass/SCSS
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Configurações do Kramdown (processador Markdown)
+kramdown:
+  input: GFM  # GitHub Flavored Markdown
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: true
+
+# GitHub Pages
+url: "https://gatilhoroxo.github.io"
+baseurl: "/mc_journey_attempt"
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: "learn"
+    values:
+      layout: "default"
+  - scope:
+      path: "base"
+    values:
+      layout: "default"
+

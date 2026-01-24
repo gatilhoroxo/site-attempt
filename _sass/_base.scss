@@ -1,0 +1,204 @@
+/* ============================================
+   ESTILOS GERAIS
+   ============================================ */
+html {
+    min-height: 100vh;
+    transition: font-size 0.3s ease;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-left: calc(var(--iconbar-width) + var(--sidebar-width));
+    line-height: 1.6;
+    @include transition(background 0.4s ease, color 0.4s ease, padding-left);
+    min-height: 100vh;
+    @include flex-column;
+}
+
+body.sidebar-collapsed {
+    padding-left: var(--iconbar-width);
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+header {
+    background-color: var(--bg-light);
+    padding: 1.76rem 4rem 1.76rem 0.5rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+    top: 0;
+    z-index: 90;
+    @include flex-column;
+    align-items: center;
+    gap: 1.76rem;
+    position: relative;
+}
+
+header h1 {
+    font-size: var(--font-size-2xl);
+    margin: 0.25rem 0;
+    line-height: 1.2;
+}
+
+/* ============================================
+   TIPOGRAFIA
+   ============================================ */
+h1, h2 {
+    color: var(--accent);
+}
+
+/* ============================================
+   NAVEGAÇÃO
+   ============================================ */
+nav a {
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 14px;
+    margin: 0 5px;
+    margin-top: 4px;
+    margin-bottom: 1px;
+    padding: 0.4rem 0.6rem;
+    @include border-radius(var(--radius-sm));
+    @include transition(color, 0.3s, ease);
+    @include transition(background-color, 0.3s, ease);
+}
+
+nav a:hover {
+    color: var(--link-hover);
+    background-color: var(--bg);
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+main {
+    max-width: var(--max-content-width);
+    margin: var(--spacing-xl) auto;
+    padding: 0 var(--spacing-md);
+    flex: 1;
+}
+
+/* ============================================
+   LINKS
+   ============================================ */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+}
+
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+code {
+    background-color: var(--bg-light);
+    padding: 2px 6px;
+    @include border-radius(var(--radius-sm));
+    font-family: "Courier New", monospace;
+    font-size: 0.9em;
+}
+
+pre {
+    background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    @include border-radius(var(--radius-lg));
+    overflow-x: auto;
+    border: 1px solid var(--border);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    font-size: var(--font-size-sm);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+    background-color: var(--bg-light);
+    padding: var(--spacing-lg);
+    text-align: center;
+    border-top: 1px solid var(--border);
+    margin-top: var(--spacing-2xl);
+    flex-shrink: 0;
+}
+
+/* ============================================
+   RESPONSIVE BREAKPOINTS
+   ============================================ */
+
+/* Desktop/Tablet - 769px a 1200px */
+@include respond-to('desktop-large') {
+    body {
+        padding-left: calc(var(--iconbar-width) + var(--sidebar-width));
+    }
+    
+    body.sidebar-collapsed {
+        padding-left: var(--iconbar-width);
+    }
+    
+    header {
+        padding: var(--spacing-lg) 4rem var(--spacing-lg) 0.5rem;
+        gap: var(--spacing-lg);
+    }
+    
+    header h1 {
+        font-size: 1.85rem;
+    }
+}
+
+/* Tablet - 481px a 768px */
+@include respond-to('tablet') {
+    body {
+        padding-left: var(--iconbar-width) !important;
+    }
+    
+    header {
+        padding: 1.4rem 3.5rem 1.4rem 0.45rem;
+        gap: 1.4rem;
+    }
+    
+    header h1 {
+        font-size: 1.7rem;
+        margin: 0.2rem 0;
+    }
+    
+    nav a {
+        font-size: 13px;
+        margin: 0 4px;
+        padding: 0.35rem 0.5rem;
+    }
+    
+    main {
+        padding: 0 var(--spacing-sm);
+    }
+}
+
+/* Mobile Small - até 480px */
+@include respond-to('mobile') {
+    header {
+        padding: var(--spacing-md) var(--spacing-2xl) var(--spacing-md) 0.3rem;
+        gap: var(--spacing-md);
+    }
+    
+    header h1 {
+        font-size: 1.4rem;
+        max-width: calc(100% - 3.5rem);
+    }
+    
+    nav a {
+        font-size: 12px;
+        margin: 0 2px;
+        padding: 0.3rem 0.4rem;
+    }
+}

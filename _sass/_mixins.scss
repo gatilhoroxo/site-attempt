@@ -1,0 +1,169 @@
+/* ============================================
+   MIXINS REUTILIZÁVEIS
+   ============================================
+   Mixins para facilitar o desenvolvimento e evitar repetição
+*/
+
+/* ============================================
+   TRANSIÇÕES
+   ============================================ */
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+    transition: $properties $duration $timing;
+}
+
+/* ============================================
+   ANIMAÇÕES
+   ============================================ */
+@mixin fadeIn($duration: 0.5s) {
+    animation: fadeIn $duration ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================
+   SOMBRAS
+   ============================================ */
+@mixin box-shadow($level: 1) {
+    @if $level == 1 {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    } @else if $level == 2 {
+        box-shadow: 0 4px 12px rgba(56, 189, 248, 0.3);
+    } @else if $level == 3 {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    } @else if $level == 4 {
+        box-shadow: 2px 0 12px rgba(0, 0, 0, 0.2);
+    } @else if $level == 5 {
+        box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* ============================================
+   INTERATIVIDADE
+   ============================================ */
+@mixin hover-lift($distance: -2px) {
+    &:hover {
+        transform: translateY($distance);
+    }
+}
+
+@mixin hover-scale($scale: 1.1) {
+    &:hover {
+        transform: scale($scale);
+    }
+}
+
+/* ============================================
+   BORDAS E CANTOS
+   ============================================ */
+@mixin border-radius($radius: 8px) {
+    border-radius: $radius;
+}
+
+/* ============================================
+   FLEXBOX
+   ============================================ */
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ============================================
+   GRID
+   ============================================ */
+@mixin grid-auto-fill($min-width: 300px, $max-width: 1fr, $gap: 1.5rem) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax($min-width, $max-width));
+    gap: $gap;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+@mixin button-base {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    @include border-radius(8px);
+    text-decoration: none;
+    font-weight: bold;
+    @include transition(all, 0.3s, ease);
+}
+
+@mixin button-primary {
+    @include button-base;
+    background-color: var(--accent);
+    color: var(--bg);
+    
+    &:hover {
+        @include hover-lift(-2px);
+        @include box-shadow(2);
+        text-decoration: none;
+    }
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+@mixin card-base {
+    background-color: var(--bg-light);
+    padding: 1.5rem;
+    @include border-radius(12px);
+    border: 1px solid var(--border);
+    @include transition(all, 0.3s, ease);
+}
+
+@mixin card-hover {
+    &:hover {
+        @include hover-lift(-4px);
+        @include box-shadow(3);
+        border-color: var(--accent);
+    }
+}
+
+/* ============================================
+   RESPONSIVIDADE - BREAKPOINTS
+   ============================================ */
+@mixin respond-to($breakpoint) {
+    @if $breakpoint == 'desktop-large' {
+        @media (max-width: 1200px) and (min-width: 769px) {
+            @content;
+        }
+    } @else if $breakpoint == 'tablet' {
+        @media (max-width: 768px) {
+            @content;
+        }
+    } @else if $breakpoint == 'mobile' {
+        @media (max-width: 480px) {
+            @content;
+        }
+    }
+}
+
+/* ============================================
+   UTILITÁRIOS
+   ============================================ */
+@mixin reset-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+@mixin text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
