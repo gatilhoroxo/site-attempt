@@ -1,7 +1,7 @@
 ---
 layout: pasta
 title: Posts
-permalink: /posts
+permalink: /posts/
 ---
 
 # Indice de Posts
