@@ -126,7 +126,7 @@ comando --parametro
 - **Exercício do dia:** Link para documentação do exercício 
 > **Nota:** O código-fonte está em ...
 - **Conceitos estudados:** [`../i1-conceitos-fundamentais/`](../i1-conceitos-fundamentais/)
-- **Tracker:** [`TRACKER.md`](TRACKER.md)
+- **Tracker:** [`tracker.md`](tracker.md)
 
 ---
 

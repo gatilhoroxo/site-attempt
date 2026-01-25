@@ -1,5 +1,5 @@
 ---
-layout: learn-default
+layout: default
 title: Tracker de Progresso
 ---
 

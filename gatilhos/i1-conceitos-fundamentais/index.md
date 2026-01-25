@@ -1,6 +1,7 @@
 ---
 layout: pasta
 title: Conceitos Fundamentais
+permalink: /gatilhos/conceitos-fundamentais
 ---
 
 # 💡 Conceitos Fundamentais

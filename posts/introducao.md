@@ -1,11 +1,11 @@
 ---
-layout: default
+layout: post
 title: Introdução
 ---
 
 Texto pode ser **negrito**, _itálico_, ~~cortado~~ ou `palavra-chave`.
 
-[Link para página de referencia](./references.html).
+[Link para página de referencia](../referencias).
 
 Deve ter espaços vazios entre os parágrafos.
 

@@ -1,6 +1,7 @@
 ---
 layout: pasta
 title: Roadmaps de Aprendizado
+permalink: /gatilhos/roadmaps
 ---
 
 # 🗺️ Roadmaps de Aprendizado

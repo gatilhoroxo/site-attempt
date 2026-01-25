@@ -1,6 +1,7 @@
 ---
 layout: pasta
 title: Diário de Aprendizado
+permalink: /gatilhos/diario-de-aprendizado
 ---
 
 # 📔 Diário de Aprendizado

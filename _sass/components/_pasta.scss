@@ -1,0 +1,148 @@
+/* ============================================
+   PASTA LAYOUT - FOLDER LISTING
+   ============================================
+   Styles for the pasta.html layout that displays
+   folder and file listings
+*/
+
+/* Container */
+.pasta-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  
+  h1 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .pasta-description {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+}
+
+/* Listing sections */
+.pasta-listing {
+  margin-top: 3rem;
+  
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* List container */
+.pasta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+  
+  &.folders {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+  
+  &.files {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* List items */
+.pasta-item {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  @include transition(all, 0.2s, ease);
+  
+  &:hover {
+    border-color: var(--primary);
+    @include box-shadow(2);
+    transform: translateY(-2px);
+  }
+  
+  a {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 1.25rem;
+    color: var(--text);
+    text-decoration: none;
+    gap: 0.5rem;
+  }
+  
+  .pasta-title {
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--primary);
+  }
+  
+  .pasta-desc {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  
+  /* Different style for folders */
+  &.folder {
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg) 100%);
+    
+    .pasta-title {
+      color: var(--primary);
+      font-weight: 700;
+    }
+    
+    a::before {
+      content: '📁';
+      margin-right: 0.5rem;
+      font-size: 1.2rem;
+    }
+  }
+  
+  /* Different style for files */
+  &.file {
+    a::before {
+      content: '📄';
+      margin-right: 0.5rem;
+      font-size: 1rem;
+      opacity: 0.8;
+    }
+    
+    .pasta-title {
+      font-weight: 500;
+    }
+  }
+}
+
+/* Empty state */
+.pasta-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-muted);
+  
+  p {
+    font-size: 1.1rem;
+    margin: 0;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .pasta-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .pasta-list {
+    &.folders {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .pasta-item a {
+    padding: 0.875rem 1rem;
+  }
+}

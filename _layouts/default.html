@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default:"pt-BR" }}">
 
-{% include head-default.html %}
+{% include default/head-default.html %}
 
 <body class="sidebar-collapsed">
   <!-- Barra lateral vertical para ícones -->
@@ -10,16 +10,16 @@
   </aside>
 
   {% include sidebar.html %}
-  {% include header-default.html %}
+  {% include default/header-default.html %}
   
   <main>
     {{ content }}
   </main>
   
-  {% include footer-default.html %}
+  {% include default/footer-default.html %}
   
-  {% include theme-switcher.html %}
-  {% include font-size-control.html %}
-  {% include navigation-sidebar.html %}
+  {% include scripts/theme-switcher.html %}
+  {% include scripts/font-size-control.html %}
+  {% include scripts/navigation-sidebar.html %}
 </body>
 </html>

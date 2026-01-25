@@ -78,6 +78,7 @@ nav a:hover {
    ============================================ */
 main {
     max-width: var(--max-content-width);
+    min-width: min(600px, 90vw); /* Define largura mínima responsiva */
     margin: var(--spacing-xl) auto;
     padding: 0 var(--spacing-md);
     flex: 1;

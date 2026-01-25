@@ -97,7 +97,7 @@ title: Template de Exercicio
 
 ## 🔗 Links Relacionados
 
-- **Conceitos:** [`../../../../learn/i1-conceitos-fundamentais/`](../../../../learn/i1-conceitos-fundamentais/)
+- **Conceitos:** [`../conceitos-fundamentais/`](../i1-conceitos-fundamentais/index.md)
 - **Próximo exercício:** [`../kN-nome/`](../kN-nome/)
 - **Voltar:** [`../README.md`](../README.md)
 
