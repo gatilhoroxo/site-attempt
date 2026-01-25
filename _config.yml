@@ -20,7 +20,7 @@ kramdown:
 
 # GitHub Pages
 url: "https://gatilhoroxo.github.io"
-baseurl: "/mc_journey_attempt"
+baseurl: "/site-attempt"
 
 # Defaults
 defaults:
@@ -29,11 +29,11 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "learn"
+      path: "gatilhos"
     values:
       layout: "default"
   - scope:
-      path: "base"
+      path: "posts"
     values:
       layout: "default"
 
