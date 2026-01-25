@@ -11,46 +11,46 @@ layout: default
   
   {{ content }}
   
-  {% comment %}
+  <!--
   ========================================
   AUTO-GENERATED FOLDER LISTING
   ========================================
   Displays all subdirectories and files in the current directory
-  {% endcomment %}
+  -->
   
   {% assign current_dir = page.url | remove: '/index.html' | remove: '/index' | append: '/' %}
   {% assign current_depth = current_dir | split: '/' | size %}
   
-  {% comment %}Filter pages that belong to this directory{% endcomment %}
+  <!--Filter pages that belong to this directory-->
   {% assign all_children = site.pages | where_exp: "item", "item.url contains current_dir" %}
   
-  {% comment %}Separate folders from files{% endcomment %}
+  <!--Separate folders from files-->
   {% assign folders = "" | split: "" %}
   {% assign files = "" | split: "" %}
   
   {% for item in all_children %}
     {% unless item.url == page.url %}
-      {% comment %}Calculate depth of this item{% endcomment %}
+      <!--Calculate depth of this item-->
       {% assign item_depth = item.url | split: '/' | size %}
       {% assign is_direct_child = false %}
       
-      {% comment %}Check if it's a direct child (one level deeper){% endcomment %}
+      <!--Check if it's a direct child (one level deeper)-->
       {% if item.url contains current_dir %}
         {% assign relative_path = item.url | remove_first: current_dir %}
         {% assign slash_count = relative_path | split: '/' | size %}
         
-        {% comment %}Direct child if: folder has 2 slashes (subdir/index) or file has 1 slash{% endcomment %}
+        <!--Direct child if: folder has 2 slashes (subdir/index) or file has 1 slash-->
         {% if slash_count <= 2 %}
           {% assign is_direct_child = true %}
         {% endif %}
       {% endif %}
       
       {% if is_direct_child %}
-        {% comment %}Check if it's a folder (index page) or file{% endcomment %}
+        <!--Check if it's a folder (index page) or file-->
         {% if item.url contains '/index.html' or item.url contains '/index' or item.layout == 'pasta' %}
           {% assign folders = folders | push: item %}
         {% else %}
-          {% comment %}Exclude files starting with underscore{% endcomment %}
+          <!--Exclude files starting with underscore-->
           {% assign filename = item.path | split: '/' | last %}
           {% unless filename contains '_' %}
             {% assign files = files | push: item %}
@@ -60,11 +60,11 @@ layout: default
     {% endunless %}
   {% endfor %}
   
-  {% comment %}Sort folders and files alphabetically by title or path{% endcomment %}
+  <!--Sort folders and files alphabetically by title or path-->
   {% assign folders = folders | sort: 'title' %}
   {% assign files = files | sort: 'title' %}
   
-  {% comment %}Display folders and files section{% endcomment %}
+  <!--Display folders and files section-->
 
   {% if folders.size > 0 %}
   <section class="pasta-listing">
@@ -101,7 +101,7 @@ layout: default
   </section>
   {% endif %}
   
-  {% comment %}Empty state{% endcomment %}
+  <!--Empty state-->
   {% if folders.size == 0 and files.size == 0 %}
   <div class="pasta-empty">
     <p>Esta pasta está vazia.</p>

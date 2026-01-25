@@ -1,12 +1,12 @@
-{% comment %}
+<!--
   Breadcrumb Navigation Component
   Configuração: _data/breadcrumb_config.yml
   Para adicionar novas seções, edite apenas o arquivo de configuração
-{% endcomment %}
+-->
 
 <nav class="breadcrumb-container" aria-label="Breadcrumb">
   <ol class="breadcrumb">
-    {% comment %} Home item {% endcomment %}
+    <!-- Home item -->
     <li class="breadcrumb-item">
       <a href="{{ '/' | relative_url }}" class="breadcrumb-link">
         <svg class="breadcrumb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -19,29 +19,29 @@
     {% assign url_parts = page.url | split: '/' %}
     {% assign current_path = '' %}
     
-    {% comment %} Loop through URL parts {% endcomment %}
+    <!-- Loop through URL parts -->
     {% for part in url_parts %}
       {% if part != '' and part != 'index.html' %}
         {% assign current_path = current_path | append: '/' | append: part %}
         {% assign section_config = site.data.breadcrumb_config.sections[part] %}
         
-        {% comment %} Skip INDEX breadcrumb items if configured to skip {% endcomment %}
+        <!-- Skip INDEX breadcrumb items if configured to skip -->
         {% unless section_config.skip %}
-          {% comment %} Separator SVG {% endcomment %}
+          <!-- Separator SVG -->
           <svg class="breadcrumb-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="{{ site.data.breadcrumb_config.separator.svg_path }}" clip-rule="evenodd" />
           </svg>
           
           {% if forloop.last %}
-            {% comment %} Current/last item - always show page title {% endcomment %}
+            <!-- Current/last item - always show page title -->
             <li class="breadcrumb-item breadcrumb-item-current">
               <span class="breadcrumb-current" aria-current="page">{{ page.title }}</span>
             </li>
           {% else %}
-            {% comment %} Intermediate items {% endcomment %}
+            <!-- Intermediate items -->
             <li class="breadcrumb-item">
               {% if section_config %}
-                {% comment %} Section found in config {% endcomment %}
+                <!-- Section found in config -->
                 {% if section_config.url %}
                   {% assign item_url = section_config.url | relative_url %}
                 {% else %}
@@ -53,7 +53,7 @@
                   <span>{{ section_config.label }}</span>
                 </a>
               {% else %}
-                {% comment %} Fallback for unmapped sections - show capitalized name {% endcomment %}
+                <!-- Fallback for unmapped sections - show capitalized name -->
                 <a href="{{ current_path | append: '/' | relative_url }}" class="breadcrumb-link">
                   <span>{{ part | replace: '-', ' ' | replace: '_', ' ' | capitalize }}</span>
                 </a>
