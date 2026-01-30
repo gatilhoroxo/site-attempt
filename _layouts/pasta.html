@@ -47,7 +47,7 @@ layout: default
       
       {% if is_direct_child %}
         <!--Check if it's a folder (index page) or file-->
-        {% if item.url contains '/index.html' or item.url contains '/index' or item.layout == 'pasta' %}
+        {% if item.layout == 'pasta' %}
           {% assign folders = folders | push: item %}
         {% else %}
           <!--Exclude files starting with underscore-->
