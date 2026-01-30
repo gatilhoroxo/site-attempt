@@ -6,3 +6,4 @@
 - escrever modelo de sidebar em _includes
 - escrever modelo de _variables em _sass
 - personalizar citação (>) em algum scss
+- modularizar o algoritmo de listar pastas de pasta em _layouts
