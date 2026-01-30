@@ -1,7 +1,7 @@
 ---
 layout: pasta
 title: Templates
-permalink: /gatilhos/templates
+permalink: /gatilhos/templates/
 ---
 
 # 📝 Templates

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Template de Diario
+permalink: /gatilhos/templates/diario
 ---
 
 # YYYY-MM-DD - [Título do Dia]

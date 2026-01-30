@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Template de Projeto
+permalink: /gatilhos/templates/projeto
 ---
 
 # [Nome do Projeto]
