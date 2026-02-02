@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Template de Exercicio
-permalink: /gatilhos/templates/exercicio
+
 ---
 
 # [Nome do Exercício]

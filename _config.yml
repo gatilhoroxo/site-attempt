@@ -29,10 +29,6 @@ defaults:
     values:
       layout: "default"
   - scope:
-      path: "gatilhos"
-    values:
-      layout: "default"
-  - scope:
       path: "posts"
     values:
       layout: "default"

@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Template de Conceito
-permalink: /gatilhos/templates/conceito
 ---
 
 # [Nome do Conceito]

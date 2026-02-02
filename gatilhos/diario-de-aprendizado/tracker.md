@@ -1,7 +1,6 @@
 ---
 layout: default
 title: Tracker de Progresso
-permalink: /gatilhos/diario-de-aprendizado/tracker
 ---
 
 # 📊 Tracker de Progresso
