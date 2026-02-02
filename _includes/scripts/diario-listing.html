@@ -1,0 +1,97 @@
+<!--
+========================================
+DIARIO LISTING SCRIPT
+========================================
+Compact listing for diary entries (diário-de-aprendizado)
+Shows entries in a timeline format
+-->
+
+{%- assign current_dir = page.url | remove: '/index.html' | remove: '/index' -%}
+{%- unless current_dir contains '/' -%}
+  {%- assign current_dir = '/' -%}
+{%- endunless -%}
+{%- unless current_dir == '/' -%}
+  {%- assign current_dir = current_dir | append: '/' -%}
+{%- endunless -%}
+{%- assign current_dir = current_dir | replace: '//', '/' -%}
+
+{%- assign all_children = site.pages | where_exp: "item", "item.url contains current_dir" -%}
+{%- assign diary_entries = "" | split: "" -%}
+{%- assign other_files = "" | split: "" -%}
+
+{%- for item in all_children -%}
+  {%- unless item.url == page.url -%}
+    {%- assign is_direct_child = false -%}
+    {%- if item.url contains current_dir -%}
+      {%- assign relative_path = item.url | remove_first: current_dir -%}
+      {%- assign path_parts = relative_path | split: '/' -%}
+      {%- assign parts_count = path_parts | size -%}
+      
+      {%- if parts_count == 1 -%}
+        {%- assign is_direct_child = true -%}
+      {%- elsif parts_count == 2 -%}
+        {%- assign last_part = path_parts | last -%}
+        {%- if last_part == '' or last_part == 'index.html' or last_part == 'index' -%}
+          {%- assign is_direct_child = true -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+    
+    {%- if is_direct_child -%}
+      {%- assign filename = item.path | split: '/' | last -%}
+      {%- comment -%} Diary entries start with dia_ or date pattern {%- endcomment -%}
+      {%- if filename contains 'dia_' or filename contains '202' -%}
+        {%- assign diary_entries = diary_entries | push: item -%}
+      {%- elsif item.layout != 'pasta' -%}
+        {%- assign other_files = other_files | push: item -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- assign diary_entries = diary_entries | sort: 'date' | reverse -%}
+{%- assign other_files = other_files | sort: 'title' -%}
+
+{%- if diary_entries.size > 0 -%}
+<section class="diario-listing">
+  <h2>📔 Entradas do Diário</h2>
+  <div class="diario-timeline">
+    {%- for entry in diary_entries -%}
+    <article class="diario-entry">
+      <div class="diario-content">
+        <a href="{{ entry.url | relative_url }}" class="diario-link">
+          <h3 class="diario-title">{{ entry.title }}</h3>
+          {%- if entry.description -%}
+          <p class="diario-desc">{{ entry.description }}</p>
+          {%- endif -%}
+        </a>
+      </div>
+    </article>
+    {%- endfor -%}
+  </div>
+</section>
+{%- endif -%}
+
+{%- if other_files.size > 0 -%}
+<section class="pasta-listing">
+  <h2>📁 Outros Recursos</h2>
+  <ul class="pasta-list files">
+    {%- for file in other_files -%}
+    <li class="pasta-item file">
+      <a href="{{ file.url | relative_url }}">
+        <span class="pasta-title">{{ file.title | default: file.name }}</span>
+        {%- if file.description -%}
+        <span class="pasta-desc">{{ file.description }}</span>
+        {%- endif -%}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{%- if diary_entries.size == 0 and other_files.size == 0 -%}
+<div class="pasta-empty">
+  <p>Nenhuma entrada de diário ainda.</p>
+</div>
+{%- endif -%}

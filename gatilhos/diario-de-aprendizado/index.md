@@ -1,5 +1,5 @@
 ---
-layout: pasta
+layout: diario
 title: Diário de Aprendizado
 permalink: /gatilhos/diario-de-aprendizado/
 ---
