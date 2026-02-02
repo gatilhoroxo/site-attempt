@@ -1,0 +1,97 @@
+<!--
+========================================
+PASTA LISTING SCRIPT
+========================================
+Auto-generates folder and file listings for the current directory
+Displays only direct children (one level deep)
+-->
+
+{%- assign current_dir = page.url | remove: '/index.html' | remove: '/index' -%}
+{%- unless current_dir contains '/' -%}
+  {%- assign current_dir = '/' -%}
+{%- endunless -%}
+{%- unless current_dir == '/' -%}
+  {%- assign current_dir = current_dir | append: '/' -%}
+{%- endunless -%}
+{%- assign current_dir = current_dir | replace: '//', '/' -%}
+
+{%- assign all_children = site.pages | where_exp: "item", "item.url contains current_dir" -%}
+{%- assign folders = "" | split: "" -%}
+{%- assign files = "" | split: "" -%}
+
+{%- for item in all_children -%}
+  {%- unless item.url == page.url -%}
+    {%- assign is_direct_child = false -%}
+    {%- if item.url contains current_dir -%}
+      {%- assign relative_path = item.url | remove_first: current_dir -%}
+      {%- assign path_parts = relative_path | split: '/' -%}
+      {%- assign parts_count = path_parts | size -%}
+      
+      {%- if parts_count == 1 -%}
+        {%- assign is_direct_child = true -%}
+      {%- elsif parts_count == 2 -%}
+        {%- assign last_part = path_parts | last -%}
+        {%- if last_part == '' or last_part == 'index.html' or last_part == 'index' -%}
+          {%- assign is_direct_child = true -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endif -%}
+    
+    {%- if is_direct_child -%}
+      {%- if item.layout == 'pasta' -%}
+        {%- assign folders = folders | push: item -%}
+      {%- else -%}
+        {%- assign filename = item.path | split: '/' | last -%}
+        {%- unless filename contains '_' -%}
+          {%- assign files = files | push: item -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endif -%}
+  {%- endunless -%}
+{%- endfor -%}
+
+{%- assign folders = folders | sort: 'title' -%}
+{%- assign files = files | sort: 'title' -%}
+
+{%- if folders.size > 0 -%}
+<section class="pasta-listing">
+  <h2>📁 Tópicos de Conteúdos</h2>
+  <ul class="pasta-list folders">
+    {%- for folder in folders -%}
+    <li class="pasta-item folder">
+      <a href="{{ folder.url | relative_url }}">
+        <span class="pasta-title">{{ folder.title | default: folder.name }}</span>
+        {%- if folder.description -%}
+        <span class="pasta-desc">{{ folder.description }}</span>
+        {%- endif -%}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{%- if files.size > 0 -%}
+<section class="pasta-listing">
+  <h2>📁 Conteúdos</h2>
+  <ul class="pasta-list files">
+    {%- for file in files -%}
+    <li class="pasta-item file">
+      <a href="{{ file.url | relative_url }}">
+        <span class="pasta-title">{{ file.title | default: file.name }}</span>
+        {%- if file.description -%}
+        <span class="pasta-desc">{{ file.description }}</span>
+        {%- endif -%}
+      </a>
+    </li>
+    {%- endfor -%}
+  </ul>
+</section>
+{%- endif -%}
+
+{%- if folders.size == 0 and files.size == 0 -%}
+<div class="pasta-empty">
+  <p>Esta pasta está vazia.</p>
+</div>
+{%- endif -%}
+
