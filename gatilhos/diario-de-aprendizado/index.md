@@ -14,11 +14,11 @@ Registro pessoal do progresso de aprendizado.
 
 ## 📂 Organização
 
-Arquivos nomeados: `_YYYY-MM-DD_.md`
+Arquivos nomeados: `dia_YYYY-MM-DD_.md`
 
 Exemplo:
-- `_2025-12-25_.md` - Primeira entrada
-- `_2025-12-26_.md` - Segunda entrada
+- `dia_2025-12-25_.md` - Primeira entrada
+- `dia_2025-12-26_.md` - Segunda entrada
 
 ## 📝 O que registrar
 
