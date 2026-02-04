@@ -6,7 +6,8 @@
 <body class="sidebar-collapsed no-transition">
   <!-- Barra lateral vertical para ícones -->
   <aside class="icon-bar">
-    <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Toggle sidebar"></button>
+    <button id="sidebar-toggle" class="navigation-toggle" data-state="navigation" aria-label="Toggle navigation"></button>
+    <button id="search-toggle" class="search-toggle" data-state="search" aria-label="Toggle search"></button>
   </aside>
 
   {% include sidebar.html %}
@@ -20,9 +21,11 @@
   
   {% include default/footer-default.html %}
   
+  {% include scripts/sidebar-state-manager.html %}
   {% include scripts/theme-switcher.html %}
   {% include scripts/font-size-control.html %}
   {% include scripts/navigation-sidebar.html %}
   {% include scripts/sidebar-expand.html %}
+  {% include scripts/search-sidebar.html %}
 </body>
 </html>

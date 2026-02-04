@@ -1,3 +1,6 @@
+#vscode stuff
+.vscode/
+#rest
 Gemfile.lock
 # Jekyll build
 _site/

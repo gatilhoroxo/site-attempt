@@ -1,0 +1,204 @@
+<script>
+// Search Sidebar - Registrar estado de busca
+(function() {
+  'use strict';
+
+  let searchIndex = [];
+  const searchInput = document.getElementById('search-input');
+  const searchResults = document.getElementById('search-results');
+
+  // Aguardar SidebarStateManager estar pronto
+  function init() {
+    if (!window.SidebarStateManager) {
+      setTimeout(init, 50);
+      return;
+    }
+    
+    const searchMode = document.getElementById('search-mode');
+    const searchToggle = document.getElementById('search-toggle');
+    
+    if (!searchMode || !searchToggle || !searchInput || !searchResults) {
+      console.error('Search elements not found');
+      return;
+    }
+    
+    // Registrar estado de busca
+    window.SidebarStateManager.registerState('search', {
+      element: searchMode,
+      button: searchToggle,
+      onActivate: function() {
+        // Focar no input quando ativado
+        setTimeout(() => searchInput.focus(), 100);
+      },
+      onDeactivate: function() {
+        // Limpar busca quando desativado
+        searchInput.value = '';
+        searchResults.innerHTML = '';
+      }
+    });
+    
+    // Carregar índice de busca
+    loadSearchIndex();
+    
+    // Event listeners para busca
+    setupSearchListeners();
+  }
+
+  // Carregar índice de busca
+  async function loadSearchIndex() {
+    try {
+      const response = await fetch('{{ "/assets/json/search-index.json" | relative_url }}');
+      searchIndex = await response.json();
+      console.log(`Search index loaded: ${searchIndex.length} pages`);
+    } catch (error) {
+      console.error('Erro ao carregar índice de busca:', error);
+      searchIndex = [];
+    }
+  }
+
+  // Configurar event listeners
+  function setupSearchListeners() {
+    // Buscar enquanto digita (com debounce)
+    let searchTimeout;
+    searchInput.addEventListener('input', function() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        performSearch(this.value);
+      }, 300);
+    });
+
+    // Fechar busca ao pressionar ESC
+    searchInput.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.SidebarStateManager.closeSidebar();
+      }
+    });
+  }
+
+  // Função de busca simples
+  function performSearch(query) {
+    if (!query || query.trim().length < 2) {
+      searchResults.innerHTML = '';
+      return;
+    }
+
+    const queryLower = query.toLowerCase().trim();
+    const results = [];
+
+    // Buscar em todos os itens do índice
+    searchIndex.forEach(item => {
+      let score = 0;
+      let excerpt = '';
+
+      // Buscar no título
+      if (item.title && item.title.toLowerCase().includes(queryLower)) {
+        score += 10;
+      }
+
+      // Buscar no conteúdo
+      if (item.content) {
+        const contentLower = item.content.toLowerCase();
+        const index = contentLower.indexOf(queryLower);
+        
+        if (index !== -1) {
+          score += 5;
+          
+          // Extrair trecho do conteúdo
+          const start = Math.max(0, index - 40);
+          const end = Math.min(item.content.length, index + queryLower.length + 40);
+          excerpt = item.content.substring(start, end);
+          
+          // Adicionar ... se necessário
+          if (start > 0) excerpt = '...' + excerpt;
+          if (end < item.content.length) excerpt = excerpt + '...';
+        }
+      }
+
+      // Buscar no caminho/URL
+      if (item.url && item.url.toLowerCase().includes(queryLower)) {
+        score += 2;
+      }
+
+      if (score > 0) {
+        results.push({ ...item, score, excerpt });
+      }
+    });
+
+    // Ordenar por relevância
+    results.sort((a, b) => b.score - a.score);
+
+    // Limitar a 10 resultados
+    const topResults = results.slice(0, 10);
+
+    displayResults(topResults, queryLower);
+  }
+
+  // Exibir resultados
+  function displayResults(results, query) {
+    if (results.length === 0) {
+      searchResults.innerHTML = '<div class="search-no-results">Nenhum resultado encontrado</div>';
+      return;
+    }
+
+    let html = '';
+    results.forEach(result => {
+      const title = highlightText(result.title || 'Sem título', query);
+      const path = result.url || '';
+      const excerpt = result.excerpt ? highlightText(result.excerpt, query) : '';
+
+      html += `
+        <div class="search-result-item" data-url="${path}">
+          <div class="search-result-title">${title}</div>
+          <div class="search-result-path">${path}</div>
+          ${excerpt ? `<div class="search-result-excerpt">${excerpt}</div>` : ''}
+        </div>
+      `;
+    });
+
+    searchResults.innerHTML = html;
+
+    // Adicionar event listeners para os resultados
+    document.querySelectorAll('.search-result-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const url = this.getAttribute('data-url');
+        if (url) {
+          // Fechar sidebar antes de navegar
+          if (window.SidebarStateManager) {
+            window.SidebarStateManager.closeSidebar();
+          }
+          window.location.href = url;
+        }
+      });
+    });
+  }
+
+  // Destacar texto encontrado
+  function highlightText(text, query) {
+    if (!text || !query) return text;
+    
+    const regex = new RegExp(`(${escapeRegex(query)})`, 'gi');
+    return text.replace(regex, '<mark>$1</mark>');
+  }
+
+  // Escapar caracteres especiais de regex
+  function escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+  
+  // Inicializar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+<style>
+mark {
+  background-color: rgba(56, 189, 248, 0.3);
+  color: inherit;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+</style>

@@ -1,65 +1,59 @@
 
 <script>
-// Navigation Sidebar - Gerencia comportamento da sidebar (desktop/mobile)
+// Navigation Sidebar - Registrar estado de navegação
 (function() {
-  const sidebar = document.getElementById('sidebar');
-  const sidebarToggle = document.getElementById('sidebar-toggle');
-  const body = document.body;
+  'use strict';
   
-  // Verificar estado salvo da sidebar (padrão: collapsed)
-  const sidebarState = localStorage.getItem('sidebarCollapsed');
-  if (sidebarState !== 'false') {
-    sidebar.classList.add('collapsed');
-    body.classList.add('sidebar-collapsed');
-  } else {
-    body.classList.remove('sidebar-collapsed');
-  }
-  
-  // Remove no-transition class after initial state is set
-  requestAnimationFrame(() => {
-    body.classList.remove('no-transition');
-  });
-  
-  sidebarToggle.addEventListener('click', () => {
-    // Comportamento condicional: desktop vs mobile
-    if (window.innerWidth <= 768) {
-      // Mobile: toggle mobile-open apenas
-      sidebar.classList.toggle('mobile-open');
-    } else {
-      // Desktop: toggle collapsed
-      sidebar.classList.toggle('collapsed');
-      body.classList.toggle('sidebar-collapsed');
-      
-      // Salvar estado
-      localStorage.setItem('sidebarCollapsed', sidebar.classList.contains('collapsed'));
+  // Aguardar SidebarStateManager estar pronto
+  function init() {
+    if (!window.SidebarStateManager) {
+      setTimeout(init, 50);
+      return;
     }
-  });
-  
-  // Atualizar sidebar ao redimensionar janela
-  window.addEventListener('resize', () => {
-    if (window.innerWidth <= 768) {
-      // Mobile: remover classes desktop e garantir mobile-open fechado por padrão
-      sidebar.classList.remove('collapsed');
-      body.classList.remove('sidebar-collapsed');
-    } else {
-      // Desktop: remover mobile-open e restaurar estado salvo
-      sidebar.classList.remove('mobile-open');
-      const sidebarState = localStorage.getItem('sidebarCollapsed');
-      if (sidebarState === 'true') {
-        sidebar.classList.add('collapsed');
-        body.classList.add('sidebar-collapsed');
-      }
+    
+    const navigationMode = document.getElementById('navigation-mode');
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    
+    if (!navigationMode || !sidebarToggle) {
+      console.error('Navigation elements not found');
+      return;
     }
-  });
-  
-  // Fechar sidebar ao clicar em link (mobile)
-  document.querySelectorAll('.sidebar a').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth <= 768) {
-        sidebar.classList.remove('mobile-open');
+    
+    // Registrar estado de navegação
+    window.SidebarStateManager.registerState('navigation', {
+      element: navigationMode,
+      button: sidebarToggle,
+      onActivate: function() {
+        console.log('Navigation mode activated');
+      },
+      onDeactivate: function() {
+        console.log('Navigation mode deactivated');
       }
     });
-  });
+    
+    // Verificar estado inicial
+    const sidebarWasCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
+    const savedState = localStorage.getItem('sidebarState');
+    
+    // Se sidebar não estava colapsada E não há outro estado salvo, ativar navegação
+    if (!sidebarWasCollapsed && (!savedState || savedState === 'navigation' || savedState === 'null')) {
+      setTimeout(() => {
+        if (!window.SidebarStateManager.currentState) {
+          window.SidebarStateManager.activateState('navigation');
+          window.SidebarStateManager.currentState = 'navigation';
+          // Garantir que sidebar está visível
+          window.SidebarStateManager.sidebar.classList.remove('collapsed');
+          window.SidebarStateManager.body.classList.remove('sidebar-collapsed');
+        }
+      }, 100);
+    }
+  }
+  
+  // Inicializar
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
-
 </script>
