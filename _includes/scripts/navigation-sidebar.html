@@ -15,6 +15,11 @@
     body.classList.remove('sidebar-collapsed');
   }
   
+  // Remove no-transition class after initial state is set
+  requestAnimationFrame(() => {
+    body.classList.remove('no-transition');
+  });
+  
   sidebarToggle.addEventListener('click', () => {
     // Comportamento condicional: desktop vs mobile
     if (window.innerWidth <= 768) {

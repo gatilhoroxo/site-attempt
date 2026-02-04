@@ -5,6 +5,7 @@
   const themeToggle = document.getElementById('theme-toggle');
   const currentTheme = localStorage.getItem('theme') || 'dark';
   
+  // Set theme immediately without transitions
   document.documentElement.setAttribute('data-theme', currentTheme);
   themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
   

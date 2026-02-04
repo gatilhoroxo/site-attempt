@@ -1,6 +1,14 @@
 /* ============================================
    ESTILOS GERAIS
    ============================================ */
+
+/* Utility class to disable transitions during page load */
+.no-transition,
+.no-transition * {
+    transition: none !important;
+    animation: none !important;
+}
+
 html {
     min-height: 100vh;
     transition: font-size 0.3s ease;
