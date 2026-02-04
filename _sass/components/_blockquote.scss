@@ -1,0 +1,97 @@
+/* ============================================
+   BLOCKQUOTE (CITAÇÕES)
+   ============================================
+   Estilos personalizados para citações em markdown
+*/
+
+blockquote {
+    position: relative;
+    margin: var(--spacing-lg) 0;
+    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
+    background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-topbar) 100%);
+    border-left: 4px solid var(--accent);
+    @include border-radius(var(--radius-md));
+    font-family: var(--font-body);
+    font-style: italic;
+    color: var(--text);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    @include transition(all, 0.3s, ease);
+
+    /* Ícone de aspas antes da citação */
+    &::before {
+        content: '"';
+        position: absolute;
+        left: var(--spacing-sm);
+        top: 0.5rem;
+        font-size: 3rem;
+        font-family: Georgia, serif;
+        color: var(--accent);
+        opacity: 0.3;
+        line-height: 1;
+    }
+
+    /* Parágrafos dentro da citação */
+    p {
+        margin: var(--spacing-sm) 0;
+        line-height: 1.7;
+        
+        &:first-child {
+            margin-top: 0;
+        }
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    /* Links dentro da citação */
+    a {
+        color: var(--link-hover);
+        border-bottom: 1px dotted var(--accent);
+        
+        &:hover {
+            border-bottom-style: solid;
+        }
+    }
+
+    /* Citações aninhadas */
+    blockquote {
+        margin: var(--spacing-md) 0;
+        padding: var(--spacing-sm) var(--spacing-md);
+        background: var(--bg);
+        border-left-width: 3px;
+        font-size: 0.95em;
+        
+        &::before {
+            font-size: 2rem;
+            left: 0.25rem;
+        }
+    }
+
+    /* Code dentro de citações */
+    code {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: var(--link-hover);
+    }
+
+    /* Listas dentro de citações */
+    ul, ol {
+        margin: var(--spacing-sm) 0;
+        padding-left: var(--spacing-lg);
+    }
+}
+
+/* Variação para tema claro */
+[data-theme="light"] blockquote {
+    background: linear-gradient(135deg, #f8f7fb 0%, #eeebf5 100%);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    
+    &::before {
+        opacity: 0.25;
+    }
+
+    code {
+        background-color: rgba(0, 0, 0, 0.05);
+        color: var(--accent);
+    }
+}

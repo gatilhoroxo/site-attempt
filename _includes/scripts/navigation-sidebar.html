@@ -31,22 +31,8 @@
       }
     });
     
-    // Verificar estado inicial
-    const sidebarWasCollapsed = localStorage.getItem('sidebarCollapsed') === 'true';
-    const savedState = localStorage.getItem('sidebarState');
-    
-    // Se sidebar não estava colapsada E não há outro estado salvo, ativar navegação
-    if (!sidebarWasCollapsed && (!savedState || savedState === 'navigation' || savedState === 'null')) {
-      setTimeout(() => {
-        if (!window.SidebarStateManager.currentState) {
-          window.SidebarStateManager.activateState('navigation');
-          window.SidebarStateManager.currentState = 'navigation';
-          // Garantir que sidebar está visível
-          window.SidebarStateManager.sidebar.classList.remove('collapsed');
-          window.SidebarStateManager.body.classList.remove('sidebar-collapsed');
-        }
-      }, 100);
-    }
+    // Não ativar automaticamente - deixar sidebar fechada
+    // O usuário deve clicar no botão de navegação para abrir
   }
   
   // Inicializar
