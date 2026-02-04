@@ -168,6 +168,7 @@ body.sidebar-collapsed .navigation-toggle::before {
 
 .search-input {
     width: 100%;
+    height: 36px;
     padding: 0.5rem 0.75rem;
     background: var(--bg);
     border: 1px solid var(--border);
@@ -176,6 +177,7 @@ body.sidebar-collapsed .navigation-toggle::before {
     font-family: var(--font-ui);
     font-size: 0.9rem;
     @include transition(all, 0.2s, ease);
+    box-sizing: border-box;
 }
 
 .search-input:focus {
