@@ -161,7 +161,6 @@ O conteúdo aqui é gerado/inspirado em:
 - Tags e categorias para organização de conteúdo
 - Geração automática de índice de conteúdo (TOC) em posts longos
 - Integração com coleção `_projetos` para portfólio
-- Export de páginas para PDF
 
 ## 📚 Arquitetura
 
