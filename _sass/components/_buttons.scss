@@ -9,6 +9,7 @@
    ICON BUTTONS
    ============================================ */
 .icon-bar-btn {
+    font-family: var(--font-ui);
     width: 36px;
     height: 36px;
     background: var(--bg-button);
@@ -30,6 +31,7 @@
    THEME TOGGLE BUTTON
    ============================================ */
 #theme-toggle {
+    font-family: var(--font-label);
     background: var(--bg-button);
     border: 1px solid var(--border);
     color: var(--text);

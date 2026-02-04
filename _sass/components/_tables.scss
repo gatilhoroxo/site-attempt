@@ -11,6 +11,7 @@
 }
 
 .component-table thead {
+    font-family: var(--font-label);
     background-color: var(--table-header-bg);
     color: var(--table-header-text);
     font-weight: bold;

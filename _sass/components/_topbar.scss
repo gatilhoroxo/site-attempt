@@ -3,6 +3,7 @@
    TOP BAR (Breadcrumb + Controls)
    ============================================ */
 .top-bar {
+    font-family: var(--font-ui);
     background-color: var(--bg-topbar);
     padding: 0.4rem var(--spacing-md);
     border-bottom: 1px solid var(--border);

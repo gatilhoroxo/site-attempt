@@ -60,6 +60,15 @@
     --font-size-2xl: 1.95rem;
     
     /* ========================================
+       FAMÍLIAS DE FONTE
+       ======================================== */
+    --font-ui: 'Rubik', 'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-heading: 'Spectral', 'Lora', Georgia, 'Times New Roman', serif;
+    --font-body: 'Merriweather', 'Bitter', Georgia, 'Times New Roman', serif;
+    --font-label: 'Teko', 'Saira Condensed', 'Arial Narrow', 'Helvetica Condensed', sans-serif;
+    --font-code: 'Space Mono', 'Courier New', Courier, monospace;
+    
+    /* ========================================
        RAIOS DE BORDA
        ======================================== */
     --radius-sm: 4px;
