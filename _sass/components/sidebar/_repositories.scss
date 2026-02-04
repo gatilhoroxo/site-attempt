@@ -1,0 +1,49 @@
+/* ============================================
+   REPOSITORIES MODE
+   ============================================ */
+.repositories-container h3 {
+    margin: 0 0 1rem 0;
+    font-size: 1.05rem;
+    color: var(--text-color);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.repositories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.repository-item {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    @include border-radius(4px);
+    @include transition(all, 0.2s, ease);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.repository-item:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--accent);
+}
+
+.repository-link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    @include transition(color, 0.2s, ease);
+}
+
+.repository-link:hover {
+    color: var(--link-hover);
+}
+
+.repository-date {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-style: italic;
+}

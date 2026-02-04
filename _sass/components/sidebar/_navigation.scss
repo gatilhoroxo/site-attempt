@@ -1,0 +1,166 @@
+/* ============================================
+   NAVIGATION MODE
+   ============================================ */
+.navigation-section {
+    margin-bottom: 0.6rem;
+}
+
+.navigation-section h3 {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.25rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.navigation-section h3 a {
+    color: var(--accent);
+    text-decoration: none;
+    @include transition(color, 0.2s, ease);
+}
+
+.navigation-section h3 a:hover {
+    color: var(--link-hover);
+}
+
+.navigation-section ul {
+    @include reset-list;
+}
+
+.navigation-section > ul > li {
+    margin: 0;
+}
+
+.navigation-section a {
+    display: block;
+    padding: 0.35rem 0.65rem;
+    @include border-radius(8px);
+    @include transition(all, 0.2s, ease);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.navigation-section a:hover {
+    background-color: var(--bg);
+    text-decoration: none;
+}
+
+.navigation-submenu {
+    padding-left: 1rem !important;
+    margin-top: 0.1rem !important;
+}
+
+.navigation-submenu li {
+    margin: 0 !important;
+}
+
+/* ============================================
+   NAVIGATION FOLDERS (EXPANDABLE)
+   ============================================ */
+.navigation-folder {
+    position: relative;
+}
+
+.folder-header {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.folder-toggle {
+    background: none;
+    border: none;
+    padding: 0.35rem 0.5rem;
+    cursor: pointer;
+    color: var(--text);
+    @include transition(all, 0.2s, ease);
+    @include border-radius(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+}
+
+.folder-toggle:hover {
+    background-color: var(--bg);
+    color: var(--accent);
+}
+
+.folder-toggle:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.toggle-icon {
+    font-size: 0.7rem;
+    display: inline-block;
+    @include transition(transform, 0.2s, ease);
+    line-height: 1;
+}
+
+.folder-toggle[aria-expanded="true"] .toggle-icon {
+    transform: rotate(90deg);
+}
+
+.folder-header > a {
+    flex: 1;
+    padding: 0.35rem 0.5rem;
+}
+
+.subfolder-list {
+    @include reset-list;
+    padding-left: 1.5rem;
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.subfolder-list[hidden] {
+    display: none;
+}
+
+.subfolder-list li {
+    margin: 0;
+}
+
+.subfolder-list a {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.85rem;
+}
+
+/* ============================================
+   DETAILS ELEMENTS
+   ============================================ */
+details summary {
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    @include border-radius(6px);
+    user-select: none;
+    @include transition(background, 0.2s, ease);
+    list-style: none;
+}
+
+details summary::-webkit-details-marker {
+    display: none;
+}
+
+details summary::before {
+    content: '▶';
+    display: inline-block;
+    margin-right: 0.5rem;
+    @include transition(transform, 0.2s, ease);
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+details summary:hover {
+    background-color: var(--bg);
+}
+
+details[open] summary {
+    margin-bottom: 0.5rem;
+}

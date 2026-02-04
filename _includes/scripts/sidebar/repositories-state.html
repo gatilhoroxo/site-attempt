@@ -1,0 +1,40 @@
+<script>
+(function() {
+  'use strict';
+  
+  function init() {
+    if (!window.SidebarStateManager) {
+      setTimeout(init, 50);
+      return;
+    }
+    
+    const repositoriesMode = document.getElementById('repositories-mode');
+    const repositoriesToggle = document.getElementById('repositories-toggle');
+    
+    if (!repositoriesMode || !repositoriesToggle) {
+      console.error('Repositories mode elements not found');
+      return;
+    }
+    
+    // Register repositories state
+    window.SidebarStateManager.registerState('repositories', {
+      element: repositoriesMode,
+      button: repositoriesToggle,
+      onActivate: function() {
+        console.log('Repositories mode activated');
+        // Custom activation logic can be added here
+      },
+      onDeactivate: function() {
+        console.log('Repositories mode deactivated');
+        // Cleanup logic can be added here
+      }
+    });
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>

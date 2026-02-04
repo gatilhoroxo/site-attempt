@@ -7,17 +7,17 @@
 
 /* Componentes UI */
 @import 'components/badges';
-@import 'components/blockquote';
 @import 'components/breadcrumb';
 @import 'components/buttons';
-@import 'components/diario';
-@import 'components/pasta';
 @import 'components/scrollbar';
 @import 'components/sidebar';
-@import 'components/tables';
 @import 'components/topbar';
+@import 'components/text/blockquote';
+@import 'components/text/tables';
 
 /* Layouts de Páginas */
+@import 'layouts/pasta';
+@import 'layouts/diario';
 @import 'layouts/projeto-page';
 
 /* Estilos responsivos para as Telas*/

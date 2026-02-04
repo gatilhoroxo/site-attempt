@@ -1,13 +1,18 @@
+<!-- Barra lateral vertical para ícones -->
+<aside class="icon-bar">
+  <button id="sidebar-toggle" class="navigation-toggle" data-state="navigation" aria-label="Toggle navigation"></button>
+  <button id="search-toggle" class="search-toggle" data-state="search" aria-label="Toggle search"></button>
+  <button id="repositories-toggle" class="repositories-toggle" data-state="repositories" aria-label="Toggle repositories"></button>
+</aside>
+
 <aside id="sidebar" class="sidebar">
   <!-- Modo de busca (inicialmente oculto) -->
-  <div id="search-mode" class="search-mode" hidden>
-    <div class="search-container">
-      <input type="text" id="search-input" class="search-input" placeholder="Buscar..." />
-      <div id="search-results" class="search-results"></div>
-    </div>
-  </div>
+  {% include scripts/sidebar/search-mode.html %}
 
   <!-- Modo de navegação (inicialmente oculto) -->
-  {% include scripts/navigation-mode.html %}
+  {% include scripts/sidebar/navigation-mode.html %}
+  
+  <!-- Modo de repositórios (inicialmente oculto) -->
+  {% include scripts/sidebar/repositories-mode.html %}
   
 </aside>

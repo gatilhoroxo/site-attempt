@@ -1,0 +1,89 @@
+/* ============================================
+   BARRA LATERAL DE ÍCONES
+   ============================================ */
+.icon-bar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 36px;
+    height: 100vh;
+    background: var(--bg-light);
+    border-right: 1px solid var(--border);
+    z-index: 1001;
+    @include flex-column;
+    align-items: center;
+    padding-top: 12px;
+    gap: 5px;
+    box-shadow: inset -1px 0 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ============================================
+   SIDEBAR NAVIGATION
+   ============================================ */
+.sidebar {
+    font-family: var(--font-ui);
+    position: fixed;
+    left: 36px;
+    top: 0;
+    width: 244px;
+    height: 100vh;
+    background-color: var(--bg-light);
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    overflow-y: auto;
+    @include transition(transform, 0.3s, ease);
+    z-index: 1000;
+    padding-top: 0.75rem;
+    @include box-shadow(4);
+}
+
+.sidebar.collapsed {
+    transform: translateX(-244px);
+}
+
+/* ============================================
+   SIDEBAR MODES - BASE
+   ============================================ */
+.repositories-mode,
+.search-mode,
+.navigation-mode {
+    padding: 0.75rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.repositories-mode[hidden],
+.search-mode[hidden],
+.navigation-mode[hidden] {
+    display: none !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@include respond-to('tablet') {
+    .navigation-toggle {
+        position: relative;
+        width: 36px;
+        height: 31px;
+        border-radius: 0;
+    }
+    
+    .navigation-toggle::before {
+        transform: rotate(0deg);
+        font-size: 2rem;
+    }
+    
+    .sidebar {
+        left: 36px;
+        width: 244px;
+        border-left: 1px solid var(--border);
+        transform: translateX(-280px);
+    }
+    
+    .sidebar.mobile-open {
+        transform: translateX(0);
+        @include box-shadow(5);
+    }
+}
