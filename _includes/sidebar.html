@@ -1,18 +1,118 @@
 <aside id="sidebar" class="sidebar">
   <nav class="sidebar-nav">
+    
+    {%- comment -%} Seção Gatilhos {%- endcomment -%}
     <div class="sidebar-section">
-      <h3>Gatilhos</h3> <!-- tornar clicável -->
-      <ul>
-        <li><a href="{{ '/gatilhos/roadmaps' | relative_url }}">Exemplo Roadmaps</a></li>
-        <!--um 'for' aqui para mostrar listado as subpastas de gatilho e seus arquivos-->
-      </ul>
+      <h3><a href="{{ '/gatilhos' | relative_url }}">Gatilhos</a></h3>
+      
+      {%- assign gatilhos_pages = site.pages | where_exp: "item", "item.url contains '/gatilhos/'" | sort: 'title' -%}
+      {%- assign gatilhos_folders = "" | split: "" -%}
+      
+      {%- for item in gatilhos_pages -%}
+        {%- assign url_parts = item.url | split: '/' -%}
+        {%- assign depth = url_parts | size -%}
+        {%- assign filename = item.path | split: '/' | last | split: '.' | first -%}
+        
+        {%- if item.layout == 'pasta' and item.url != '/gatilhos/' and depth == 3 and filename == 'index' -%}
+          {%- assign gatilhos_folders = gatilhos_folders | push: item -%}
+        {%- endif -%}
+      {%- endfor -%}
+      
+      {%- if gatilhos_folders.size > 0 -%}
+        <ul>
+          {%- for folder in gatilhos_folders -%}
+            {%- assign folder_path = folder.url | remove: 'index.html' -%}
+            
+            {%- assign subfolder_items = "" | split: "" -%}
+            {%- for item in gatilhos_pages -%}
+              {%- if item.url contains folder_path and item.url != folder.url -%}
+                {%- assign item_depth_parts = item.url | remove: folder_path | split: '/' -%}
+                {%- assign item_depth = 0 -%}
+                {%- for part in item_depth_parts -%}
+                  {%- if part != '' and part != 'index.html' -%}
+                    {%- assign item_depth = item_depth | plus: 1 -%}
+                  {%- endif -%}
+                {%- endfor -%}
+                
+                {%- if item_depth == 1 -%}
+                  {%- assign item_filename = item.path | split: '/' | last | split: '.' | first -%}
+                  {%- unless item_filename contains '_' or item_filename == 'index' -%}
+                    {%- assign subfolder_items = subfolder_items | push: item -%}
+                  {%- endunless -%}
+                {%- endif -%}
+              {%- endif -%}
+            {%- endfor -%}
+            
+            <li class="sidebar-folder has-children">
+              <div class="folder-header">
+                <button class="folder-toggle" aria-expanded="false" aria-label="Expandir {{ folder.title }}">
+                  <span class="toggle-icon">▶</span>
+                </button>
+                <a href="{{ folder.url | relative_url }}">{{ folder.title }}</a>
+              </div>
+              
+              <ul class="subfolder-list" hidden>
+                {%- assign sorted_items = subfolder_items | sort: 'title' -%}
+                {%- for subitem in sorted_items -%}
+                  <li>
+                    <a href="{{ subitem.url | relative_url }}">{{ subitem.title }}</a>
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
     </div>
 
+    {%- comment -%} Seção Posts {%- endcomment -%}
     <div class="sidebar-section">
-      <h3>Posts</h3>
-      <ul>
-        <li><a href="{{ '/posts/introducao' | relative_url }}">Exemplo Introducao</a></li>
-      </ul>
+      <h3><a href="{{ '/posts' | relative_url }}">Posts</a></h3>
+      
+      {%- assign posts_pages = site.pages | where_exp: "item", "item.url contains '/posts/'" | sort: 'title' -%}
+      {%- assign posts_items = "" | split: "" -%}
+      
+      {%- for item in posts_pages -%}
+        {%- assign filename = item.path | split: '/' | last | split: '.' | first -%}
+        {%- if item.url != '/posts/' and filename != 'index' -%}
+          {%- unless filename contains '_' -%}
+            {%- assign posts_items = posts_items | push: item -%}
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+      
+      {%- if posts_items.size > 0 -%}
+        <ul>
+          {%- for post in posts_items -%}
+            <li><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
     </div>
+
+    {%- comment -%} Seção Docs {%- endcomment -%}
+    {%- assign docs_pages = site.pages | where_exp: "item", "item.url contains '/docs/'" | sort: 'title' -%}
+    {%- assign docs_items = "" | split: "" -%}
+    
+    {%- for item in docs_pages -%}
+      {%- assign filename = item.path | split: '/' | last | split: '.' | first -%}
+      {%- if item.url != '/docs/' and filename != 'index' -%}
+        {%- unless filename contains '_' -%}
+          {%- assign docs_items = docs_items | push: item -%}
+        {%- endunless -%}
+      {%- endif -%}
+    {%- endfor -%}
+    
+    {%- if docs_items.size > 0 -%}
+      <div class="sidebar-section">
+        <h3><a href="{{ '/docs' | relative_url }}">Docs</a></h3>
+        <ul>
+          {%- for doc in docs_items -%}
+            <li><a href="{{ doc.url | relative_url }}">{{ doc.title | default: filename }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    {%- endif -%}
+    
   </nav>
 </aside>

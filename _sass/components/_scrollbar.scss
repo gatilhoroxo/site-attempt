@@ -1,0 +1,29 @@
+/* ============================================
+   PERSONALIZAÇÃO DA BARRA DE ROLAGEM
+   ============================================ */
+
+/* Configuração para Firefox */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent, #6c5ce7) var(--bg-light, #f0f0f0);
+}
+
+/* Para navegadores WebKit (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-light, #f0f0f0);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent, #6c5ce7);
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-hover, #5f4dd1);
+}

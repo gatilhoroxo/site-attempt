@@ -1,0 +1,91 @@
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const sidebar = document.getElementById('sidebar');
+    if (!sidebar) return;
+
+    const STORAGE_KEY = 'sidebar-expanded-folders';
+    
+    // Carregar estado salvo do localStorage
+    function loadExpandedState() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        return saved ? JSON.parse(saved) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+    
+    // Salvar estado no localStorage
+    function saveExpandedState(state) {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      } catch (e) {
+        // Silently fail if localStorage is not available
+      }
+    }
+    
+    // Obter caminho único para uma pasta
+    function getFolderPath(folderElement) {
+      const link = folderElement.querySelector('.folder-header a');
+      return link ? link.getAttribute('href') : null;
+    }
+    
+    // Toggle de uma pasta
+    function toggleFolder(folderElement, expanded) {
+      const toggle = folderElement.querySelector('.folder-toggle');
+      const sublist = folderElement.querySelector('.subfolder-list');
+      
+      if (!toggle || !sublist) return;
+      
+      const isExpanded = expanded !== undefined ? expanded : sublist.hidden;
+      
+      sublist.hidden = !isExpanded;
+      toggle.setAttribute('aria-expanded', isExpanded);
+      
+      return isExpanded;
+    }
+    
+    // Inicializar todas as pastas expansíveis
+    const expandedState = loadExpandedState();
+    const folders = sidebar.querySelectorAll('.sidebar-folder.has-children');
+    
+    folders.forEach(function(folder) {
+      const toggleBtn = folder.querySelector('.folder-toggle');
+      const folderPath = getFolderPath(folder);
+      
+      if (toggleBtn) {
+        // Restaurar estado salvo ou manter colapsado
+        const shouldExpand = expandedState[folderPath] === true;
+        toggleFolder(folder, shouldExpand);
+        
+        // Adicionar event listener
+        toggleBtn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const isExpanded = toggleFolder(folder);
+          
+          // Salvar novo estado
+          expandedState[folderPath] = isExpanded;
+          saveExpandedState(expandedState);
+        });
+      }
+    });
+    
+    // Expandir pasta ativa automaticamente
+    const currentPath = window.location.pathname;
+    folders.forEach(function(folder) {
+      const links = folder.querySelectorAll('a');
+      for (let i = 0; i < links.length; i++) {
+        const linkPath = links[i].getAttribute('href');
+        if (currentPath.includes(linkPath)) {
+          const folderPath = getFolderPath(folder);
+          toggleFolder(folder, true);
+          expandedState[folderPath] = true;
+          saveExpandedState(expandedState);
+          break;
+        }
+      }
+    });
+  });
+</script>
