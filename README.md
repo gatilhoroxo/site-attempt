@@ -158,7 +158,6 @@ O conteúdo aqui é gerado/inspirado em:
 - ✅ Markdown com GitHub Flavored Markdown
 
 **Melhorias futuras:**
-- Sistema de busca integrado (search.js ou Algolia)
 - Tags e categorias para organização de conteúdo
 - Geração automática de índice de conteúdo (TOC) em posts longos
 - Integração com coleção `_projetos` para portfólio
