@@ -3,40 +3,41 @@
    ============================================
    Customize as cores abaixo para alterar o tema escuro.
    Para tema claro, veja as variáveis em [data-theme="light"]
+   Paleta moderna com tons escuros de roxo/violeta dessaturados
 */
 :root {
     /* ========================================
        CORES DE FUNDO
        ======================================== */
-    --bg: #0f172a;              /* Fundo principal */
-    --bg-light: #1e293b;        /* Fundo de header/footer */
-    --bg-topbar: #162544;       /* Fundo da barra superior */
-    --bg-button: #193b71;       /* Fundo dos botões*/
+    --bg: #1a1625;              /* Fundo principal - roxo escuro dessaturado */
+    --bg-light: #251f35;        /* Fundo de header/footer - roxo médio dessaturado */
+    --bg-topbar: #2a2440;       /* Fundo da barra superior - roxo suave dessaturado */
+    --bg-button: #5b4f75;       /* Fundo dos botões - roxo acinzentado */
     
     /* ========================================
        CORES DE TEXTO
        ======================================== */
-    --text: #e2e8f0;            /* Texto principal */
+    --text: #f5f3f9;            /* Texto principal - quase branco com toque violeta */
     
     /* ========================================
        CORES DE DESTAQUE
        ======================================== */
-    --accent: #38bdf8;          /* Links e títulos */
-    --link-hover: #0ea5e9;      /* Links ao passar o mouse */
+    --accent: #d4c8e6;          /* Links e títulos - lavanda muito claro */
+    --link-hover: #e3daf0;      /* Links ao passar o mouse - lavanda super claro */
     
     /* ========================================
        BORDAS
        ======================================== */
-    --border: #334155;
+    --border: #3d3451;          /* Bordas - roxo acinzentado */
     
     /* ========================================
        TABELAS
        ======================================== */
-    --table-header-bg: #1f2833;
-    --table-header-text: #f1f1f1;
-    --table-row-even: #0b0c10;
-    --table-row-odd: #1c1f24;
-    --table-hover-bg: #323841;
+    --table-header-bg: #251f35; /* Cabeçalho - roxo médio dessaturado */
+    --table-header-text: #f5f3f9; /* Texto do cabeçalho - quase branco */
+    --table-row-even: #1a1625;  /* Linhas pares - roxo escuro dessaturado */
+    --table-row-odd: #1f1a2c;   /* Linhas ímpares - roxo médio escuro */
+    --table-hover-bg: #2a2440;  /* Hover - roxo suave dessaturado */
     
     /* ========================================
        ESPAÇAMENTOS
@@ -78,28 +79,29 @@
    VARIÁVEIS DE TEMA - MODO CLARO
    ============================================
    Ativado quando data-theme="light"
+   Paleta moderna com tons pastéis de roxo/magenta dessaturados
 */
 [data-theme="light"] {
     /* Cores de fundo */
-    --bg: #f8fafc;
-    --bg-light: #e2e8f0;
-    --bg-topbar: #cbd5e1;
-    --bg-button: #4674bf;
+    --bg: #d6c4eb;              /* Fundo principal - lavanda muito rico */
+    --bg-light: #c3a8df;        /* Fundo de header/footer - roxo pastel vibrante */
+    --bg-topbar: #b092d3;       /* Fundo da barra superior - roxo médio saturado */
+    --bg-button: #a05dd1;       /* Fundo dos botões - roxo muito vibrante */
     
     /* Cores de texto */
-    --text: #1e293b;
+    --text: #1a0f28;            /* Texto principal - roxo quase preto */
     
     /* Cores de destaque */
-    --accent: #0284c7;
-    --link-hover: #0369a1;
+    --accent: #4a1d6b;          /* Links e títulos - roxo muito escuro */
+    --link-hover: #5f2885;      /* Links ao passar o mouse - roxo escuro forte */
     
     /* Bordas */
-    --border: #cbd5e1;
+    --border: #b092d3;          /* Bordas - roxo médio saturado */
     
     /* Tabelas */
-    --table-header-bg: #e9ecef;
-    --table-header-text: #222;
-    --table-row-even: #ffffff;
-    --table-row-odd: #f8f9fa;
-    --table-hover-bg: #dee2e6;
+    --table-header-bg: #c3a8df; /* Cabeçalho - roxo pastel vibrante */
+    --table-header-text: #1a0f28; /* Texto do cabeçalho - roxo quase preto */
+    --table-row-even: #e3d9f2;  /* Linhas pares - lavanda claro */
+    --table-row-odd: #d6c4eb;   /* Linhas ímpares - lavanda muito rico */
+    --table-hover-bg: #b092d3;  /* Hover - roxo médio saturado */
 }
