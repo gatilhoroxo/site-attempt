@@ -1,193 +1,134 @@
-# Estrutura SASS Modular
+# Estrutura SASS
 
-## 📁 Organização dos Arquivos
+Organização modular dos estilos do site para facilitar manutenção e evitar repetição de código.
 
-A estrutura SASS foi modularizada para facilitar a leitura, manutenção e evitar repetição de código.
+## 📁 Estrutura
 
 ```
 _sass/
-├── _variables.scss       # Variáveis CSS customizadas
-├── _mixins.scss         # Mixins reutilizáveis
-├── _base.scss           # Estilos base do site
-├── _components.scss     # Arquivo de importação dos componentes
-├── components/          # Componentes modulares
-│   ├── _badges.scss
-│   ├── _breadcrumb.scss
-│   ├── _buttons.scss
-│   ├── _cards.scss
-│   ├── _sidebar.scss
-│   └── _tables.scss
-└── layouts/             # Layouts de páginas específicas
-    └── _projeto-page.scss
+├── _variables.scss      # Variáveis CSS (cores, espaçamentos, tipografia)
+├── _mixins.scss        # Funções reutilizáveis (transições, sombras, flexbox)
+├── _base.scss          # Estilos base (HTML, body, header, footer)
+├── _components.scss    # Importa todos os componentes
+├── components/         # Componentes modulares
+│   ├── _badges.scss        # Badges e tags
+│   ├── _breadcrumb.scss    # Navegação breadcrumb
+│   ├── _buttons.scss       # Botões e toggle de tema
+│   ├── _diario.scss        # Estilos do diário de aprendizado
+│   ├── _pasta.scss         # Estilos de pastas/coleções
+│   ├── _scrollbar.scss     # Customização da scrollbar
+│   ├── _sidebar.scss       # Barra lateral e navegação
+│   ├── _tables.scss        # Tabelas responsivas
+│   └── _topbar.scss        # Barra superior
+├── layouts/            # Layouts de páginas específicas
+│   └── _projeto-page.scss  # Layout de páginas de projeto
+└── screens/            # Media queries responsivas
+    ├── _desktop.scss       # Estilos para desktop
+    ├── _tablet.scss        # Estilos para tablet
+    └── _phone.scss         # Estilos para mobile
 ```
 
-## 🎯 Arquivos Principais
+## 🎯 Descrição dos Arquivos
 
-### 1. `_variables.scss`
-Define todas as variáveis CSS customizadas organizadas por categoria:
-- **Cores**: Fundos, textos, destaques, bordas
-- **Tabelas**: Cores específicas para tabelas
-- **Espaçamentos**: Sistema de espaçamento consistente
-- **Tipografia**: Tamanhos de fonte
-- **Bordas**: Raios de borda
-- **Dimensões**: Larguras e tamanhos
+### Arquivos Raiz
 
-### 2. `_mixins.scss`
-Mixins reutilizáveis para evitar repetição de código:
+**`_variables.scss`** - Variáveis CSS customizadas
+- Cores (fundos, textos, destaques, bordas)
+- Espaçamentos (sistema consistente)
+- Tipografia (tamanhos de fonte)
+- Bordas e raios
+- Dimensões e larguras
 
-#### Transições e Animações
-```scss
-@include transition(all, 0.3s, ease);
-@include fadeIn(0.5s);
-```
+**`_mixins.scss`** - Mixins reutilizáveis
+- Transições e animações: `@include transition()`, `@include fadeIn()`
+- Sombras: `@include box-shadow(1-5)`
+- Interatividade: `@include hover-lift()`, `@include hover-scale()`
+- Flexbox/Grid: `@include flex-center`, `@include grid-auto-fill()`
+- Componentes: `@include button-primary`, `@include card-base`
+- Responsividade: `@include respond-to('desktop')`, `@include respond-to('mobile')`
 
-#### Sombras
-```scss
-@include box-shadow(1);  // Níveis 1-5
-```
-
-#### Interatividade
-```scss
-@include hover-lift(-2px);
-@include hover-scale(1.1);
-```
-
-#### Flexbox e Grid
-```scss
-@include flex-center;
-@include flex-column;
-@include grid-auto-fill(300px, 1fr, 1.5rem);
-```
-
-#### Componentes
-```scss
-@include button-primary;
-@include card-base;
-@include card-hover;
-```
-
-#### Responsividade
-```scss
-@include respond-to('desktop-large') { ... }
-@include respond-to('tablet') { ... }
-@include respond-to('mobile') { ... }
-```
-
-### 3. `_base.scss`
-Estilos fundamentais do site:
+**`_base.scss`** - Estilos fundamentais
 - Layout geral (HTML, body)
-- Header e navegação
-- Tipografia
-- Links
-- Code blocks
+- Header e navegação principal
+- Tipografia base
+- Links e code blocks
 - Footer
-- Media queries responsivas
 
-### 4. `_components.scss`
-Arquivo central que importa todos os componentes modulares.
+**`_components.scss`** - Importa todos os componentes modulares
 
-## 📦 Componentes Modulares
+### Componentes (`components/`)
 
-### `components/_badges.scss`
-- Badges genéricos
+- **`_badges.scss`** - Badges e etiquetas
+- **`_breadcrumb.scss`** - Navegação breadcrumb com separadores
+- **`_buttons.scss`** - Botões de ação e toggle de tema
+- **`_diario.scss`** - Estilização do diário de aprendizado
+- **`_pasta.scss`** - Estilos de pastas e coleções
+- **`_scrollbar.scss`** - Customização da barra de rolagem
+- **`_sidebar.scss`** - Barra lateral, navegação e toggle
+- **`_tables.scss`** - Tabelas responsivas de componentes
+- **`_topbar.scss`** - Barra superior do site
 
-### `components/_buttons.scss`
-- Botões de ação (datasheet, etc)
-- Botões de ícone
-- Toggle de tema
+### Layouts (`layouts/`)
 
-### `components/_tables.scss`
-- Tabelas de componentes
-- Estilos responsivos
+- **`_projeto-page.scss`** - Layout específico para páginas de projeto (meta informações, animações)
 
-### `components/_sidebar.scss`
-- Barra lateral de ícones
-- Navegação lateral
-- Toggle de sidebar
-- Elementos details/summary
-- Comportamento responsivo
+### Responsividade (`screens/`)
 
-### `components/_breadcrumb.scss`
-- Navegação breadcrumb
-- Separadores
-- Estados (atual, hover)
+- **`_desktop.scss`** - Estilos para telas desktop
+- **`_tablet.scss`** - Estilos para tablets
+- **`_phone.scss`** - Estilos para smartphones
 
-## 📱 Layouts
-
-### `layouts/_projeto-page.scss`
-Layout para páginas de projeto:
-- Meta informações
-- Animações
-
-## 🔧 Como Usar
+## 🔧 Uso
 
 ### Ordem de Importação
-O arquivo `base/assets/css/style.scss` importa os módulos na ordem correta:
-
 ```scss
-@import "variables";   // 1. Variáveis primeiro
+@import "variables";   // 1. Variáveis
 @import "mixins";      // 2. Mixins
-@import "base";        // 3. Estilos base
+@import "base";        // 3. Base
 @import "components";  // 4. Componentes
 ```
 
-### Usando Variáveis
+### Exemplos
+
+**Usando variáveis:**
 ```scss
-.meu-elemento {
+.elemento {
     color: var(--accent);
     padding: var(--spacing-md);
     border-radius: var(--radius-lg);
-    font-size: var(--font-size-xl);
 }
 ```
 
-### Usando Mixins
+**Usando mixins:**
 ```scss
-.meu-botao {
+.botao {
     @include button-primary;
 }
 
-.meu-card {
-    @include card-base;
-    @include card-hover;
-}
-
 @include respond-to('tablet') {
-    .meu-elemento {
-        font-size: var(--font-size-sm);
-    }
+    .elemento { font-size: var(--font-size-sm); }
 }
 ```
 
-## ✨ Benefícios da Modularização
+## 🚀 Adicionar Novos Componentes
 
-1. **Manutenibilidade**: Cada componente em seu próprio arquivo
-2. **Reusabilidade**: Mixins evitam duplicação de código
-3. **Consistência**: Variáveis garantem design uniforme
-4. **Organização**: Estrutura clara e intuitiva
-5. **Performance**: Código mais limpo e otimizado
-6. **Escalabilidade**: Fácil adicionar novos componentes
-
-## 🚀 Adicionando Novos Componentes
-
-1. Crie um novo arquivo em `_sass/components/_seu-componente.scss`
-2. Desenvolva o componente usando variáveis e mixins
-3. Importe no `_sass/_components.scss`:
+1. Crie `_sass/components/_seu-componente.scss`
+2. Desenvolva usando variáveis e mixins
+3. Importe em `_sass/_components.scss`:
    ```scss
    @import 'components/seu-componente';
    ```
 
-## 📝 Boas Práticas
+## ✨ Benefícios
 
-- Use variáveis CSS para valores que se repetem
-- Prefira mixins para padrões repetitivos
-- Mantenha componentes pequenos e focados
-- Documente código complexo com comentários
-- Siga a convenção de nomenclatura BEM quando apropriado
-- Use os mixins de responsividade para media queries
+- **Manutenibilidade**: Componentes isolados
+- **Reusabilidade**: Mixins evitam duplicação
+- **Consistência**: Variáveis garantem uniformidade
+- **Organização**: Estrutura clara
+- **Escalabilidade**: Fácil expansão
 
-## 🎨 Personalização de Tema
+## 🎨 Personalização
 
-Para personalizar cores e estilos, edite `_sass/_variables.scss`:
+Edite `_sass/_variables.scss` para customizar:
 - Modo escuro: `:root { ... }`
 - Modo claro: `[data-theme="light"] { ... }`

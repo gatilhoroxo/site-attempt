@@ -22,8 +22,45 @@ Site estático com documentação web do projeto.
 ## 📂 Estrutura
 
 ```
-
+site-attempt/
+├── _config.yml              # Configuração do Jekyll
+├── Gemfile                  # Dependências Ruby
+├── index.md                 # Página inicial
+├── _data/                   # Dados estruturados
+│   └── breadcrumb_config.yml    # Configuração do breadcrumb
+├── _includes/               # Componentes reutilizáveis (ver _includes/README.md)
+│   ├── breadcrumb.html
+│   ├── sidebar.html
+│   ├── topbar.html
+│   ├── default/                 # Head, header, footer
+│   └── scripts/                 # Scripts JS (tema, fonte, listagens)
+├── _layouts/                # Templates de página (ver _layouts/README.md)
+│   ├── default.html
+│   ├── post.html
+│   ├── diario.html
+│   ├── pasta.html
+│   └── gatilho.html
+├── _sass/                   # Estilos SCSS modulares (ver _sass/README.md)
+│   ├── _variables.scss
+│   ├── _mixins.scss
+│   ├── _base.scss
+│   ├── components/              # Componentes (badges, buttons, sidebar, etc)
+│   ├── layouts/                 # Layouts específicos
+│   └── screens/                 # Media queries responsivas
+├── assets/
+│   ├── css/style.scss           # CSS principal
+│   └── images/                  # Imagens e favicons
+├── gatilhos/                # Documentação de aprendizado
+│   ├── conceitos-fundamentais/
+│   ├── diario-de-aprendizado/
+│   ├── ferramentas/
+│   ├── roadmaps/
+│   └── templates/
+├── posts/                   # Posts e artigos
+└── docs/                    # Documentação adicional
 ```
+
+> **Nota:** Consulte os READMEs específicos em cada pasta (`_sass/`, `_layouts/`, `_includes/`) para detalhes da organização interna.
 
 ## 🎯 Propósito
 
@@ -67,8 +104,8 @@ gem install bundler jekyll
 
 #### Executar localmente
 ```bash
-# No diretório docs/
-cd docs/
+# No diretório raiz do projeto
+cd site-attempt/
 
 # Instalar dependências (primeira vez)
 bundle install
@@ -99,7 +136,7 @@ O conteúdo aqui é gerado/inspirado em:
 
 ---
 
-**Status:** Em
+**Status:** Em Desenvolvimento
 
 **Tecnologias:**
 - Jekyll (gerador de sites estáticos)
@@ -109,36 +146,107 @@ O conteúdo aqui é gerado/inspirado em:
 - Liquid (templating)
 
 **Funcionalidades:**
-- ✅ Sistema de temas (Dark/Light mode)
+- ✅ Sistema de temas (Dark/Light mode com localStorage)
+- ✅ Controle de tamanho de fonte (5 níveis)
+- ✅ Navegação breadcrumb configurável
+- ✅ Sidebar hierárquica com até 3 níveis
+- ✅ Listagens automáticas (pastas e diários)
+- ✅ Layouts reutilizáveis (default, post, pasta, diário, gatilho)
+- ✅ SCSS modular com variáveis e mixins
+- ✅ Responsivo (desktop, tablet, mobile)
 - ✅ Syntax highlighting para código
-- ✅ Navegação responsiva
-- ✅ Layouts reutilizáveis
 - ✅ Markdown com GitHub Flavored Markdown
 
 **Melhorias futuras:**
-- Geração automática de índice de projetos
-- Sistema de busca integrado
-- Breadcrumbs para navegação
-- Integração com coleção `_projetos`
+- Sistema de busca integrado (search.js ou Algolia)
+- Tags e categorias para organização de conteúdo
+- Geração automática de índice de conteúdo (TOC) em posts longos
+- Integração com coleção `_projetos` para portfólio
+- Export de páginas para PDF
+
+## 📚 Arquitetura
+
+### Layouts Disponíveis
+- **`default`** - Layout base com estrutura completa (sidebar, topbar, footer)
+- **`post`** - Posts e artigos simples
+- **`pasta`** - Páginas de coleção com listagem automática de subpastas
+- **`diario`** - Diário de aprendizado com timeline de entradas
+- **`gatilho`** - Conceitos e gatilhos de aprendizado
+
+### Componentes Principais
+- **Breadcrumb** - Navegação contextual configurável via YAML
+- **Sidebar** - Navegação lateral hierárquica (até 3 níveis)
+- **Topbar** - Barra superior com breadcrumb e controles (tema/fonte)
+- **Scripts** - Listagens automáticas, controle de tema e fonte
+
+### Sistema de Estilos
+- **Variáveis CSS** - Cores, espaçamentos, tipografia
+- **Mixins** - Transições, sombras, flexbox, responsividade
+- **Componentes modulares** - Badges, botões, tabelas, scrollbar
+- **Responsividade** - Breakpoints para desktop, tablet e mobile
+
+## 🎨 Personalização
+
+### Alterar Cores e Tema
+Edite `_sass/_variables.scss`:
+```scss
+:root { 
+  --accent: #your-color;
+  --background: #your-bg;
+}
+```
+
+### Configurar Breadcrumb
+Edite `_data/breadcrumb_config.yml`:
+```yaml
+sections:
+  sua-secao:
+    label: "Sua Seção"
+    icon_type: "emoji"
+    emoji: "📌"
+```
+
+### Adicionar Nova Página
+1. Crie `sua-pagina.md`
+2. Adicione front matter:
+   ```yaml
+   ---
+   layout: post
+   title: Sua Página
+   ---
+   ```
+3. Escreva conteúdo em Markdown
+
+## 🔧 Desenvolvimento
+
+### Estrutura de Arquivos
+- `_includes/` - Componentes reutilizáveis HTML
+- `_layouts/` - Templates de página
+- `_sass/` - Estilos SCSS modulares
+- `_data/` - Dados estruturados YAML
+- `assets/` - CSS compilado e imagens
+
+### Convenções
+- Use `layout: pasta` para páginas índice de coleções
+- Use `layout: diario` para páginas de diário
+- Prefira variáveis CSS e mixins SCSS
+- Mantenha componentes modulares e focados
+
+---
 
 ## Inspirações e Referências
 
-Este projeto foi inspirado e influenciado por:
-
 ### Projetos
-- [Hacker - Jekyll Theme](https://github.com/pages-themes/hacker) - Sua estrutura do site e a aparência
+- [Hacker - Jekyll Theme](https://github.com/pages-themes/hacker) - Estrutura base e aparência
 
-### Pessoas
-- **Nome** - Contribuição ou ensinamento relevante
-- **Nome** - Link para trabalho/perfil
-
-### Recursos e Tutoriais
-- [Tutorial/Artigo](link) - O que aprendeu
-- [Documentação](link) - Conceito aplicado
-
-### Tecnologias e Ferramentas
+### Tecnologias
+- **Jekyll** - Gerador de sites estáticos
+- **Liquid** - Template engine
+- **SCSS** - Pré-processador CSS modular
+- **GitHub Pages** - Hospedagem gratuita
+- ...
 - Nome da tecnologia - Como influenciou o desenvolvimento
 - Ferramenta - Propósito no projeto
 
 ### Agradecimentos
-Agradecimentos especiais a...
+Agradecimentos especiais ao próprio github por disponibilizar essa chance de visualizar um site próprio e poder personalizar completamente como eu quero. 
