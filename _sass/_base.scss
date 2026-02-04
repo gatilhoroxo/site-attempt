@@ -28,14 +28,14 @@ body.sidebar-collapsed {
    ============================================ */
 header {
     background-color: var(--bg-light);
-    padding: 1.76rem 4rem 1.76rem 0.5rem;
+    padding: 1.2rem 4rem 1.2rem 0.5rem;
     text-align: center;
     border-bottom: 1px solid var(--border);
     top: 0;
     z-index: 90;
     @include flex-column;
     align-items: center;
-    gap: 1.76rem;
+    gap: 1.2rem;
     position: relative;
 }
 
@@ -138,68 +138,5 @@ footer {
    RESPONSIVE BREAKPOINTS
    ============================================ */
 
-/* Desktop/Tablet - 769px a 1200px */
-@include respond-to('desktop-large') {
-    body {
-        padding-left: calc(var(--iconbar-width) + var(--sidebar-width));
-    }
-    
-    body.sidebar-collapsed {
-        padding-left: var(--iconbar-width);
-    }
-    
-    header {
-        padding: var(--spacing-lg) 4rem var(--spacing-lg) 0.5rem;
-        gap: var(--spacing-lg);
-    }
-    
-    header h1 {
-        font-size: 1.85rem;
-    }
-}
 
-/* Tablet - 481px a 768px */
-@include respond-to('tablet') {
-    body {
-        padding-left: var(--iconbar-width) !important;
-    }
-    
-    header {
-        padding: 1.4rem 3.5rem 1.4rem 0.45rem;
-        gap: 1.4rem;
-    }
-    
-    header h1 {
-        font-size: 1.7rem;
-        margin: 0.2rem 0;
-    }
-    
-    nav a {
-        font-size: 13px;
-        margin: 0 4px;
-        padding: 0.35rem 0.5rem;
-    }
-    
-    main {
-        padding: 0 var(--spacing-sm);
-    }
-}
 
-/* Mobile Small - até 480px */
-@include respond-to('mobile') {
-    header {
-        padding: var(--spacing-md) var(--spacing-2xl) var(--spacing-md) 0.3rem;
-        gap: var(--spacing-md);
-    }
-    
-    header h1 {
-        font-size: 1.4rem;
-        max-width: calc(100% - 3.5rem);
-    }
-    
-    nav a {
-        font-size: 12px;
-        margin: 0 2px;
-        padding: 0.3rem 0.4rem;
-    }
-}

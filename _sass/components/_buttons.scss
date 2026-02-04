@@ -30,18 +30,14 @@
    THEME TOGGLE BUTTON
    ============================================ */
 #theme-toggle {
-    position: fixed;
-    top: 1rem;
-    right: 1.5rem;
     background: var(--bg-button);
     border: 1px solid var(--border);
     color: var(--text);
-    font-size: 1.1rem;
-    padding: 0.35rem 0.6rem;
+    font-size: 0.95rem;
+    padding: 0.25rem 0.5rem;
     cursor: pointer;
-    @include border-radius(6px);
+    @include border-radius(4px);
     @include transition(all, 0.3s, ease);
-    z-index: 100;
 }
 
 #theme-toggle:hover {
@@ -53,19 +49,15 @@
    FONT SIZE CONTROL
    ============================================ */
 .font-size-control {
-    position: fixed;
-    top: 1rem;
-    right: 5.5rem;
     display: flex;
-    z-index: 100;
 }
 
 .font-size-btn {
     background: var(--bg-button);
     border: 1px solid var(--border);
     color: var(--text);
-    font-size: 1rem;
-    padding: 0.35rem 0.7rem;
+    font-size: 0.85rem;
+    padding: 0.25rem 0.55rem;
     cursor: pointer;
     @include transition(all, 0.3s, ease);
     
