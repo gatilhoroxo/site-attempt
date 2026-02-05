@@ -86,6 +86,46 @@ jobs:
               
               return frontmatter + content
           
+          def update_frontmatter_layout(content, filepath):
+              """Update or add layout in frontmatter for index.md files"""
+              filename = os.path.basename(filepath)
+              
+              if filename != 'index.md':
+                  return content
+              
+              # Check if has frontmatter
+              if not content.startswith('---\n'):
+                  return content
+              
+              # Find end of frontmatter
+              end_match = re.search(r'\n---\n', content[4:])
+              if not end_match:
+                  return content
+              
+              frontmatter_end = end_match.start() + 4
+              frontmatter = content[4:frontmatter_end]
+              rest = content[frontmatter_end + 5:]  # Skip the closing "---\n"
+              
+              # Parse and update layout
+              lines = frontmatter.split('\n')
+              new_lines = []
+              layout_found = False
+              
+              for line in lines:
+                  if line.startswith('layout:'):
+                      new_lines.append('layout: pasta')
+                      layout_found = True
+                  else:
+                      new_lines.append(line)
+              
+              # Add layout if not found
+              if not layout_found:
+                  new_lines.insert(0, 'layout: pasta')
+              
+              # Rebuild content
+              new_frontmatter = '\n'.join(new_lines)
+              return f"---\n{new_frontmatter}\n---\n{rest}"
+          
           def process_file(source_file, target_file):
               """Process a single markdown file"""
               with open(source_file, 'r', encoding='utf-8') as f:
@@ -94,6 +134,9 @@ jobs:
               # Add frontmatter if not present
               if not has_frontmatter(content):
                   content = add_frontmatter(content, source_file)
+              else:
+                  # Force layout: pasta for index.md files
+                  content = update_frontmatter_layout(content, source_file)
               
               # Write to target
               target_file.parent.mkdir(parents=True, exist_ok=True)
