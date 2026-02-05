@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: Aprendizado com MCUs
 ---
 

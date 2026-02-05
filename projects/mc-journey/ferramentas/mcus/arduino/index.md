@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: Arduino (ATmega328P)
 description: Plataforma de prototipagem open-source baseada no ATmega328P
 ---

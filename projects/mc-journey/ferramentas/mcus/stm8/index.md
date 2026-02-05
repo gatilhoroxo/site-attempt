@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: STM8
 description: Microcontrolador 8-bit da STMicroelectronics
 ---

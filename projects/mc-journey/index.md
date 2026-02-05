@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: Docs
 description: Documentação sobre aprendizado de microcontroladores
 ---

@@ -1,3 +1,4 @@
 ---
+layout: pasta
 title: sensores
 ---

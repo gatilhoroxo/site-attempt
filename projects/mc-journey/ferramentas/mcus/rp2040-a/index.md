@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: RP2040
 description: Microcontrolador da Raspberry Pi Foundation
 ---

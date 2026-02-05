@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: Diário de Aprendizado
 ---
 

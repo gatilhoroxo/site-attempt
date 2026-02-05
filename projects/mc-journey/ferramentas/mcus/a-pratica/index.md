@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: MCUs - Prática e Projetos
 ---
 

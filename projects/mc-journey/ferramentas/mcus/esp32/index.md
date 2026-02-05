@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: ESP32
 description: Microcontrolador com WiFi e Bluetooth integrados
 ---

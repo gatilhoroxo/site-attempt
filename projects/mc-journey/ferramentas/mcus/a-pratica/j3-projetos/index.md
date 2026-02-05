@@ -1,4 +1,5 @@
 ---
+layout: pasta
 title: Projetos com MCUs
 ---
 
