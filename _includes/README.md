@@ -6,7 +6,6 @@ Componentes HTML reutilizáveis do Jekyll para construção modular das páginas
 
 ```
 _includes/
-├── breadcrumb.html             # Navegação breadcrumb completa
 ├── breadcrumb-icon.html        # Renderização de ícones do breadcrumb
 ├── nav.html                    # Navegação principal
 ├── sidebar.html                # Barra lateral de navegação
@@ -14,223 +13,116 @@ _includes/
 ├── default/                    # Componentes padrão do layout
 │   ├── head-default.html           # <head> HTML (meta, CSS, favicon)
 │   ├── header-default.html         # Header com título e nav
-│   └── footer-default.html         # Footer com copyright
+│   ├── footer-default.html         # Footer com copyright
+│   └── scripts-default.html        # Scripts padrão do layout
 └── scripts/                    # Scripts JavaScript ou Liquid Jekyll
+    ├── breadcrumb.html             # Navegação breadcrumb
     ├── theme-switcher.html         # Alternância de tema claro/escuro
     ├── font-size-control.html      # Controle de tamanho de fonte
-    ├── navigation-sidebar.html     # Navegação da sidebar
-    ├── sidebar-expand.html         # Expansão/colapso da sidebar
-    ├── diario-listing.html         # Listagem automática de diários
-    └── pasta-listing.html          # Listagem automática de pastas
+    ├── layouts/
+    │   ├── diario-listing.html     # Listagem de diários
+    │   └── pasta-listing.html      # Listagem de pastas
+    └── sidebar/
+        ├── navigation-mode.html        # Modo de navegação
+        ├── navigation-state.html       # Estado da navegação
+        ├── repositories-mode.html      # Modo de repositórios
+        ├── repositories-state.html     # Estado de repositórios
+        ├── search-mode.html            # Modo de busca
+        ├── search-state.html           # Estado de busca
+        ├── sidebar-expand.html         # Expansão da sidebar
+        └── sidebar-state-manager.html  # Gerenciador de estado
 ```
 
-## 🎯 Componentes de Navegação
-
-### `breadcrumb.html`
-Navegação breadcrumb completa com configuração centralizada.
-- **Configuração**: `_data/breadcrumb_config.yml`
-- **Recursos**:
-  - Item "Home" com ícone SVG
-  - Geração automática de breadcrumb baseado na URL
-  - Separadores visuais entre itens
-  - Suporte a skip de itens específicos
-  - Estados de hover e item atual
-
-**Uso:**
-```liquid
-{% include breadcrumb.html %}
-```
+## 🎯 Componentes Principais
 
 ### `breadcrumb-icon.html`
 Renderiza ícones para itens do breadcrumb (SVG ou emoji).
-- **Parâmetros**: `config` - configuração da seção do breadcrumb
-- Suporta `icon_type: "svg"` ou `icon_type: "emoji"`
-
-**Uso:**
-```liquid
-{% include breadcrumb-icon.html config=section_config %}
-```
 
 ### `nav.html`
-Navegação principal simples do site.
-- Links para: Início, Gatilhos, Posts
-
-**Uso:**
-```liquid
-{% include nav.html %}
-```
+Navegação principal com links para Início, Gatilhos e Posts.
 
 ### `sidebar.html`
-Barra lateral completa com navegação hierárquica.
-- **Recursos**:
-  - Seções: Gatilhos e Posts
-  - Hierarquia de pastas e subpastas
-  - Detecção automática de `layout: pasta`
-  - Suporte a `details/summary` para expansão
-  - Organização alfabética por título
-  - Até 3 níveis de profundidade
-
-**Uso:**
-```liquid
-{% include sidebar.html %}
-```
+Barra lateral com navegação hierárquica, suporte a pastas e organização alfabética.
 
 ### `topbar.html`
-Barra superior com breadcrumb e controles.
-- **Lado esquerdo**: Breadcrumb
-- **Lado direito**:
-  - Controle de tamanho de fonte (A-, A+)
-  - Toggle de tema (🌙/☀️)
-
-**Uso:**
-```liquid
-{% include topbar.html %}
-```
+Barra superior com breadcrumb e controles (tamanho de fonte e tema).
 
 ## 🧩 Componentes Padrão (`default/`)
 
 ### `head-default.html`
-Tag `<head>` HTML completa.
-- **Conteúdo**:
-  - Meta charset e viewport
-  - Título dinâmico: `{{ page.title }} - {{ site.title }}`
-  - Favicon (múltiplos tamanhos e formatos)
-  - Link para CSS principal (`assets/css/style.css`)
-
-**Uso:**
-```liquid
-{% include default/head-default.html %}
-```
+Tag `<head>` com meta tags, título dinâmico, favicon e CSS.
 
 ### `header-default.html`
-Header padrão do site.
-- Título do site (`{{ site.title }}`)
-- Navegação principal (`nav.html`)
-
-**Uso:**
-```liquid
-{% include default/header-default.html %}
-```
+Header com título do site e navegação principal.
 
 ### `footer-default.html`
-Footer padrão com copyright.
-- Copyright dinâmico com ano atual
-- Créditos: "desenvolvido por gatilhoroxo"
+Footer com copyright dinâmico.
 
-**Uso:**
-```liquid
-{% include default/footer-default.html %}
-```
+### `scripts-default.html`
+Scripts padrão incluídos em todos os layouts.
 
-## 🔧 Scripts JavaScript (`scripts/`)
+## 🔧 Scripts (`scripts/`)
+
+### `breadcrumb.html`
+Script para navegação breadcrumb com configuração centralizada via `_data/breadcrumb_config.yml`.
 
 ### `theme-switcher.html`
-Script de alternância de tema (dark/light).
-- **Recursos**:
-  - Salva preferência no `localStorage`
-  - Aplica tema imediatamente sem transições
-  - Alterna ícone do botão (🌙/☀️)
-  - Tema padrão: escuro
-
-**Uso:**
-```liquid
-{% include scripts/theme-switcher.html %}
-```
+Alternância de tema dark/light com persistência em `localStorage`.
 
 ### `font-size-control.html`
-Controle de tamanho de fonte.
-- **Recursos**:
-  - 5 tamanhos: 80%, 90%, 100%, 110%, 120%
-  - Padrão: 110%
-  - Salva no `localStorage`
-  - Desabilita botões nos limites
-  - Aplica no `html { font-size }`
+Controle de tamanho de fonte (80%-120%) com persistência.
 
-**Uso:**
-```liquid
-{% include scripts/font-size-control.html %}
-```
+### `layouts/diario-listing.html`
+Listagem automática de entradas de diário em formato timeline.
 
-### `navigation-sidebar.html`
-Script de navegação da sidebar.
-- Gerencia abertura/fechamento da sidebar
-- Interações de navegação
+### `layouts/pasta-listing.html`
+Listagem automática de pastas e arquivos com ícones e descrições.
 
-**Uso:**
-```liquid
-{% include scripts/navigation-sidebar.html %}
-```
+### `sidebar/navigation-mode.html`
+Gerencia o modo de navegação da sidebar.
 
-### `sidebar-expand.html`
-Controle de expansão/colapso da sidebar.
-- **Recursos**:
-  - Toggle de classe `sidebar-collapsed`
-  - Animações de transição
-  - Persistência de estado
+### `sidebar/navigation-state.html`
+Controla o estado da navegação.
 
-**Uso:**
-```liquid
-{% include scripts/sidebar-expand.html %}
-```
+### `sidebar/repositories-mode.html`
+Gerencia o modo de repositórios.
 
-### `diario-listing.html`
-Listagem automática de entradas de diário.
-- **Recursos**:
-  - Formato de timeline
-  - Exibe apenas filhos diretos do diretório atual
-  - Separa entradas de diário de outros arquivos
-  - Usa layout compacto
-  - Extração automática de data do nome do arquivo
+### `sidebar/repositories-state.html`
+Controla o estado de repositórios.
 
-**Uso:**
-```liquid
-{% include scripts/diario-listing.html %}
-```
+### `sidebar/search-mode.html`
+Gerencia o modo de busca.
 
-### `pasta-listing.html`
-Listagem automática de pastas e arquivos.
-- **Recursos**:
-  - Separação entre pastas e arquivos
-  - Exibe apenas filhos diretos (1 nível)
-  - Ícones diferentes para pastas e arquivos
-  - Mostra descrição se disponível
-  - Organização alfabética
+### `sidebar/search-state.html`
+Controla o estado de busca.
 
-**Uso:**
-```liquid
-{% include scripts/pasta-listing.html %}
-```
+### `sidebar/sidebar-expand.html`
+Controla expansão/colapso da sidebar com animações.
+
+### `sidebar/sidebar-state-manager.html`
+Gerenciador central de estado da sidebar.
 
 ## 🔄 Fluxo de Inclusão
 
-**Layout `default.html` inclui:**
+**Layout `default.html`:**
 ```
 default/head-default.html
-    ↓
 sidebar.html
-    ↓
-topbar.html → breadcrumb.html → breadcrumb-icon.html
-    ↓
+topbar.html → scripts/breadcrumb.html → breadcrumb-icon.html
 default/header-default.html → nav.html
-    ↓
 {{ content }}
-    ↓
 default/footer-default.html
-    ↓
-scripts/theme-switcher.html
-scripts/font-size-control.html
-scripts/navigation-sidebar.html
-scripts/sidebar-expand.html
+default/scripts-default.html
 ```
 
-**Layout `diario.html` adiciona:**
+**Layout `diario.html`:**
 ```
-scripts/diario-listing.html
++ scripts/layouts/diario-listing.html
 ```
 
-**Layout `pasta.html` adiciona:**
+**Layout `pasta.html`:**
 ```
-scripts/pasta-listing.html
++ scripts/layouts/pasta-listing.html
 ```
 
 ## 🔧 Como Usar
@@ -245,19 +137,10 @@ scripts/pasta-listing.html
 {% include breadcrumb-icon.html config=section_config %}
 ```
 
-### Adicionar Novo Include
-1. Crie arquivo em `_includes/seu-componente.html`
-2. Desenvolva com HTML e Liquid tags
-3. Inclua em layouts ou páginas:
-   ```liquid
-   {% include seu-componente.html %}
-   ```
-
 ## ✨ Boas Práticas
 
 - Mantenha includes focados em uma função específica
 - Use comentários para documentar parâmetros esperados
 - Prefira configuração via `_data/` para conteúdo variável
 - Reutilize includes em vez de duplicar código
-- Organize scripts por funcionalidade na pasta `scripts/`
-- Use includes de `default/` para componentes estruturais
+- Organize scripts por funcionalidade nas pastas apropriadas

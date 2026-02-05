@@ -27,13 +27,15 @@ site-attempt/
 ├── Gemfile                  # Dependências Ruby
 ├── index.md                 # Página inicial
 ├── _data/                   # Dados estruturados
-│   └── breadcrumb_config.yml    # Configuração do breadcrumb
+│   ├── breadcrumb_config.yml    # Configuração do breadcrumb
+│   └── repositories.yml         # Configuração de repositórios
 ├── _includes/               # Componentes reutilizáveis (ver _includes/README.md)
-│   ├── breadcrumb.html
+│   ├── breadcrumb-icon.html
+│   ├── nav.html
 │   ├── sidebar.html
 │   ├── topbar.html
-│   ├── default/                 # Head, header, footer
-│   └── scripts/                 # Scripts JS (tema, fonte, listagens)
+│   ├── default/                 # Head, header, footer, scripts
+│   └── scripts/                 # Scripts (breadcrumb, tema, fonte, listagens, sidebar)
 ├── _layouts/                # Templates de página (ver _layouts/README.md)
 │   ├── default.html
 │   ├── post.html
@@ -44,12 +46,14 @@ site-attempt/
 │   ├── _variables.scss
 │   ├── _mixins.scss
 │   ├── _base.scss
-│   ├── components/              # Componentes (badges, buttons, sidebar, etc)
-│   ├── layouts/                 # Layouts específicos
-│   └── screens/                 # Media queries responsivas
+│   ├── _components.scss
+│   ├── components/              # Badges, buttons, breadcrumb, sidebar, topbar, etc
+│   ├── layouts/                 # Diário, pasta, projeto
+│   └── screens/                 # Desktop, tablet, phone
 ├── assets/
 │   ├── css/style.scss           # CSS principal
-│   └── images/                  # Imagens e favicons
+│   ├── images/                  # Imagens e favicons
+│   └── json/                    # Dados JSON (search-index)
 ├── gatilhos/                # Documentação de aprendizado
 │   ├── conceitos-fundamentais/
 │   ├── diario-de-aprendizado/
@@ -57,6 +61,8 @@ site-attempt/
 │   ├── roadmaps/
 │   └── templates/
 ├── posts/                   # Posts e artigos
+├── projects/                # Projetos
+│   └── mc-journey/
 └── docs/                    # Documentação adicional
 ```
 
@@ -128,11 +134,11 @@ bundle exec jekyll serve --livereload
 bundle exec jekyll serve --verbose
 ```
 
-## 🔗 Fonte do Conteúdo
+## 🔗 Conteúdo
 
-O conteúdo aqui é gerado/inspirado em:
 - **[gatilhos/](gatilhos/)** - Documentação de aprendizado
 - **[posts/](posts/)** - Páginas e postagens
+- **[projects/](projects/)** - Projetos
 
 ---
 
@@ -157,11 +163,6 @@ O conteúdo aqui é gerado/inspirado em:
 - ✅ Syntax highlighting para código
 - ✅ Markdown com GitHub Flavored Markdown
 
-**Melhorias futuras:**
-- Tags e categorias para organização de conteúdo
-- Geração automática de índice de conteúdo (TOC) em posts longos
-- Integração com coleção `_projetos` para portfólio
-
 ## 📚 Arquitetura
 
 ### Layouts Disponíveis
@@ -177,16 +178,17 @@ O conteúdo aqui é gerado/inspirado em:
 - **Topbar** - Barra superior com breadcrumb e controles (tema/fonte)
 - **Scripts** - Listagens automáticas, controle de tema e fonte
 
+### Sistema de Estilosvia `_data/breadcrumb_config.yml`
+- **Sidebar** - Navegação hierárquica com 3 modos (navegação, repositórios, busca)
+- **Topbar** - Barra superior com breadcrumb e controles
+- **Scripts** - Listagens automáticas, tema, fonte, gerenciamento de estado
+
 ### Sistema de Estilos
-- **Variáveis CSS** - Cores, espaçamentos, tipografia
-- **Mixins** - Transições, sombras, flexbox, responsividade
-- **Componentes modulares** - Badges, botões, tabelas, scrollbar
-- **Responsividade** - Breakpoints para desktop, tablet e mobile
-
-## 🎨 Personalização
-
-### Alterar Cores e Tema
-Edite `_sass/_variables.scss`:
+- **Variáveis** - Cores, espaçamentos, tipografia (`_variables.scss`)
+- **Mixins** - Transições, sombras, flexbox, responsividade (`_mixins.scss`)
+- **Componentes** - Badges, botões, breadcrumb, sidebar, topbar, tabelas, scrollbar
+- **Layouts** - Diário, pasta, projeto (`_sass/layouts/`)
+- **Responsividade** - Desktop, tablet, phone (`_sass/screens/`)
 ```scss
 :root { 
   --accent: #your-color;
@@ -217,17 +219,18 @@ sections:
 
 ## 🔧 Desenvolvimento
 
-### Estrutura de Arquivos
-- `_includes/` - Componentes reutilizáveis HTML
-- `_layouts/` - Templates de página
-- `_sass/` - Estilos SCSS modulares
-- `_data/` - Dados estruturados YAML
-- `assets/` - CSS compilado e imagens
+### Estrutura de ArquivosHTML (ver [_includes/README.md](_includes/README.md))
+- `_layouts/` - Templates de página (ver [_layouts/README.md](_layouts/README.md))
+- `_sass/` - Estilos SCSS (ver [_sass/README.md](_sass/README.md))
+- `_data/` - Configurações YAML (breadcrumb, repositórios)
+- `assets/` - CSS, imagens, JSON
 
 ### Convenções
-- Use `layout: pasta` para páginas índice de coleções
-- Use `layout: diario` para páginas de diário
+- `layout: pasta` - Páginas índice com listagem automática
+- `layout: diario` - Páginas de diário com timeline
+- `layout: gatilho` - Conceitos e gatilhos
 - Prefira variáveis CSS e mixins SCSS
+- Mantenha componentes modulare
 - Mantenha componentes modulares e focados
 
 ---

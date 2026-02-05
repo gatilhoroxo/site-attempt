@@ -14,13 +14,21 @@ _sass/
 │   ├── _badges.scss        # Badges e tags
 │   ├── _breadcrumb.scss    # Navegação breadcrumb
 │   ├── _buttons.scss       # Botões e toggle de tema
-│   ├── _diario.scss        # Estilos do diário de aprendizado
-│   ├── _pasta.scss         # Estilos de pastas/coleções
 │   ├── _scrollbar.scss     # Customização da scrollbar
 │   ├── _sidebar.scss       # Barra lateral e navegação
-│   ├── _tables.scss        # Tabelas responsivas
-│   └── _topbar.scss        # Barra superior
+│   ├── _topbar.scss        # Barra superior
+│   ├── sidebar/            # Componentes da sidebar
+│   │   ├── _base.scss          # Base da sidebar
+│   │   ├── _buttons.scss       # Botões da sidebar
+│   │   ├── _navigation.scss    # Navegação
+│   │   ├── _repositories.scss  # Repositórios
+│   │   └── _search.scss        # Busca
+│   └── text/               # Componentes de texto
+│       ├── _blockquote.scss    # Citações
+│       └── _tables.scss        # Tabelas
 ├── layouts/            # Layouts de páginas específicas
+│   ├── _diario.scss        # Layout do diário
+│   ├── _pasta.scss         # Layout de pastas
 │   └── _projeto-page.scss  # Layout de páginas de projeto
 └── screens/            # Media queries responsivas
     ├── _desktop.scss       # Estilos para desktop
@@ -28,55 +36,54 @@ _sass/
     └── _phone.scss         # Estilos para mobile
 ```
 
-## 🎯 Descrição dos Arquivos
+## 🎯 Arquivos Principais
 
-### Arquivos Raiz
+### Raiz
 
-**`_variables.scss`** - Variáveis CSS customizadas
-- Cores (fundos, textos, destaques, bordas)
-- Espaçamentos (sistema consistente)
-- Tipografia (tamanhos de fonte)
-- Bordas e raios
-- Dimensões e larguras
+**`_variables.scss`**
+Variáveis CSS: cores, espaçamentos, tipografia, bordas e dimensões.
 
-**`_mixins.scss`** - Mixins reutilizáveis
-- Transições e animações: `@include transition()`, `@include fadeIn()`
-- Sombras: `@include box-shadow(1-5)`
-- Interatividade: `@include hover-lift()`, `@include hover-scale()`
-- Flexbox/Grid: `@include flex-center`, `@include grid-auto-fill()`
-- Componentes: `@include button-primary`, `@include card-base`
-- Responsividade: `@include respond-to('desktop')`, `@include respond-to('mobile')`
+**`_mixins.scss`**
+Mixins reutilizáveis: transições, sombras, flexbox, grid e responsividade.
 
-**`_base.scss`** - Estilos fundamentais
-- Layout geral (HTML, body)
-- Header e navegação principal
-- Tipografia base
-- Links e code blocks
-- Footer
+**`_base.scss`**
+Estilos fundamentais: layout geral, tipografia, links e code blocks.
 
-**`_components.scss`** - Importa todos os componentes modulares
+**`_components.scss`**
+Importa todos os componentes modulares.
 
 ### Componentes (`components/`)
 
-- **`_badges.scss`** - Badges e etiquetas
-- **`_breadcrumb.scss`** - Navegação breadcrumb com separadores
-- **`_buttons.scss`** - Botões de ação e toggle de tema
-- **`_diario.scss`** - Estilização do diário de aprendizado
-- **`_pasta.scss`** - Estilos de pastas e coleções
-- **`_scrollbar.scss`** - Customização da barra de rolagem
-- **`_sidebar.scss`** - Barra lateral, navegação e toggle
-- **`_tables.scss`** - Tabelas responsivas de componentes
-- **`_topbar.scss`** - Barra superior do site
+**Principais:**
+- `_badges.scss` - Badges e etiquetas
+- `_breadcrumb.scss` - Navegação breadcrumb
+- `_buttons.scss` - Botões de ação
+- `_scrollbar.scss` - Customização da scrollbar
+- `_sidebar.scss` - Barra lateral
+- `_topbar.scss` - Barra superior
+
+**Sidebar (`sidebar/`):**
+- `_base.scss` - Base da sidebar
+- `_buttons.scss` - Botões da sidebar
+- `_navigation.scss` - Navegação
+- `_repositories.scss` - Repositórios
+- `_search.scss` - Busca
+
+**Text (`text/`):**
+- `_blockquote.scss` - Citações
+- `_tables.scss` - Tabelas
 
 ### Layouts (`layouts/`)
 
-- **`_projeto-page.scss`** - Layout específico para páginas de projeto (meta informações, animações)
+- `_diario.scss` - Estilização do diário de aprendizado
+- `_pasta.scss` - Estilos de pastas e coleções
+- `_projeto-page.scss` - Layout de páginas de projeto
 
 ### Responsividade (`screens/`)
 
-- **`_desktop.scss`** - Estilos para telas desktop
-- **`_tablet.scss`** - Estilos para tablets
-- **`_phone.scss`** - Estilos para smartphones
+- `_desktop.scss` - Desktop (> 1024px)
+- `_tablet.scss` - Tablet (768px - 1024px)
+- `_phone.scss` - Mobile (< 768px)
 
 ## 🔧 Uso
 
@@ -90,7 +97,7 @@ _sass/
 
 ### Exemplos
 
-**Usando variáveis:**
+**Variáveis:**
 ```scss
 .elemento {
     color: var(--accent);
@@ -99,7 +106,7 @@ _sass/
 }
 ```
 
-**Usando mixins:**
+**Mixins:**
 ```scss
 .botao {
     @include button-primary;
@@ -110,11 +117,11 @@ _sass/
 }
 ```
 
-## 🚀 Adicionar Novos Componentes
+## 🚀 Adicionar Componente
 
-1. Crie `_sass/components/_seu-componente.scss`
-2. Desenvolva usando variáveis e mixins
-3. Importe em `_sass/_components.scss`:
+1. Criar `_sass/components/_seu-componente.scss`
+2. Desenvolver usando variáveis e mixins
+3. Importar em `_sass/_components.scss`:
    ```scss
    @import 'components/seu-componente';
    ```
@@ -129,6 +136,6 @@ _sass/
 
 ## 🎨 Personalização
 
-Edite `_sass/_variables.scss` para customizar:
+Edite `_sass/_variables.scss`:
 - Modo escuro: `:root { ... }`
 - Modo claro: `[data-theme="light"] { ... }`
