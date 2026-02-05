@@ -32,4 +32,8 @@ defaults:
       path: "posts"
     values:
       layout: "default"
+  - scope:
+      path: "projects"
+    values:
+      layout: "default"
 

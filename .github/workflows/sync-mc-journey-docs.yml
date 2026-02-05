@@ -1,0 +1,175 @@
+name: Sync MC Journey Docs
+
+on:
+  schedule:
+    - cron: '0 0 * * 0'  # Todo domingo à meia-noite UTC
+  workflow_dispatch:  # Permite execução manual
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout site repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          
+      - name: Clone mc-journey-attempt repository
+        run: |
+          git clone --depth 1 https://github.com/gatilhoroxo/mc-journey-attempt.git temp-repo
+          
+      - name: Process and copy docs
+        run: |
+          python3 << 'EOF'
+          import os
+          import re
+          from pathlib import Path
+          from datetime import datetime
+          
+          # Paths
+          source_dir = Path('temp-repo/docs')
+          target_dir = Path('projects/mc-journey')
+          
+          # Clean target directory
+          if target_dir.exists():
+              import shutil
+              shutil.rmtree(target_dir)
+          target_dir.mkdir(parents=True, exist_ok=True)
+          
+          def has_frontmatter(content):
+              """Check if file already has YAML frontmatter"""
+              return content.startswith('---\n')
+          
+          def add_frontmatter(content, filepath):
+              """Add appropriate frontmatter to markdown file"""
+              filename = os.path.basename(filepath)
+              
+              # Determine layout
+              if filename == 'index.md':
+                  layout = 'pasta'
+                  # Try to extract title from first heading or use folder name
+                  title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+                  if title_match:
+                      title = title_match.group(1).strip()
+                  else:
+                      folder_name = os.path.basename(os.path.dirname(filepath))
+                      if folder_name == 'mc-journey-attempt':
+                          title = 'MC Journey'
+                      else:
+                          title = folder_name.replace('-', ' ').replace('_', ' ').title()
+              else:
+                  layout = 'default'
+                  # Extract title from first heading or filename
+                  title_match = re.search(r'^#\s+(.+)$', content, re.MULTILINE)
+                  if title_match:
+                      title = title_match.group(1).strip()
+                  else:
+                      title = filename.replace('.md', '').replace('-', ' ').replace('_', ' ').title()
+              
+              # Build frontmatter
+              frontmatter = f"""---
+layout: {layout}
+title: {title}
+---
+
+"""
+              return frontmatter + content
+          
+          def process_file(source_file, target_file):
+              """Process a single markdown file"""
+              with open(source_file, 'r', encoding='utf-8') as f:
+                  content = f.read()
+              
+              # Add frontmatter if not present
+              if not has_frontmatter(content):
+                  content = add_frontmatter(content, source_file)
+              
+              # Write to target
+              target_file.parent.mkdir(parents=True, exist_ok=True)
+              with open(target_file, 'w', encoding='utf-8') as f:
+                  f.write(content)
+          
+          # Process all markdown files
+          if source_dir.exists():
+              for md_file in source_dir.rglob('*.md'):
+                  # Calculate relative path
+                  rel_path = md_file.relative_to(source_dir)
+                  target_file = target_dir / rel_path
+                  
+                  print(f"Processing: {rel_path}")
+                  process_file(md_file, target_file)
+              
+              print(f"\nSync completed at {datetime.now().isoformat()}")
+          else:
+              print(f"Warning: docs directory not found in source repository")
+          EOF
+          
+      - name: Update repository metadata
+        run: |
+          python3 << 'EOF'
+          import yaml
+          from datetime import datetime
+          from pathlib import Path
+          
+          data_file = Path('_data/repositories.yml')
+          
+          # Read current data if exists
+          if data_file.exists():
+              with open(data_file, 'r', encoding='utf-8') as f:
+                  data = yaml.safe_load(f) or {}
+          else:
+              data = {}
+          
+          # Ensure repositories list exists
+          if 'repositories' not in data:
+              data['repositories'] = []
+          
+          # Update mc-journey-attempt entry
+          mc_journey = None
+          for repo in data['repositories']:
+              if repo.get('id') == 'mc-journey-attempt':
+                  mc_journey = repo
+                  break
+          
+          if mc_journey:
+              mc_journey['updated'] = datetime.now().strftime('%d/%m/%Y')
+          else:
+              data['repositories'].append({
+                  'id': 'mc-journey-attempt',
+                  'name': 'MC Journey',
+                  'github_url': 'https://github.com/gatilhoroxo/mc-journey-attempt',
+                  'local_path': '/projects/mc-journey/',
+                  'description': 'Jornada de aprendizado em Minecraft',
+                  'updated': datetime.now().strftime('%d/%m/%Y'),
+                  'topics': ['minecraft', 'modding', 'java']
+              })
+          
+          # Write back
+          data_file.parent.mkdir(parents=True, exist_ok=True)
+          with open(data_file, 'w', encoding='utf-8') as f:
+              yaml.dump(data, f, allow_unicode=True, sort_keys=False)
+          
+          print(f"Updated repositories.yml")
+          EOF
+          
+      - name: Cleanup temp repository
+        run: rm -rf temp-repo
+          
+      - name: Commit and push changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions@github.com"
+          git add projects/mc-journey _data/repositories.yml
+          
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "docs: sync mc-journey docs [automated]"
+            git push
+          fi
