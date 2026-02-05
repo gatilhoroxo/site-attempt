@@ -47,7 +47,7 @@ site-attempt/
 │   ├── _mixins.scss
 │   ├── _base.scss
 │   ├── _components.scss
-│   ├── components/              # Badges, buttons, breadcrumb, sidebar, topbar, etc
+│   ├── components/              # Badges, buttons, breadcrumb, sidebar, topbar, text, etc
 │   ├── layouts/                 # Diário, pasta, projeto
 │   └── screens/                 # Desktop, tablet, phone
 ├── assets/
