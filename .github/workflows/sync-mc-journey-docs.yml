@@ -94,20 +94,21 @@ jobs:
                   return content
               
               # Check if has frontmatter
-              if not content.startswith('---\n'):
+              if not content.startswith('---\n') and not content.startswith('---\r\n'):
                   return content
               
-              # Find end of frontmatter
-              end_match = re.search(r'\n---\n', content[4:])
+              # Find end of frontmatter (handle both \n and \r\n)
+              end_match = re.search(r'\r?\n---(?:\r?\n|$)', content[4:])
               if not end_match:
                   return content
               
               frontmatter_end = end_match.start() + 4
-              frontmatter = content[4:frontmatter_end]
-              rest = content[frontmatter_end + 5:]  # Skip the closing "---\n"
+              closing_match = end_match.group(0)
+              frontmatter = content[4:frontmatter_end].strip()
+              rest = content[frontmatter_end + len(closing_match):]
               
               # Parse and update layout
-              lines = frontmatter.split('\n')
+              lines = [line.strip() for line in frontmatter.split('\n') if line.strip()]
               new_lines = []
               layout_found = False
               
