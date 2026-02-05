@@ -72,13 +72,12 @@ jobs:
                   else:
                       title = filename.replace('.md', '').replace('-', ' ').replace('_', ' ').title()
               
-              # Build frontmatter
-              frontmatter = f"""---
-layout: {layout}
-title: {title}
----
-
-"""
+              # Build frontmatter (using explicit newlines to avoid YAML parsing issues)
+              frontmatter = "---\n"
+              frontmatter += f"layout: {layout}\n"
+              frontmatter += f"title: {title}\n"
+              frontmatter += "---\n\n"
+              
               return frontmatter + content
           
           def process_file(source_file, target_file):
