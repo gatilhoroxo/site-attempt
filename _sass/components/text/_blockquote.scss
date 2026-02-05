@@ -6,13 +6,14 @@
 
 blockquote {
     position: relative;
-    margin: var(--spacing-lg) 0;
-    padding: var(--spacing-md) var(--spacing-lg) var(--spacing-md) var(--spacing-xl);
+    margin: var(--spacing-md) 0;
+    padding: var(--spacing-sm) var(--spacing-lg) var(--spacing-sm) var(--spacing-xl);
     background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-topbar) 100%);
     border-left: 4px solid var(--accent);
     @include border-radius(var(--radius-md));
     font-family: var(--font-body);
     font-style: italic;
+    font-size: 0.9rem;
     color: var(--text);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     @include transition(all, 0.3s, ease);
@@ -23,7 +24,7 @@ blockquote {
         position: absolute;
         left: var(--spacing-sm);
         top: 0.5rem;
-        font-size: 3rem;
+        font-size: 2rem;
         font-family: Georgia, serif;
         color: var(--accent);
         opacity: 0.3;
@@ -32,7 +33,7 @@ blockquote {
 
     /* Parágrafos dentro da citação */
     p {
-        margin: var(--spacing-sm) 0;
+        margin: var(--spacing-xs) 0;
         line-height: 1.7;
         
         &:first-child {
@@ -60,7 +61,7 @@ blockquote {
         padding: var(--spacing-sm) var(--spacing-md);
         background: var(--bg);
         border-left-width: 3px;
-        font-size: 0.95em;
+        font-size: 0.8em;
         
         &::before {
             font-size: 2rem;

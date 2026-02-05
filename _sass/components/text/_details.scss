@@ -1,0 +1,89 @@
+/* ============================================
+   DETAILS & SUMMARY ELEMENTS
+   ============================================
+   Estilos para elementos <details> e <summary>
+   usados em conteúdo colapsável
+*/
+
+main details {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 8px;
+    margin: 8px 0;
+    background-color: var(--bg-light);
+    transition: all 0.3s ease;
+    width: 60%;
+    max-width: 60%;
+}
+
+main details:hover {
+    border-color: var(--accent);
+}
+
+main details summary {
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95em;
+    color: var(--accent);
+    padding: 4px 6px;
+    margin: -6px -8px;
+    margin-bottom: 6px;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    background-color: var(--bg);
+    transition: all 0.2s ease;
+    user-select: none;
+    list-style: none; /* Remove default marker */
+}
+
+main details summary:hover {
+    background-color: var(--bg-hover);
+    color: var(--link-hover);
+}
+
+main details summary::-webkit-details-marker {
+    display: none;
+}
+
+main details summary::marker {
+    display: none;
+}
+
+main details summary::before {
+    content: "▶";
+    display: inlin4px;
+    transition: transform 0.2s ease;
+    color: var(--accent);
+    font-size: 0.8emm 0.2s ease;
+    color: var(--accent);
+}
+
+main details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+main details[open] summary {
+    margin-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--border);
+}
+
+/* Estilos para conteúdo dentro de details */
+main details > *:not(summary) {
+    margin-top: var(--spacing-sm);
+}
+
+main details p {
+    margin: var(--spacing-sm) 0;
+}
+
+/* Garantir que blocos de código dentro de details sejam bem formatados */
+main details pre {
+    margin: var(--spacing-sm) 0;
+}
+
+main details .highlighter-rouge {
+    margin: var(--spacing-sm) 0;
+}
+
+main details .highlight {
+    margin: var(--spacing-sm) 0;
+}

@@ -1,0 +1,66 @@
+/* ============================================
+   CODE BLOCKS
+   ============================================ */
+
+code {
+    background-color: none;
+    padding: 5px 9px;
+    @include border-radius(var(--radius-lg));
+    font-family: var(--font-code);
+    font-size: 0.85em;
+}
+
+pre {
+    background-color: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    @include border-radius(var(--radius-lg));
+    overflow-x: auto;
+    line-height: 1.4;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    font-size: 0.85em;
+    line-height: 1.4;
+}
+
+/* ============================================
+   SYNTAX HIGHLIGHTING - LINE NUMBERS
+   ============================================ */
+
+.highlighter-rouge {
+    width: 70%;
+    max-width: 70%;
+}
+
+.rouge-table {
+    border-spacing: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.rouge-gutter {
+    padding-right: var(--spacing-sm);
+    width: 1%;
+    border-right: 1px solid var(--border);
+    opacity: 0.5;
+    user-select: none;
+    text-align: right;
+}
+
+.rouge-gutter pre {
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.rouge-code {
+    padding-left: var(--spacing-sm);
+}
+
+.rouge-code pre {
+    padding: 0;
+    margin: 0;
+    border: none;
+}

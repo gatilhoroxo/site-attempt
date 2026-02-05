@@ -89,9 +89,10 @@ nav a:hover {
    ============================================ */
 main {
     max-width: var(--max-content-width);
-    min-width: min(600px, 90vw); /* Define largura mínima responsiva */
+    min-width: min(400px, 90vw); 
     margin: var(--spacing-xl) auto;
     padding: 0 var(--spacing-md);
+    width: 90%;
     flex: 1;
 }
 
@@ -109,31 +110,6 @@ a:hover {
 }
 
 /* ============================================
-   CODE BLOCKS
-   ============================================ */
-code {
-    background-color: var(--bg-light);
-    padding: 2px 6px;
-    @include border-radius(var(--radius-sm));
-    font-family: var(--font-code);
-    font-size: 0.9em;
-}
-
-pre {
-    background-color: var(--bg-light);
-    padding: var(--spacing-md);
-    @include border-radius(var(--radius-lg));
-    overflow-x: auto;
-    border: 1px solid var(--border);
-}
-
-pre code {
-    background: none;
-    padding: 0;
-    font-size: var(--font-size-sm);
-}
-
-/* ============================================
    FOOTER
    ============================================ */
 footer {
@@ -145,9 +121,11 @@ footer {
     flex-shrink: 0;
 }
 
-/* ============================================
-   RESPONSIVE BREAKPOINTS
-   ============================================ */
-
+hr {
+    border: none;
+    border-top: 3px solid var(--bar);
+    margin: var(--spacing-lg) 0;
+    opacity: 0.5;
+}
 
 
