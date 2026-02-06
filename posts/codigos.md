@@ -75,3 +75,10 @@ coisas escritas after closed block
 
 ## coisas depois do bloco fechado
 
+## uma tabela
+
+| Pino | GPIO | Função Especial | Notas |
+|------|------|-----------------|-------|
+|  EN  |   -  |   -  | Pull-up HIGH para operar |
+|  VP  |  36  |   -  | **INPUT ONLY** |
+|  VN  |  39  |   -  | **INPUT ONLY** |
