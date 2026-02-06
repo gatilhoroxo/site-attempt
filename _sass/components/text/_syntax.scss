@@ -3,6 +3,12 @@
 .highlight .gh {
   color: #999999;
 }
+.highlight {
+  color: #ffffff !important;
+  background-color: #211a2e !important;
+  border-radius: 8px;
+  padding: 0;
+}
 .highlight .sr {
   color: #f6aa11;
 }
@@ -172,10 +178,6 @@
   background-color: #211a2e;
 }
 .highlight .w {
-  color: #ffffff;
-  background-color: #211a2e;
-}
-.highlight {
   color: #ffffff;
   background-color: #211a2e;
 }

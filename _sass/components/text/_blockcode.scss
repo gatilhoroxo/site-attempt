@@ -3,23 +3,22 @@
    ============================================ */
 
 code {
-    background-color: none;
-    padding: 5px 9px;
-    @include border-radius(var(--radius-lg));
+    padding: 2px 4px;
     font-family: var(--font-code);
     font-size: 0.85em;
 }
 
 pre {
-    background-color: none;
-    padding: var(--spacing-xs) var(--spacing-sm);
+    padding: var(--spacing-xs);
     @include border-radius(var(--radius-lg));
     overflow-x: auto;
     line-height: 1.4;
+    border: 0.1px solid #3d3451;
 }
 
 pre code {
     background: none;
+    background-color: transparent;
     padding: 0;
     font-size: 0.85em;
     line-height: 1.4;
@@ -29,9 +28,23 @@ pre code {
    SYNTAX HIGHLIGHTING - LINE NUMBERS
    ============================================ */
 
+div[class^="language-"],
+div[class*=" language-"] {
+    border-radius: 8px;
+    padding: 0;
+}
+
+/* Caixas internas do highlight */
+.highlight,
+div.highlight,
+pre.highlight {
+    border-radius: 8px;
+}
+
 .highlighter-rouge {
-    width: 70%;
-    max-width: 70%;
+    width: 80%;
+    max-width: 80%;
+    border-radius: 8px;
 }
 
 .rouge-table {
@@ -43,7 +56,7 @@ pre code {
 .rouge-gutter {
     padding-right: var(--spacing-sm);
     width: 1%;
-    border-right: 1px solid var(--border);
+    border-right: 1px solid #3d3451;
     opacity: 0.5;
     user-select: none;
     text-align: right;
@@ -53,6 +66,7 @@ pre code {
     padding: 0;
     margin: 0;
     border: none;
+    background-color: transparent;
 }
 
 .rouge-code {
@@ -63,4 +77,25 @@ pre code {
     padding: 0;
     margin: 0;
     border: none;
+    background-color: transparent;
+}
+
+/* ============================================
+   FORÇAR TEMA ESCURO NO CÓDIGO (AMBOS OS TEMAS)
+   ============================================ */
+
+/* Sobrescrever para manter código sempre escuro em ambos os temas */
+div[class^="language-"],
+div[class*=" language-"],
+.highlighter-rouge,
+.highlight,
+div.highlight,
+pre.highlight,
+pre,
+code,
+.rouge-table,
+.rouge-gutter,
+.rouge-code {
+    background-color: #211a2e !important;
+    color: #ffffff !important;
 }
