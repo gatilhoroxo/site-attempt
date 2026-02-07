@@ -32,7 +32,10 @@ baseurl: "/site-attempt"
 # Incluir diretórios customizados
 include:
   - content
-  - src/assets
+
+# Manter arquivos estáticos
+keep_files:
+  - assets
 
 # Defaults - configurar permalinks para remover "content" das URLs
 defaults:

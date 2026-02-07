@@ -43,7 +43,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add projects/mc-journey _data/repositories.yml
+          git add content/projects/mc-journey src/_data/repositories.yml
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
