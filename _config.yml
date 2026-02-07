@@ -5,9 +5,16 @@ markdown: kramdown
 # Customização
 permalink: pretty
 
+# Estrutura de diretórios
+source: .
+includes_dir: src/_includes
+layouts_dir: src/_layouts
+data_dir: src/_data
+plugins_dir: src/_plugins
+
 # Sass/SCSS
 sass:
-  sass_dir: _sass
+  sass_dir: src/_sass
   style: compressed
 
 # Configurações do Kramdown (processador Markdown)
@@ -22,18 +29,30 @@ kramdown:
 url: "https://gatilhoroxo.github.io"
 baseurl: "/site-attempt"
 
-# Defaults
+# Incluir diretórios customizados
+include:
+  - content
+  - src/assets
+
+# Defaults - configurar permalinks para remover "content" das URLs
 defaults:
   - scope:
       path: ""
     values:
       layout: "default"
   - scope:
-      path: "posts"
+      path: "content/posts"
     values:
       layout: "default"
+      permalink: /posts/:title/
   - scope:
-      path: "projects"
+      path: "content/projects"
     values:
       layout: "default"
+      permalink: /projects/:path/
+  - scope:
+      path: "content/gatilhos"
+    values:
+      layout: "default"
+      permalink: /gatilhos/:path/
 
