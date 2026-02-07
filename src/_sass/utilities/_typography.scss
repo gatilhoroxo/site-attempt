@@ -1,0 +1,46 @@
+/* ============================================
+   UTILITÁRIOS - TIPOGRAFIA
+   ============================================
+   Classes para formatação rápida de texto
+*/
+
+// Alinhamento
+.text-left { text-align: left !important; }
+.text-center { text-align: center !important; }
+.text-right { text-align: right !important; }
+.text-justify { text-align: justify !important; }
+
+// Peso da fonte
+.text-normal { font-weight: 400 !important; }
+.text-bold { font-weight: 700 !important; }
+.text-light { font-weight: 300 !important; }
+
+// Estilo
+.text-italic { font-style: italic !important; }
+.text-underline { text-decoration: underline !important; }
+.text-uppercase { text-transform: uppercase !important; }
+.text-lowercase { text-transform: lowercase !important; }
+.text-capitalize { text-transform: capitalize !important; }
+
+// Tamanhos de fonte
+.font-size-xs { font-size: 0.75rem !important; }
+.font-size-sm { font-size: 0.875rem !important; }
+.font-size-md { font-size: 1rem !important; }
+.font-size-lg { font-size: 1.25rem !important; }
+.font-size-xl { font-size: 1.5rem !important; }
+
+// Line height
+.lh-1 { line-height: 1 !important; }
+.lh-base { line-height: 1.5 !important; }
+.lh-lg { line-height: 2 !important; }
+
+// Truncate
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Wrap
+.text-nowrap { white-space: nowrap !important; }
+.text-wrap { white-space: normal !important; }

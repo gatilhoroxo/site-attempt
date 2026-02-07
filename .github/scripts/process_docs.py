@@ -12,7 +12,7 @@ from datetime import datetime
 
 # Paths
 source_dir = Path('temp-repo/docs')
-target_dir = Path('projects/mc-journey')
+target_dir = Path('content/projects/mc-journey')
 
 
 def has_frontmatter(content):

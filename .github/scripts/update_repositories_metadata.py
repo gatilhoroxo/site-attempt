@@ -11,7 +11,7 @@ from pathlib import Path
 
 def main():
     """Update repositories metadata file"""
-    data_file = Path('_data/repositories.yml')
+    data_file = Path('src/_data/repositories.yml')
     
     # Read current data if exists
     if data_file.exists():

@@ -1,226 +1,183 @@
----
-layout: default
-title: README
----
+# Template de Site Pessoal
 
-# 🌐 site-template
+Um site estático construído com Jekyll para documentação de projetos de aprendizado, 
+com foco em microcontroladores e programação. Este repositório serve como um espaço 
+de experimentação e aprendizado sobre desenvolvimento web, Jekyll e boas práticas 
+de documentação.
 
-Making my on site template.
-Site estático com documentação web do projeto.
+## 🎯 Sobre o Projeto
 
----
+Este site foi criado como um projeto de aprendizado pessoal para:
 
-## 📑 Índice
+- Documentar a jornada de aprendizado em programação e eletrônica
+- Experimentar com Jekyll e geração de sites estáticos
+- Praticar organização de documentação técnica
+- Criar um espaço centralizado para projetos e referências
+- Aprender boas práticas de desenvolvimento web
 
-1. [📂 Estrutura](#-estrutura)
-2. [🎯 Propósito](#-propósito)
-3. [🚀 Como Visualizar](#-como-visualizar)
-4. [🔗 Fonte do Conteúdo](#-fonte-do-conteúdo)
+## 🚀 Início Rápido
 
----
+### Pré-requisitos
 
-## 📂 Estrutura
+- Ruby 2.7 ou superior
+- Bundler
+- Jekyll 3.x ou superior
+- Git
+
+### Instalação
+
+```bash
+# Clone o repositório
+git clone https://github.com/gatilhoroxo/site-attempt.git
+cd site-attempt
+
+# Instale as dependências
+bundle install
+
+# Execute o servidor de desenvolvimento
+bundle exec jekyll serve
+
+# Ou use o Makefile
+make dev
+```
+
+O site estará disponível em `http://localhost:4000/site-attempt/`
+
+## 📁 Estrutura do Repositório
 
 ```
 site-attempt/
-├── _config.yml              # Configuração do Jekyll
-├── Gemfile                  # Dependências Ruby
-├── index.md                 # Página inicial
-├── _data/                   # Dados estruturados
-│   ├── breadcrumb_config.yml    # Configuração do breadcrumb
-│   └── repositories.yml         # Configuração de repositórios
-├── _includes/               # Componentes reutilizáveis (ver _includes/README.md)
-│   ├── breadcrumb-icon.html
-│   ├── nav.html
-│   ├── sidebar.html
-│   ├── topbar.html
-│   ├── default/                 # Head, header, footer, scripts
-│   └── scripts/                 # Scripts (breadcrumb, tema, fonte, listagens, sidebar)
-├── _layouts/                # Templates de página (ver _layouts/README.md)
-│   ├── default.html
-│   ├── post.html
-│   ├── diario.html
-│   ├── pasta.html
-│   └── gatilho.html
-├── _sass/                   # Estilos SCSS modulares (ver _sass/README.md)
-│   ├── _variables.scss
-│   ├── _mixins.scss
-│   ├── _base.scss
-│   ├── _components.scss
-│   ├── components/              # Badges, buttons, breadcrumb, sidebar, topbar, text, etc
-│   ├── layouts/                 # Diário, pasta, projeto
-│   └── screens/                 # Desktop, tablet, phone
-├── assets/
-│   ├── css/style.scss           # CSS principal
-│   ├── images/                  # Imagens e favicons
-│   └── json/                    # Dados JSON (search-index)
-├── gatilhos/                # Documentação de aprendizado
-│   ├── conceitos-fundamentais/
-│   ├── diario-de-aprendizado/
-│   ├── ferramentas/
-│   ├── roadmaps/
-│   └── templates/
-├── posts/                   # Posts e artigos
-├── projects/                # Projetos
-│   └── mc-journey/
-└── docs/                    # Documentação adicional
+├── src/                      # Código-fonte Jekyll
+│   ├── _layouts/            # Templates de página
+│   ├── _includes/           # Componentes reutilizáveis
+│   ├── _sass/              # Estilos SCSS modulares
+│   ├── _data/              # Arquivos de dados YAML
+│   └── assets/             # CSS, imagens, JSON
+├── content/                 # Todo o conteúdo do site
+│   ├── gatilhos/           # Documentação de aprendizado
+│   ├── posts/              # Artigos e posts
+│   └── projects/           # Projetos documentados
+├── docs/                    # Documentação técnica
+│   ├── getting-started/    # Guias de início
+│   ├── guides/             # Guias de uso
+│   ├── ARCHITECTURE.md     # Arquitetura do sistema
+│   └── CONVENTIONS.md      # Convenções de código
+├── .github/                 # Workflows e templates
+│   ├── workflows/          # GitHub Actions
+│   └── ISSUE_TEMPLATE/     # Templates de issues
+├── _config.yml             # Configuração Jekyll
+├── Gemfile                 # Dependências Ruby
+├── Makefile               # Comandos comuns
+└── README.md              # Este arquivo
 ```
 
-> **Nota:** Consulte os READMEs específicos em cada pasta (`_sass/`, `_layouts/`, `_includes/`) para detalhes da organização interna.
+### Diretórios Principais
 
-## 🎯 Propósito
+**`src/`** - Contém todo o código Jekyll (layouts, includes, SCSS, dados)  
+**`content/`** - Contém todo o conteúdo markdown organizado por tipo  
+**`docs/`** - Documentação técnica sobre o projeto e como contribuir  
+**`.github/`** - Automações e templates do GitHub
 
-Site web navegável da documentação de algum repositório usando **Jekyll** e **GitHub Pages**, ideal para:
-- Navegação visual mais amigável
-- Compartilhamento fácil via URL
-- Acesso rápido via navegador
-- Apresentação de projetos com formatação consistente
-- Documentação técnica com syntax highlighting
+## 🎨 Funcionalidades
 
-## 🚀 Como Visualizar
+- **Tema Claro/Escuro**: Alternância entre temas com persistência local
+- **Controle de Tamanho de Fonte**: Ajuste de tamanho de texto para acessibilidade
+- **Navegação Dinâmica**: Sidebar e breadcrumbs gerados automaticamente
+- **Busca de Conteúdo**: Busca client-side usando JSON
+- **Responsivo**: Design adaptado para desktop, tablet e mobile
+- **Syntax Highlighting**: Destaque de código com Rouge
+- **RSS Feed**: Feed automático de posts
+- **SEO Otimizado**: Meta tags e sitemap automáticos
 
-### GitHub Pages (Produção)
-Se hospedado no GitHub, acesse:
-```
-https://<seu-usuario>.github.io/<nome-do-repo>/
-```
+## 📖 Como Usar
 
-### Desenvolvimento Local (Recomendado)
+### Criar Novo Conteúdo
 
-#### Pré-requisitos
-- Ruby >= 2.5.0
-- Bundler
-- Jekyll
-
-#### Instalação (Ubuntu 24)
-```bash
-# Instalar Ruby e dependências
-sudo apt update
-sudo apt install ruby-full build-essential zlib1g-dev
-
-# Configurar gems no diretório do usuário
-echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
-echo 'export GEM_HOME="$HOME/gems"' >> ~/.bashrc
-echo 'export PATH="$HOME/gems/bin:$PATH"' >> ~/.bashrc
-source ~/.bashrc
-
-# Instalar Bundler e Jekyll
-gem install bundler jekyll
-```
-
-#### Executar localmente
-```bash
-# No diretório raiz do projeto
-cd site-attempt/
-
-# Instalar dependências (primeira vez)
-bundle install
-
-# Iniciar servidor de desenvolvimento
-bundle exec jekyll serve
-
-# Acessar em http://localhost:4000
-```
-
-#### Opções úteis
-```bash
-# Rodar em porta diferente
-bundle exec jekyll serve --port 4001
-
-# Reconstruir automaticamente ao editar
-bundle exec jekyll serve --livereload
-
-# Modo detalhado (debug)
-bundle exec jekyll serve --verbose
-```
-
-## 🔗 Conteúdo
-
-- **[gatilhos/](gatilhos/)** - Documentação de aprendizado
-- **[posts/](posts/)** - Páginas e postagens
-- **[projects/](projects/)** - Projetos
-
+#### Post
+```markdown
+# Criar arquivo em content/posts/
+---
+layout: post
+title: "Meu Novo Post"
 ---
 
-**Status:** Em Desenvolvimento
+Conteúdo do post aqui...
+```
 
-**Tecnologias:**
-- Jekyll (gerador de sites estáticos)
-- GitHub Pages (hospedagem)
-- Kramdown (processador Markdown)
-- SCSS modular (estilos)
-- Liquid (templating)
+#### Gatilho (Documentação de Aprendizado)
+```markdown
+# Criar arquivo em content/gatilhos/
+---
+layout: gatilho
+title: "Novo Conceito"
+---
 
-**Funcionalidades:**
-- ✅ Sistema de temas (Dark/Light mode com localStorage)
-- ✅ Controle de tamanho de fonte (5 níveis)
-- ✅ Navegação breadcrumb configurável
-- ✅ Sidebar hierárquica com até 3 níveis
-- ✅ Listagens automáticas (pastas e diários)
-- ✅ Layouts reutilizáveis (default, post, pasta, diário, gatilho)
-- ✅ SCSS modular com variáveis e mixins
-- ✅ Responsivo (desktop, tablet, mobile)
-- ✅ Syntax highlighting para código
-- ✅ Markdown com GitHub Flavored Markdown
+Documentação do conceito...
+```
 
-## 📚 Arquitetura
+### Personalizar Tema
 
-### Layouts Disponíveis
-- **`default`** - Layout base com estrutura completa (sidebar, topbar, footer)
-- **`post`** - Posts e artigos simples
-- **`pasta`** - Páginas de coleção com listagem automática de subpastas
-- **`diario`** - Diário de aprendizado com timeline de entradas
-- **`gatilho`** - Conceitos e gatilhos de aprendizado
+Edite as variáveis em [src/_sass/_variables.scss](src/_sass/_variables.scss):
 
-### Componentes Principais
-- **Breadcrumb** - Navegação contextual configurável via YAML
-- **Sidebar** - Navegação lateral hierárquica (até 3 níveis)
-- **Topbar** - Barra superior com breadcrumb e controles (tema/fonte)
-- **Scripts** - Listagens automáticas, controle de tema e fonte
-
-### Sistema de Estilosvia `_data/breadcrumb_config.yml`
-- **Sidebar** - Navegação hierárquica com 3 modos (navegação, repositórios, busca)
-- **Topbar** - Barra superior com breadcrumb e controles
-- **Scripts** - Listagens automáticas, tema, fonte, gerenciamento de estado
-
-### Sistema de Estilos
-- **Variáveis** - Cores, espaçamentos, tipografia (`_variables.scss`)
-- **Mixins** - Transições, sombras, flexbox, responsividade (`_mixins.scss`)
-- **Componentes** - Badges, botões, breadcrumb, sidebar, topbar, tabelas, scrollbar
-- **Layouts** - Diário, pasta, projeto (`_sass/layouts/`)
-- **Responsividade** - Desktop, tablet, phone (`_sass/screens/`)
 ```scss
-:root { 
-  --accent: #your-color;
-  --background: #your-bg;
-}
+// Cores do tema
+$theme-primary: #6b46c1;
+$theme-background-light: #ffffff;
+$theme-background-dark: #1a1a1a;
 ```
 
-### Configurar Breadcrumb
-Edite `_data/breadcrumb_config.yml`:
-```yaml
-sections:
-  sua-secao:
-    label: "Sua Seção"
-    icon_type: "emoji"
-    emoji: "📌"
+### Comandos Disponíveis
+
+```bash
+make dev          # Servidor de desenvolvimento com live reload
+make build        # Build de produção
+make test-build   # Testar build sem erros
+make test-links   # Verificar links quebrados
+make clean        # Limpar arquivos gerados
 ```
 
-### Adicionar Nova Página
-1. Crie `sua-pagina.md`
-2. Adicione front matter:
-   ```yaml
-   ---
-   layout: post
-   title: Sua Página
-   ---
-   ```
-3. Escreva conteúdo em Markdown
+## 🤝 Como Contribuir
 
-## 🔧 Desenvolvimento
+Contribuições são bem-vindas! Este é um projeto de aprendizado, então feedbacks e 
+sugestões são especialmente valiosos.
 
-### Estrutura de ArquivosHTML (ver [_includes/README.md](_includes/README.md))
-- `_layouts/` - Templates de página (ver [_layouts/README.md](_layouts/README.md))
+1. Fork o repositório
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Commit suas mudanças (`git commit -m 'feat: adiciona MinhaFeature'`)
+4. Push para a branch (`git push origin feature/MinhaFeature`)
+5. Abra um Pull Request
+
+Veja [CONTRIBUTING.md](CONTRIBUTING.md) para diretrizes detalhadas.
+
+## 📚 Documentação
+
+- [Guia de Instalação](docs/getting-started/installation.md)
+- [Início Rápido](docs/getting-started/quick-start.md)
+- [Arquitetura](docs/ARCHITECTURE.md)
+- [Convenções](docs/CONVENTIONS.md)
+- [Guia de Layouts](docs/guides/layouts.md)
+- [Guia de Componentes](docs/guides/components.md)
+- [Guia de Estilos](docs/guides/styling.md)
+
+## 🔒 Segurança
+
+Para reportar vulnerabilidades de segurança, veja [SECURITY.md](SECURITY.md).
+
+## 📄 Licença
+
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) 
+para detalhes.
+
+## 🙏 Agradecimentos
+
+- **Jekyll** - Framework de geração de sites estáticos
+- **GitHub Pages** - Hospedagem gratuita
+- **Comunidade Open Source** - Por todo conhecimento compartilhado
+
+## 📞 Contato
+
+- **GitHub**: [@gatilhoroxo](https://github.com/gatilhoroxo)
+- **Issues**: [GitHub Issues](https://github.com/gatilhoroxo/site-attempt/issues)
 - `_sass/` - Estilos SCSS (ver [_sass/README.md](_sass/README.md))
 - `_data/` - Configurações YAML (breadcrumb, repositórios)
 - `assets/` - CSS, imagens, JSON

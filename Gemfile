@@ -10,6 +10,11 @@ group :jekyll_plugins do
   gem "jekyll-sitemap"
 end
 
+# Ferramentas de teste
+group :test do
+  gem "html-proofer", "~> 5.0"
+end
+
 # Windows e JRuby não incluem arquivos de zona de tempo
 platforms :mingw, :x64_mingw, :mswin, :jruby do
   gem "tzinfo", ">= 1", "< 3"

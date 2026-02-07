@@ -1,0 +1,30 @@
+/* ============================================
+   COMPONENTES - ARQUIVO DE IMPORTAÇÃO
+   ============================================
+   Este arquivo importa todos os componentes modulares
+   para facilitar a manutenção e organização
+*/
+
+/* Utilities - classes auxiliares */
+@import 'utilities/spacing';
+@import 'utilities/typography';
+@import 'utilities/colors';
+
+/* Componentes UI */
+@import 'components/badges';
+@import 'components/breadcrumb';
+@import 'components/buttons';
+@import 'components/scrollbar';
+@import 'components/sidebar';
+@import 'components/topbar';
+@import 'components/text';
+
+/* Layouts de Páginas */
+@import 'layouts/pasta';
+@import 'layouts/diario';
+@import 'layouts/projeto-page';
+
+/* Estilos responsivos para as Telas*/
+@import 'screens/desktop';
+@import 'screens/phone';
+@import 'screens/tablet';
