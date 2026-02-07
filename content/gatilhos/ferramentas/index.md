@@ -1,7 +1,6 @@
 ---
 layout: pasta
 title: Ferramentas
-permalink: /gatilhos/ferramentas/
 ---
 
 # 🛠️ Ferramentas

@@ -1,9 +1,9 @@
 <nav class="navigation-mode" id="navigation-mode" hidden>
     {%- comment -%} Seção Gatilhos {%- endcomment -%}
     <div class="navigation-section">
-        <h3><a href="{{ '/gatilhos' | relative_url }}">Gatilhos</a></h3>
+        <h3><a href="{{ '/content/gatilhos' | relative_url }}">Gatilhos</a></h3>
         
-        {%- assign gatilhos_pages = site.pages | where_exp: "item", "item.url contains '/gatilhos/'" | sort: 'title' -%}
+        {%- assign gatilhos_pages = site.pages | where_exp: "item", "item.url contains '/content/gatilhos/'" | sort: 'title' -%}
         {%- assign gatilhos_folders = "" | split: "" -%}
         
         {%- for item in gatilhos_pages -%}
@@ -11,7 +11,7 @@
             {%- assign depth = url_parts | size -%}
             {%- assign filename = item.path | split: '/' | last | split: '.' | first -%}
             
-            {%- if item.layout == 'pasta' and item.url != '/gatilhos/' and depth == 3 and filename == 'index' -%}
+            {%- if item.layout == 'pasta' and item.url != '/content/gatilhos/' and depth == 4 and filename == 'index' -%}
                 {%- assign gatilhos_folders = gatilhos_folders | push: item -%}
             {%- endif -%}
         {%- endfor -%}
@@ -65,14 +65,14 @@
 
     {%- comment -%} Seção Posts {%- endcomment -%}
     <div class="navigation-section">
-        <h3><a href="{{ '/posts' | relative_url }}">Posts</a></h3>
+        <h3><a href="{{ '/content/posts' | relative_url }}">Posts</a></h3>
         
-        {%- assign posts_pages = site.pages | where_exp: "item", "item.url contains '/posts/'" | sort: 'title' -%}
+        {%- assign posts_pages = site.pages | where_exp: "item", "item.url contains '/content/posts/'" | sort: 'title' -%}
         {%- assign posts_items = "" | split: "" -%}
         
         {%- for item in posts_pages -%}
             {%- assign filename = item.path | split: '/' | last | split: '.' | first -%}
-            {%- if item.url != '/posts/' and filename != 'index' -%}
+            {%- if item.url != '/content/posts/' and filename != 'index' -%}
                 {%- unless filename contains '_' -%}
                     {%- assign posts_items = posts_items | push: item -%}
                 {%- endunless -%}

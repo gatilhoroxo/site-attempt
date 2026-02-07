@@ -99,7 +99,7 @@ end
 
 ### Imagem grande
 
-![Branching](https://guides.github.com/activities/hello-world/branching.png)
+![Branching](https://docs.github.com/assets/cb-23923/mw-1440/images/help/repository/branching.webp)
 
 
 ### É possível usar a sintaxe HTML para definição de listas.

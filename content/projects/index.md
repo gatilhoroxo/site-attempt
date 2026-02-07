@@ -1,7 +1,6 @@
 ---
 layout: pasta
 title: Repositórios de Projetos
-permalink: /projects/
 ---
 
 # Repositórios de Projetos

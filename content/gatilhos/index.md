@@ -1,7 +1,6 @@
 ---
 layout: pasta
 title: Gatilhos
-permalink: /gatilhos/
 ---
 
 # gatilhos

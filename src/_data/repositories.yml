@@ -2,7 +2,7 @@ repositories:
 - id: mc-journey-attempt
   name: MC Journey
   github_url: https://github.com/gatilhoroxo/mc-journey-attempt
-  local_path: /projects/mc-journey/
+  local_path: /content/projects/mc-journey/
   description: Jornada de aprendizado sobre Microcontroladores
   updated: 05/02/2026
   topics:

@@ -27,7 +27,7 @@ kramdown:
 
 # GitHub Pages
 url: "https://gatilhoroxo.github.io"
-baseurl: "/site-attempt"
+baseurl: "" # Use "/site-attempt" em produção
 
 # Incluir diretórios customizados
 include:
@@ -37,25 +37,11 @@ include:
 keep_files:
   - assets
 
-# Defaults - configurar permalinks para remover "content" das URLs
+# Defaults
 defaults:
   - scope:
       path: ""
     values:
       layout: "default"
-  - scope:
-      path: "content/posts"
-    values:
-      layout: "default"
-      permalink: /posts/:title/
-  - scope:
-      path: "content/projects"
-    values:
-      layout: "default"
-      permalink: /projects/:path/
-  - scope:
-      path: "content/gatilhos"
-    values:
-      layout: "default"
-      permalink: /gatilhos/:path/
+
 

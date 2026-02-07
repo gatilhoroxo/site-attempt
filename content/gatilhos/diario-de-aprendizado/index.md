@@ -1,7 +1,6 @@
 ---
 layout: diario
 title: Diário de Aprendizado
-permalink: /gatilhos/diario-de-aprendizado/
 ---
 
 # 📔 Diário de Aprendizado
@@ -14,11 +13,11 @@ Registro pessoal do progresso de aprendizado.
 
 ## 📂 Organização
 
-Arquivos nomeados: `dia_YYYY-MM-DD_.md`
+Arquivos nomeados: `dia-YYYY-MM-DD.md`
 
 Exemplo:
-- `dia_2025-12-25_.md` - Primeira entrada
-- `dia_2025-12-26_.md` - Segunda entrada
+- `dia-2025-12-25.md` - Primeira entrada
+- `dia-2025-12-26.md` - Segunda entrada
 
 ## 📝 O que registrar
 

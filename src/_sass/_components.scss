@@ -5,6 +5,11 @@
    para facilitar a manutenção e organização
 */
 
+/* Utilities - classes auxiliares */
+@import 'utilities/spacing';
+@import 'utilities/typography';
+@import 'utilities/colors';
+
 /* Componentes UI */
 @import 'components/badges';
 @import 'components/breadcrumb';

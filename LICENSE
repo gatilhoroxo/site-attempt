@@ -1,0 +1,91 @@
+Licença MIT
+
+Copyright (c) 2026 Gatilho Roxo
+
+Por meio deste, concede-se permissão, gratuitamente, a qualquer pessoa que obtenha 
+uma cópia deste software e dos arquivos de documentação associados (o "Software"), 
+para lidar com o Software sem restrições, incluindo, sem limitação, os direitos de 
+usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender 
+cópias do Software, e permitir que as pessoas a quem o Software é fornecido o façam, 
+sujeito às seguintes condições:
+
+O aviso de copyright acima e este aviso de permissão devem ser incluídos em todas 
+as cópias ou partes substanciais do Software.
+
+O SOFTWARE É FORNECIDO "COMO ESTÁ", SEM GARANTIA DE QUALQUER TIPO, EXPRESSA OU 
+IMPLÍCITA, INCLUINDO, MAS NÃO SE LIMITANDO ÀS GARANTIAS DE COMERCIALIZAÇÃO, 
+ADEQUAÇÃO A UM PROPÓSITO ESPECÍFICO E NÃO VIOLAÇÃO. EM NENHUM CASO OS AUTORES OU 
+DETENTORES DE DIREITOS AUTORAIS SERÃO RESPONSÁVEIS POR QUALQUER RECLAMAÇÃO, DANOS 
+OU OUTRAS RESPONSABILIDADES, SEJA EM AÇÃO DE CONTRATO, DELITO OU DE OUTRA FORMA, 
+DECORRENTES DE, OU EM CONEXÃO COM O SOFTWARE OU O USO OU OUTRAS NEGOCIAÇÕES NO 
+SOFTWARE.
+
+---
+
+## Sobre esta Licença
+
+### O que você PODE fazer:
+
+✓ Usar este software para qualquer finalidade, comercial ou não comercial
+✓ Modificar o código-fonte conforme suas necessidades
+✓ Distribuir cópias originais ou modificadas do software
+✓ Incorporar este código em projetos proprietários
+✓ Sublicenciar o software
+
+### O que você DEVE fazer:
+
+• Incluir o aviso de copyright original em todas as cópias
+• Incluir o texto completo desta licença em todas as distribuições
+• Indicar claramente se você fez modificações no código original
+
+### O que você NÃO PODE fazer:
+
+✗ Responsabilizar os autores por problemas ou danos causados pelo software
+✗ Usar o nome dos autores para endossar produtos derivados sem permissão
+✗ Remover ou alterar os avisos de copyright e licença
+
+### Isenção de Garantia
+
+Este software é um projeto de aprendizado pessoal e é fornecido sem garantias de 
+qualquer tipo. Os autores não garantem que o software esteja livre de erros, bugs 
+ou vulnerabilidades de segurança.
+
+Ao usar este software, você reconhece e concorda que:
+
+1. O software pode conter erros e não foi testado extensivamente
+2. Os autores não são responsáveis por perda de dados ou danos resultantes do uso
+3. Você assume total responsabilidade pelo uso do software em seus projetos
+4. Não há garantia de suporte, manutenção ou atualizações futuras
+
+### Contribuições
+
+Contribuições para este projeto são bem-vindas e serão consideradas como doadas 
+sob os mesmos termos desta licença MIT, a menos que explicitamente acordado de 
+outra forma.
+
+### Recursos de Terceiros
+
+Este projeto pode incluir ou referenciar bibliotecas, frameworks e recursos de 
+terceiros, cada um com suas próprias licenças:
+
+- **Jekyll**: MIT License
+- **GitHub Pages**: Termos de Serviço do GitHub
+- **kramdown**: MIT License
+- **Rouge**: MIT e BSD License
+
+Consulte a documentação de cada dependência para informações completas sobre 
+suas respectivas licenças.
+
+### Contato
+
+Para questões sobre licenciamento ou permissões especiais, abra uma issue no 
+repositório do GitHub ou entre em contato através dos canais de comunicação 
+listados no README.
+
+---
+
+**Nota**: Esta é uma tradução informal da Licença MIT para português brasileiro. 
+Em caso de conflito entre esta tradução e o texto original em inglês acima, o 
+texto em inglês prevalece como a versão juridicamente vinculativa.
+
+**Última atualização**: Fevereiro de 2026
