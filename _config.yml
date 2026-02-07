@@ -27,7 +27,7 @@ kramdown:
 
 # GitHub Pages
 url: "https://gatilhoroxo.github.io"
-baseurl: "" # Use "/site-attempt" em produção
+baseurl: "/site-attempt" # Use "/site-attempt" em produção
 
 # Incluir diretórios customizados
 include:

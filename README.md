@@ -93,6 +93,8 @@ site-attempt/
 
 ### Criar Novo Conteúdo
 
+Dentro da Pasta Content
+
 #### Post
 ```markdown
 # Criar arquivo em content/posts/
