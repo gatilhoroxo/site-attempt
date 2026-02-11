@@ -1,5 +1,8 @@
 #vscode stuff
 .vscode/
+# temp files
+*.tmp
+
 #rest
 Gemfile.lock
 # Jekyll build
