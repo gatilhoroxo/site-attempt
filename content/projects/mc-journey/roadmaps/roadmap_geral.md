@@ -1,9 +1,22 @@
 ---
 title: Roadmap Geral
+description: Plano completo de estudos com estimativas de tempo e fases detalhadas
 ---
 
-
 # 🚀 Roadmap Completo - Aprendizado de Microcontroladores
+
+## 📑 Índice
+
+1. [Roadmap Geral](#️-roadmap-geral-estimativa-40-50-semanas-4hsemana)
+  - [Fase 0](#fase-0-preparação-semanas-1-2)
+  - [Fase 1](#fase-1-fundamentos-com-esp32-semanas-3-10)
+  - [Fase 2](#fase-2-consolidação-com-rp2040-semanas-11-18)
+  - [Fase 3](#fase-3-hardware-mínimo-com-rp2040-zero-semanas-19-24)
+  - [Fase 4](#fase-4-bare-metal-com-stm8-semanas-25-34)
+  - [Fase 5](#fase-5-projetos-integrados-semanas-35-40)
+  - [Fase 6](#fase-6-especialização-semanas-41-50)
+2. [Dicas Importantes](#-dicas-importantes)
+3. [Próximos Passos](#-próximos-passos)
 
 ## 🗺️ ROADMAP GERAL (Estimativa: 40-50 semanas, 4h/semana)
 

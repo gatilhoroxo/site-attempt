@@ -6,18 +6,36 @@ title: Template de Projeto
 
 [Descrição resumida do projeto e seu propósito]
 
+ - Tipo do Projeto: Individual / Integrado / Prático
+    - Individual: Projeto usando um único microcontrolador, focados em aprender recursos específicos.
+    - Integrado: Projeto que combinam múltiplos MCUs trabalhando em conjunto.
+    - Prático: Aplicações do mundo real, como automação, IoT, robótica, etc.
+
+**Autor:** [@gatilhoroxo](https://github.com/gatilhoroxo)  
+**Data de criação:** YYYY-MM-DD  
+**Nível de dificuldade:** ⭐⭐⭐ (1-5 estrelas)  
+**Tempo estimado:** XX horas
+
+---
+
+## 📊 Status do Projeto
+
+- **Versão:** 1.0.0
+- **Status:** 🟡 Em desenvolvimento / 🟢 Funcional / 🔴 Experimental
+- **Última atualização:** YYYY-MM-DD
+
 ---
 
 ## 📑 Índice
 
-1. [🎯 Objetivo](#-objetivo)
-2. [✨ Funcionalidades](#-funcionalidades)
-3. [📦 Componentes](#-componentes)
-4. [🔧 Hardware](#-hardware)
-5. [💻 Software](#-software)
-6. [🏗️ Estrutura do Código](#️-estrutura-do-código)
-7. [📝 Como Usar](#-como-usar)
-8. [🚀 Melhorias Futuras](#-melhorias-futuras)
+1. [Objetivo](#-objetivo)
+2. [Funcionalidades](#-funcionalidades)
+3. [Componentes](#-componentes)
+4. [Hardware](#-hardware)
+5. [Software](#-software)
+6. [Estrutura do Código](#️-estrutura-do-código)
+7. [Como Usar](#-como-usar)
+8. [Melhorias Futuras](#-melhorias-futuras)
 
 ---
 
@@ -202,6 +220,7 @@ cd projeto-nome
 **Problema 2:** [Descrição]
 - **Solução:** [Como resolver]
 
+
 ## 🚀 Melhorias Futuras
 
 ### Curto Prazo
@@ -215,12 +234,6 @@ cd projeto-nome
 - [ ] Integração com outros projetos
 
 ---
-
-## 📊 Status do Projeto
-
-- **Versão:** 1.0.0
-- **Status:** 🟡 Em desenvolvimento / 🟢 Funcional / 🔴 Experimental
-- **Última atualização:** YYYY-MM-DD
 
 ## 📖 Referências
 
@@ -238,7 +251,3 @@ MIT License / Open Source Hardware
 
 ---
 
-**Autor:** [@gatilhoroxo](https://github.com/gatilhoroxo)  
-**Data de criação:** YYYY-MM-DD  
-**Nível de dificuldade:** ⭐⭐⭐ (1-5 estrelas)  
-**Tempo estimado:** XX horas

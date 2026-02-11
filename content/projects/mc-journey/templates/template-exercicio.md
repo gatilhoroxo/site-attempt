@@ -8,6 +8,12 @@ title: Template de Exercicio
 
 ---
 
+**Status:** ⚪ Não iniciado / 🟡 Em andamento / 🟢 Concluído  
+**Dificuldade:** ⭐ Fácil / ⭐⭐ Médio / ⭐⭐⭐ Difícil  
+**Tempo estimado:** XX minutos
+
+---
+
 ## 📑 Índice
 
 1. [🎯 Objetivo](#-objetivo)
@@ -56,7 +62,7 @@ MCU VCC   → Componente VCC (3.3V ou 5V)
 |---------|-----------|
 | `basic.ino/.c` | Versão básica / inicial |
 | `better.ino/.c` | Versão melhorada |
-| `advanced.ino/.c` | Versão avançada (opcional) |
+| `broken.ino/.c` | Versão avançada (opcional) |
 | `README.md` | Este arquivo |
 
 ## 📚 Conceitos
@@ -97,14 +103,9 @@ MCU VCC   → Componente VCC (3.3V ou 5V)
 - [Link para tutorial relacionado]
 - [Link para datasheet (se aplicável)]
 
-## 🔗 Links Relacionados
+## 🔗 Assuntos Relacionados
 
-- **Conceitos:** [`../../../../learn/i1-conceitos-fundamentais/`](../../../../learn/i1-conceitos-fundamentais/)
-- **Próximo exercício:** [`../kN-nome/`](../kN-nome/)
-- **Voltar:** [`../README.md`](../README.md)
+- **Conceitos:** `conceitos-fundamentais/`
+- **Próximo exercício:** `kN-nome/`
 
 ---
-
-**Status:** ⚪ Não iniciado / 🟡 Em andamento / 🟢 Concluído  
-**Dificuldade:** ⭐ Fácil / ⭐⭐ Médio / ⭐⭐⭐ Difícil  
-**Tempo estimado:** XX minutos

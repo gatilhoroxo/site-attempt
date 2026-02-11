@@ -1,5 +1,6 @@
 ---
 title: Roadmap Visual
+description: Visualização gráfica do progresso e etapas de aprendizado
 ---
 
 
@@ -8,6 +9,19 @@ title: Roadmap Visual
 Mapa visual de aprendizado e dependências entre conceitos.
 
 ---
+
+## 📑 Índice
+
+1. [Visão Geral da Jornada](#-visão-geral-da-jornada)
+2. [Mapa de Conceitos e Dependências](#-mapa-de-conceitos-e-dependências)
+3. [Matriz de Pré-requisitos](#-matriz-de-pré-requisitos)
+4. [Progressão por MCU](#-progressão-por-mcu)
+5. [Projetos Integrados](#-projetos-integrados---semanas-46-50)
+6. [Marcos](#-marcos-milestones)
+7. [Curva de Aprendizado](#-curva-de-aprendizado)
+8. [Calendário Sugerido](#️-calendário-sugerido-4hsemana)
+9. [Checklists de Competencias](#-checklist-de-competências)
+
 
 ## 📊 Visão Geral da Jornada
 
@@ -98,6 +112,22 @@ NÍVEL 3: RECURSOS AVANÇADOS
                      │  Assembly    │
                      └──────────────┘
 ```
+
+---
+
+## 🧩 Matriz de Pré-requisitos
+
+| Para fazer... | Precisa saber... |
+|---------------|------------------|
+| **PWM** | GPIO |
+| **I2C** | GPIO + UART |
+| **SPI** | GPIO + I2C (conceitual) |
+| **Interrupts** | GPIO + Timers |
+| **FreeRTOS** | Interrupts + Timers |
+| **PIO** | GPIO + SPI (conceitual) |
+| **DMA** | Interrupts + Memória |
+| **Bare Metal** | Todos os anteriores |
+| **Projetos Integrados** | Todos os MCUs Nível 2 |
 
 ---
 
@@ -272,67 +302,6 @@ Semana 44-45: Projeto Bare Metal
 
 ---
 
-## 📈 Gráfico de Complexidade
-
-```
-Complexidade
-    ▲
-    │                                          ╱╲
-    │                                        ╱    ╲ STM8
-    │                                      ╱        Bare
-    │                                    ╱           Metal
-    │                              ╱─────
-    │                            ╱    RP2040
-    │                          ╱       PIO+Multi
-    │                    ╱─────
-    │                  ╱    ESP32
-    │                ╱       WiFi+RTOS
-    │          ╱─────
-    │        ╱    Arduino
-    │      ╱       Framework
-    │────╱──────────────────────────────────────▶
-    0    5    10   15   20   25   30   35   40    Semanas
-```
-
----
-
-## 🧩 Matriz de Pré-requisitos
-
-| Para fazer... | Precisa saber... |
-|---------------|------------------|
-| **PWM** | GPIO |
-| **I2C** | GPIO + UART |
-| **SPI** | GPIO + I2C (conceitual) |
-| **Interrupts** | GPIO + Timers |
-| **FreeRTOS** | Interrupts + Timers |
-| **PIO** | GPIO + SPI (conceitual) |
-| **DMA** | Interrupts + Memória |
-| **Bare Metal** | Todos os anteriores |
-| **Projetos Integrados** | Todos os MCUs Nível 2 |
-
----
-
-## 🎓 Curva de Aprendizado
-
-```
-Confiança
-    ▲
-100%│                                              ╱─
-    │                                            ╱
- 75%│                                    ╱──────╱
-    │                            ╱──────╱
- 50%│                    ╱──────╱
-    │            ╱──────╱
- 25%│    ╱──────╱
-    │  ╱
-  0%├─╱────────────────────────────────────────────▶
-    │ Arduino  ESP32  RP2040  STM8  Integrado  Tempo
-    │
-    └─ Fase: Básico → Intermediário → Avançado → Expert
-```
-
----
-
 ## 🔄 Ciclo de Aprendizado Recomendado
 
 ```
@@ -446,18 +415,6 @@ Confiança
 - [ ] Protocolo customizado
 - [ ] Sistema distribuído funcionando
 - [ ] 2 projetos multi-MCU
-
----
-
-## 🔗 Links para Navegação Rápida
-
-- **Roadmap Texto:** [`roadmap_geral.md`](roadmap_geral.md)
-- **Tracker de Progresso:** [`../i4-diario-aprendizado/TRACKER.md`](../i4-diario-aprendizado/TRACKER.md)
-- **Conceitos Fundamentais:** [`../i1-conceitos-fundamentais/`](../i1-conceitos-fundamentais/)
-- **Especificações MCUs:** [`../i3-mcus-especificacoes/`](../i3-mcus-especificacoes/)
-- **Prática com MCUs:** [`../i7-mcus-pratica/`](../i7-mcus-pratica/)
-
-> **Nota:** O código-fonte dos projetos está localizado no repositório raiz em `/mcu/` (fora da pasta docs). Esta seção contém apenas a documentação.
 
 ---
 

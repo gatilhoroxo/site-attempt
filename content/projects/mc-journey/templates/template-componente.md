@@ -10,6 +10,12 @@ title: Template de Componente
 
 ---
 
+**Última atualização:** YYYY-MM-DD  
+**Testado em:** Arduino UNO, ESP32, RP2040  
+**Status:** ✅ Verificado / ⚠️ Não testado
+
+---
+
 ## 📑 Índice
 
 1. [🔍 Visão Geral](#-visão-geral)
@@ -302,7 +308,7 @@ int main() {
 
 ## 🔗 Projetos que Usam Este Componente
 
-- Link para documentação do projeto em `i7-mcus-pratica/j3-projetos/`
+- Link para documentação do projeto em `ferramentas/mcus/_mcu_/projetos/`
 - Link para outro projeto relacionado
 > **Nota:** O código-fonte dos projetos está em `/mcu/` (repositório raiz)
 
@@ -314,6 +320,3 @@ int main() {
 
 ---
 
-**Última atualização:** YYYY-MM-DD  
-**Testado em:** Arduino UNO, ESP32, RP2040  
-**Status:** ✅ Verificado / ⚠️ Não testado

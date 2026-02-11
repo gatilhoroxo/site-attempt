@@ -84,7 +84,7 @@ gpio_set_pull_mode()       // Configura pull-up/pull-down
 - Output mode
 - Delays com FreeRTOS (vTaskDelay)
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -136,10 +136,11 @@ void app_main(void)
 - Leitura de estado digital (gpio_get_level)
 - Lógica invertida com pull-up (LOW = pressionado)
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
+
 #define LED_PIN GPIO_NUM_2
 #define BUTTON_PIN GPIO_NUM_0  // Boot button
 
@@ -166,6 +167,7 @@ void app_main(void)
         vTaskDelay(10 / portTICK_PERIOD_MS);  // Pequeno delay
     }
 }
+
 ```
 
 </details>
@@ -190,7 +192,7 @@ void app_main(void)
 - Uso de timestamps (xTaskGetTickCount)
 - Máquina de estados simples
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -297,7 +299,7 @@ ledc_set_freq()           // Muda frequência (para sons)
 - Duty cycle (0-255 com resolução de 8 bits)
 - Atualização de PWM em tempo real
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -375,7 +377,7 @@ void app_main(void)
 - Mudança dinâmica de frequência PWM
 - Controle de duração de notas
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -492,7 +494,7 @@ adc1_get_raw()             // Lê valor bruto
 - Leitura de valor bruto (0-4095)
 - Conversão para voltagem
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -541,7 +543,7 @@ void app_main(void)
 - Integração ADC + PWM
 - Controle em tempo real
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -614,7 +616,7 @@ void app_main(void)
 - Padrões binários para dígitos
 - Controle de múltiplos pinos simultaneamente
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -738,7 +740,7 @@ VERDE (10s) --> AMARELO (3s) --> VERMELHO (10s) --> [loop]
 #define BUZZER GPIO_NUM_4
 ```
 
-<details>
+<details markdown="1">
 <summary>Template Básico pro Projeto</summary>
 
 ```c

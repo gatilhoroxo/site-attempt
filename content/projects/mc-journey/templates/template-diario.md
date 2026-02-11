@@ -10,6 +10,12 @@ title: Template de Diario
 
 ---
 
+**Humor do dia:** 😊 / 😐 / 😓  
+**Energia:** 🔋🔋🔋🔋🔋 (1-5)  
+**Foco:** ⭐⭐⭐⭐⭐ (1-5)
+
+---
+
 ## 📋 Resumo do Dia
 
 [Breve resumo do que foi feito hoje - 2-3 linhas]
@@ -115,17 +121,17 @@ comando --parametro
 **Streak:** X dias consecutivos
 
 ### Atualização no Tracker
-- Marcar exercícios concluídos em [`TRACKER.md`](TRACKER.md)
+- Marcar exercícios concluídos em `tracker.md`
 - Atualizar percentual de progresso
 
 ---
 
 ## 🔗 Arquivos Relacionados
 
-- **Exercício do dia:** Link para documentação do exercício em `i7-mcus-pratica/j2-exercicios/`
+- **Exercício do dia:** Link para documentação do exercício em `ferramentas/mcus/_mcu_/exercicios/`
 > **Nota:** O código-fonte está em `/mcu/` (repositório raiz)
-- **Conceitos estudados:** [`../i1-conceitos-fundamentais/`](../i1-conceitos-fundamentais/)
-- **Tracker:** [`TRACKER.md`](TRACKER.md)
+- **Conceitos estudados:** `../i1-conceitos-fundamentais/`
+- **Tracker:** `tracker.md`
 
 ---
 
@@ -144,12 +150,3 @@ comando --parametro
 
 ---
 
-## 📷 Imagens/Diagramas
-
-[Adicionar fotos do circuito, screenshots, diagramas se relevante]
-
----
-
-**Humor do dia:** 😊 / 😐 / 😓  
-**Energia:** 🔋🔋🔋🔋🔋 (1-5)  
-**Foco:** ⭐⭐⭐⭐⭐ (1-5)

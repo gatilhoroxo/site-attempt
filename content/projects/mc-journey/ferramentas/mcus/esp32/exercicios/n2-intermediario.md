@@ -103,7 +103,7 @@ gpio_set_intr_type()             // Define tipo de trigger
 - Execução de código em ISR (IRAM_ATTR)
 - Auto-reload de timers
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -184,7 +184,7 @@ void app_main(void)
 - Variáveis voláteis
 - Sincronização ISR vs main loop
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -284,7 +284,7 @@ i2c_master_read_from_device() // Lê dados
 - Uso de bibliotecas externas (component)
 - Renderização gráfica em displays
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c
@@ -385,7 +385,7 @@ httpd_register_uri_handler() // Registra endpoint
 - HTTP server e rotas
 - Controle remoto via web
 
-<details>
+<details markdown="1">
 <summary>Código Básico pro Exercício</summary>
 
 ```c

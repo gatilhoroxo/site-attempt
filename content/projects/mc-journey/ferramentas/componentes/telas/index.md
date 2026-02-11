@@ -1,4 +1,4 @@
 ---
 layout: pasta
-title: telas
+title: Telas
 ---

@@ -1,4 +1,4 @@
 ---
 layout: pasta
-title: sensores
+title: Sensores
 ---

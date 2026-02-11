@@ -4,10 +4,10 @@ title: Template dos Exercicios
 
 # Exercícios
 
-## 🎯 Estrutura dos Exercícios (Para Cada MCU)
+## 🎯 Estrutura dos Níveis de Exercícios (Para Cada MCU)
 
 ### Nível 1 - Básico (10-12 exercícios)
-Foco: GPIO, timers básicos, comunicação serial
+Foco: GPIO, PWM básico, timers básicos, comunicação serial
 
 1. Piscar LED (delay com loop)
 2. Piscar LED (delay com timer)
@@ -23,7 +23,7 @@ Foco: GPIO, timers básicos, comunicação serial
 12. Projeto integrado nível 1
 
 ### Nível 2 - Intermediário (10-12 exercícios)
-Foco: Interrupts, protocolos de comunicação, periféricos
+Foco: Interrupts, protocolos de comunicação I2C e SPI, ADC (leitura analógica), periféricos
 
 1. Interrupt por botão
 2. Timer com interrupt
@@ -39,7 +39,7 @@ Foco: Interrupts, protocolos de comunicação, periféricos
 12. Projeto integrado nível 2
 
 ### Nível 3 - Avançado (8-10 exercícios)
-Foco: Otimização, recursos avançados, integração
+Foco: Otimização, recursos avançados (DMA e Multicore), integração, protocolos de comunicação complexos
 
 1. DMA para transferências
 2. Low-power modes
@@ -53,3 +53,12 @@ Foco: Otimização, recursos avançados, integração
 10. Projeto integrado nível 3
 
 ---
+
+## 📝 Estrutura dos Exercícios
+
+Cada exercício deve conter:
+- Objetivo do exercício
+- Conceitos abordados
+- Materiais necessários
+- Código de exemplo
+- Desafios extras

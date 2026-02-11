@@ -10,6 +10,12 @@ title: Template de Conceito
 
 ---
 
+**Última atualização:** YYYY-MM-DD  
+**Revisado por:** [@usuario]  
+**Status:** 🟢 Completo / 🟡 Em progresso / ⚪ Rascunho
+
+---
+
 ## 📑 Índice
 
 1. [🎯 O que é](#-o-que-é)
@@ -233,7 +239,7 @@ Onde:
 
 ## 🎓 Exercícios Relacionados
 
-- Link para documentação do exercício em `i7-mcus-pratica/j2-exercicios/`
+- Link para documentação do exercício em `ferramentas/mcus/_mcu_/exercicios/`
 - Link para outro exercício relacionado
 > **Nota:** O código-fonte está em `/mcu/` (repositório raiz)
 
@@ -247,6 +253,3 @@ Onde:
 
 ---
 
-**Última atualização:** YYYY-MM-DD  
-**Revisado por:** [@usuario]  
-**Status:** 🟢 Completo / 🟡 Em progresso / ⚪ Rascunho
