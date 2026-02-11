@@ -1,3 +1,7 @@
+---
+title: Conventions
+---
+
 # Convenções de Código e Organização
 
 Este documento estabelece os padrões de nomenclatura, organização de arquivos, 
@@ -258,6 +262,53 @@ $z-index-modal: 1000;
 
 <!-- Capitalize, downcase, upcase -->
 {{ page.title | capitalize }}
+```
+
+## Configuração de Dados
+
+### Navigation.yml
+
+Arquivo `src/_data/navigation.yml` controla seções da sidebar:
+
+```yaml
+sections:
+  - name: "Gatilhos"
+    path: "gatilhos"
+    max_depth: 2
+    sort_by: "title"
+  
+  - name: "Posts"
+    path: "posts"
+    max_depth: 1
+    sort_by: "date"
+```
+
+**Campos obrigatórios**:
+- `name`: String - Nome exibido na UI
+- `path`: String - Pasta dentro de `content/` (sem prefixo)
+
+**Campos opcionais**:
+- `max_depth`: Number (1-3) - Níveis de profundidade, padrão: 2
+- `sort_by`: String (`title`, `date`, `name`) - Critério de ordenação, padrão: `title`
+
+**Comportamento**:
+- Apenas seções listadas aparecem na navegação
+- Seções vazias são ocultadas automaticamente
+- Arquivos aparecem antes de subpastas
+- `index.md` é ignorado para evitar duplicação
+
+### Repositories.yml
+
+Arquivo `src/_data/repositories.yml` para modo repositórios:
+
+```yaml
+repositories:
+  - id: projeto-id
+    name: "Nome do Projeto"
+    github_url: https://github.com/user/repo
+    local_path: /content/projects/projeto/
+    description: "Descrição breve"
+    updated: "DD/MM/YYYY"
 ```
 
 ## Checklist de Conformidade

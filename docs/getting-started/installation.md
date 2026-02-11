@@ -1,3 +1,7 @@
+---
+title: Guia de Instalação
+---
+
 # Guia de Instalação
 
 ## Pré-requisitos

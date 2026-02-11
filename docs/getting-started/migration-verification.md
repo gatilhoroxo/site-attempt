@@ -1,3 +1,7 @@
+---
+title: Guia de Verificação da Migração
+---
+
 # Guia de Verificação da Migração
 
 Este guia lista todos os arquivos modificados durante a reorganização e comandos 

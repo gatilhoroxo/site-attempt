@@ -1,3 +1,7 @@
+---
+title: Guia de Componentes
+---
+
 # Guia de Componentes
 
 ## Componentes Globais
@@ -74,6 +78,38 @@
 <h1>{{ include.title }}</h1>
 {% endraw %}
 ```
+
+## Navegação Dinâmica da Sidebar
+
+A navegação da sidebar é gerada automaticamente a partir de `src/_data/navigation.yml`.
+
+### Adicionar Nova Seção
+
+Edite `src/_data/navigation.yml`:
+
+```yaml
+sections:
+  - name: "Nome da Seção"
+    path: "pasta-dentro-de-content"
+    max_depth: 2
+    sort_by: "title"  # ou "date" ou "name"
+```
+
+- **name**: Título exibido na sidebar
+- **path**: Pasta dentro de `content/` (sem o prefixo content/)
+- **max_depth**: Níveis de profundidade (1-3), onde 1 = apenas arquivos raiz
+- **sort_by**: `title` (alfabético), `date` (cronológico), ou `name` (por filename)
+
+### Comportamento
+
+- Arquivos são listados **antes** de subpastas
+- Seções vazias são automaticamente ocultadas
+- Página atual recebe highlight com classe `.active`
+- `index.md` de cada pasta é ignorado (evita duplicação)
+
+### Processamento
+
+O plugin `src/_plugins/navigation_generator.rb` processa a árvore no build e salva em `site.data.navigation_tree`. A renderização usa `src/_includes/scripts/sidebar/navigation-tree.html` (recursivo).
 
 ## Criar Novo Componente
 

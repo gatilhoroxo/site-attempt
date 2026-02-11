@@ -1,3 +1,7 @@
+---
+title: Architecture
+---
+
 # Arquitetura do Sistema
 
 Este documento descreve a arquitetura técnica do site estático construído com 
