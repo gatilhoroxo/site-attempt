@@ -12,6 +12,13 @@ layouts_dir: src/_layouts
 data_dir: src/_data
 plugins_dir: src/_plugins
 
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-optional-front-matter
+
 # Sass/SCSS
 sass:
   sass_dir: src/_sass

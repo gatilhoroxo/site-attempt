@@ -5,6 +5,10 @@
     margin-bottom: 0.6rem;
 }
 
+.navigation-section:last-child {
+    margin-bottom: 4rem;
+}
+
 .navigation-section h3 {
     font-size: 0.75rem;
     text-transform: uppercase;
@@ -163,4 +167,121 @@ details summary:hover {
 
 details[open] summary {
     margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   DYNAMIC NAVIGATION TREE
+   ============================================ */
+
+/* Active page highlighting */
+.navigation-list a.active,
+.navigation-section a.active {
+    font-weight: 600;
+    color: var(--accent);
+    position: relative;
+    background: linear-gradient(90deg, 
+        color-mix(in srgb, var(--accent) 12%, transparent) 0%, 
+        color-mix(in srgb, var(--accent) 4%, transparent) 100%);
+    border-radius: 6px;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent),
+                0 2px 4px color-mix(in srgb, var(--accent) 15%, transparent);
+    
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 0.65rem;
+        right: 0.65rem;
+        height: 2px;
+        background: var(--accent);
+        border-radius: 2px;
+        box-shadow: 0 0 8px color-mix(in srgb, var(--accent) 50%, transparent);
+    }
+}
+
+/* Depth-based indentation */
+.navigation-list[data-depth="0"] {
+    padding-left: 0;
+}
+
+.navigation-list[data-depth="1"] {
+    padding-left: 1.25rem;
+}
+
+.navigation-list[data-depth="2"] {
+    padding-left: 2.5rem;
+}
+
+.navigation-list[data-depth="3"] {
+    padding-left: 3.75rem;
+}
+
+/* Folder depth indentation - pastas aninhadas têm margem adicional */
+.navigation-folder[data-depth="0"] {
+    margin-left: 0;
+}
+
+.navigation-folder[data-depth="1"] {
+    margin-left: 1.25rem;
+}
+
+.navigation-folder[data-depth="2"] {
+    margin-left: 2.5rem;
+}
+
+.navigation-folder[data-depth="3"] {
+    margin-left: 3.75rem;
+}
+
+/* Navigation items */
+.navigation-item {
+    margin: 0.1rem 0;
+}
+
+.navigation-list {
+    @include reset-list;
+    margin: 0.25rem 0;
+}
+
+/* Folder styling */
+.navigation-folder {
+    margin: 0.25rem 0;
+}
+
+.folder-header {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.folder-name {
+    font-size: 0.9rem;
+}
+
+.folder-name-link {
+    text-decoration: none;
+    color: inherit;
+    display: inline-block;
+    @include transition(color, 0.2s, ease);
+    
+    &:hover {
+        color: var(--accent);
+    }
+    
+    &[data-active="true"] {
+        color: var(--accent);
+        font-weight: 600;
+    }
+}
+
+.folder-content {
+    margin-top: 0.25rem;
+}
+
+/* Empty state */
+.navigation-empty {
+    padding: 1rem;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-style: italic;
 }

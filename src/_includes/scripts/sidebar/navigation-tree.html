@@ -1,0 +1,44 @@
+{%- comment -%}
+  Include recursivo para renderizar árvore de navegação
+  Parâmetros:
+    - tree: hash com { 'files' => [...], 'folders' => {...} }
+    - depth: profundidade atual (default: 0)
+{%- endcomment -%}
+
+{%- assign current_depth = include.depth | default: 0 -%}
+
+{%- if include.tree.files.size > 0 -%}
+  <ul class="navigation-list" data-depth="{{ current_depth }}">
+    {%- for file in include.tree.files -%}
+      <li class="navigation-item">
+        <a href="{{ file.url | relative_url }}" {% if file.url == page.url %}class="active"{% endif %}>
+          {{ file.title }}
+        </a>
+      </li>
+    {%- endfor -%}
+  </ul>
+{%- endif -%}
+
+{%- if include.tree.folders.size > 0 -%}
+  {%- for folder in include.tree.folders -%}
+    {%- assign folder_name = folder[0] -%}
+    {%- assign folder_tree = folder[1] -%}
+    
+    <details class="navigation-folder" data-depth="{{ include.depth | default: 0 }}">
+      <summary class="folder-header">
+        {%- if folder_tree.index_url -%}
+          <a href="{{ folder_tree.index_url | relative_url }}" class="folder-name-link" {% if folder_tree.index_url == page.url %}data-active="true"{% endif %}>
+            <span class="folder-name">{{ folder_name | replace: "-", " " | replace: "_", " " | capitalize }}</span>
+          </a>
+        {%- else -%}
+          <span class="folder-name">{{ folder_name | replace: "-", " " | replace: "_", " " | capitalize }}</span>
+        {%- endif -%}
+      </summary>
+      
+      <div class="folder-content">
+        {%- assign folder_next_depth = include.depth | default: 0 | plus: 1 -%}
+        {%- include scripts/sidebar/navigation-tree.html tree=folder_tree depth=folder_next_depth -%}
+      </div>
+    </details>
+  {%- endfor -%}
+{%- endif -%}

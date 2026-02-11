@@ -1,13 +1,14 @@
 source "https://rubygems.org"
 
-# Usar a mesma versão do GitHub Pages
-gem "github-pages", group: :jekyll_plugins
+# Jekyll core
+gem "jekyll", "~> 3.10.0"
 
 # Plugins Jekyll úteis
 group :jekyll_plugins do
   gem "jekyll-feed"
   gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
+  gem "jekyll-optional-front-matter"
 end
 
 # Ferramentas de teste
@@ -16,7 +17,7 @@ group :test do
 end
 
 # Windows e JRuby não incluem arquivos de zona de tempo
-platforms :mingw, :x64_mingw, :mswin, :jruby do
+platforms :windows, :jruby do
   gem "tzinfo", ">= 1", "< 3"
   gem "tzinfo-data"
 end
