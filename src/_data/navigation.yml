@@ -19,6 +19,6 @@ sections:
   
   - name: "Projects"
     path: "projects"
-    max_depth: 2
+    max_depth: 3
     sort_by: "title"
   
