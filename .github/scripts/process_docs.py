@@ -6,6 +6,7 @@ Adds frontmatter to markdown files and ensures proper layout configuration.
 
 import os
 import re
+import sys
 from pathlib import Path
 from datetime import datetime
 
@@ -20,7 +21,7 @@ def has_frontmatter(content):
     return content.startswith('---\n')
 
 
-def add_frontmatter(content, filepath):
+def add_frontmatter(content, filepath, repo_title):
     """Add appropriate frontmatter to markdown file"""
     filename = os.path.basename(filepath)
     
@@ -33,8 +34,8 @@ def add_frontmatter(content, filepath):
             title = title_match.group(1).strip()
         else:
             folder_name = os.path.basename(os.path.dirname(filepath))
-            if folder_name == 'mc-journey-attempt':
-                title = 'MC Journey'
+            if folder_name == repo_title:
+                title = repo_title
             else:
                 title = folder_name.replace('-', ' ').replace('_', ' ').title()
     else:
@@ -97,14 +98,14 @@ def update_frontmatter_layout(content, filepath):
     return f"---\n{new_frontmatter}\n---\n{rest}"
 
 
-def process_file(source_file, target_file):
+def process_file(source_file, target_file, repo_title):
     """Process a single markdown file"""
     with open(source_file, 'r', encoding='utf-8') as f:
         content = f.read()
     
     # Add frontmatter if not present
     if not has_frontmatter(content):
-        content = add_frontmatter(content, source_file)
+        content = add_frontmatter(content, source_file, repo_title)
     else:
         # Force layout: pasta for index.md files
         content = update_frontmatter_layout(content, source_file)
@@ -118,11 +119,20 @@ def process_file(source_file, target_file):
 def main():
     """Main processing function"""
     # Clean target directory
+    if len(sys.argv) < 4:
+        print("Usage: process_docs.py <source_docs_dir> <target_dir> <repo_title>")
+        sys.exit(1)
+    source_dir = Path(sys.argv[1])
+    target_dir = Path(sys.argv[2])
+    repo_title = sys.argv[3]
+    
+    # Clean target directory
     if target_dir.exists():
         import shutil
         shutil.rmtree(target_dir)
     target_dir.mkdir(parents=True, exist_ok=True)
     
+
     # Process all markdown files
     if source_dir.exists():
         for md_file in source_dir.rglob('*.md'):
@@ -131,7 +141,7 @@ def main():
             target_file = target_dir / rel_path
             
             print(f"Processing: {rel_path}")
-            process_file(md_file, target_file)
+            process_file(md_file, target_file, repo_title)
         
         print(f"\nSync completed at {datetime.now().isoformat()}")
     else:

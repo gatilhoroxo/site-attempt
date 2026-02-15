@@ -12,6 +12,11 @@ group :jekyll_plugins do
 end
 
 # Ferramentas de teste
+group :development, :test do
+  gem "rspec", "~> 3.13"
+  gem "rspec-mocks", "~> 3.13"
+end
+
 group :test do
   gem "html-proofer", "~> 5.0"
 end

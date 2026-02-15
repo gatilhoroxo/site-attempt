@@ -1,19 +1,2 @@
 
-<script>
-// Theme Switcher - Gerencia alternância entre temas dark/light
-(function() {
-  const themeToggle = document.getElementById('theme-toggle');
-  const currentTheme = localStorage.getItem('theme') || 'dark';
-  
-  // Set theme immediately without transitions
-  document.documentElement.setAttribute('data-theme', currentTheme);
-  themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
-  
-  themeToggle.addEventListener('click', () => {
-    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
-  });
-})();
-</script>
+<script type="module" src="{{ '/assets/js/theme-manager.js' | relative_url }}"></script>

@@ -3,6 +3,14 @@
 # temp files
 *.tmp
 
+# testes
+.pytest_cache 
+__pycache__
+node_modules
+test-results
+playwright-report
+packege-lock.json
+
 #rest
 Gemfile.lock
 # Jekyll build

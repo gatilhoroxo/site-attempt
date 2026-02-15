@@ -4,10 +4,10 @@
   Para adicionar novas seções, edite apenas o arquivo de configuração
 -->
 
-<nav class="breadcrumb-container" aria-label="Breadcrumb">
+<nav class="breadcrumb-container" data-breadcrumb aria-label="Breadcrumb">
   <ol class="breadcrumb">
     <!-- Home item -->
-    <li class="breadcrumb-item">
+    <li class="breadcrumb-item" data-breadcrumb-item>
       <a href="{{ '/' | relative_url }}" class="breadcrumb-link">
         <svg class="breadcrumb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
           <path d="{{ site.data.breadcrumb_config.home.svg_path }}" />
@@ -27,19 +27,21 @@
         
         <!-- Skip INDEX breadcrumb items if configured to skip -->
         {% unless section_config.skip %}
-          <!-- Separator SVG -->
-          <svg class="breadcrumb-separator" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="{{ site.data.breadcrumb_config.separator.svg_path }}" clip-rule="evenodd" />
-          </svg>
+          <!-- Separator SVG (wrapped in li for accessibility) -->
+          <li class="breadcrumb-separator" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="{{ site.data.breadcrumb_config.separator.svg_path }}" clip-rule="evenodd" />
+            </svg>
+          </li>
           
           {% if forloop.last %}
             <!-- Current/last item - always show page title -->
-            <li class="breadcrumb-item breadcrumb-item-current">
+            <li class="breadcrumb-item breadcrumb-item-current" data-breadcrumb-item>
               <span class="breadcrumb-current" aria-current="page">{{ page.title }}</span>
             </li>
           {% else %}
             <!-- Intermediate items -->
-            <li class="breadcrumb-item">
+            <li class="breadcrumb-item" data-breadcrumb-item>
               {% if section_config %}
                 <!-- Section found in config -->
                 {% if section_config.url %}

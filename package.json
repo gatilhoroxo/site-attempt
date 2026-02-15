@@ -1,0 +1,30 @@
+{
+  "name": "site-attempt-tests",
+  "version": "1.0.0",
+  "description": "Test suite for Jekyll site-attempt project",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e": "playwright test tests/e2e/ --config tests/playwright.config.js",
+    "test:e2e:headed": "playwright test tests/e2e/ --headed --config tests/playwright.config.js",
+    "test:e2e:debug": "playwright test tests/e2e/ --debug --config tests/playwright.config.js",
+    "test:a11y": "playwright test tests/accessibility/ --config tests/playwright.config.js",
+    "test:a11y:pa11y": "pa11y-ci --config ./tests/.pa11yci.json",
+    "test:unit": "vitest run tests/unit/js/ --config tests/vitest.config.js",
+    "test:unit:watch": "vitest tests/unit/js/ --config tests/vitest.config.js",
+    "test:unit:coverage": "vitest run tests/unit/js/ --coverage --config tests/vitest.config.js",
+    "test:all": "npm run test:unit && npm run test:e2e && npm run test:a11y",
+    "install:browsers": "playwright install"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@axe-core/playwright": "^4.8.2",
+    "pa11y-ci": "^3.1.0",
+    "vitest": "^1.1.0",
+    "@vitest/coverage-v8": "^1.1.0",
+    "jsdom": "^23.0.0"
+  },
+  "keywords": ["jekyll", "testing", "playwright", "accessibility"],
+  "author": "",
+  "license": "ISC"
+}

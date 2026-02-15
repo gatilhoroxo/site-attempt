@@ -1,0 +1,9 @@
+sections:
+  - path: "content"
+    name: "Content"
+    max_depth: 2
+    sort_by: "title"
+  - path: "docs"
+    name: "Documentation"
+    max_depth: 1
+    sort_by: "name"

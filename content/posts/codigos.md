@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Codigos
+date: "2026-02-16"
 ---
 
 # Alguns exemplos de códigos

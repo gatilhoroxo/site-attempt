@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Referências
+date: "2026-02-16"
 ---
 
 # 📚 Referências

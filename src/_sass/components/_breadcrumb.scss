@@ -70,6 +70,14 @@
     color: var(--text);
     opacity: 0.4;
     flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    list-style: none;
+    
+    svg {
+        width: 12px;
+        height: 12px;
+    }
 }
 
 .breadcrumb-item-current {
@@ -121,6 +129,11 @@
     .breadcrumb-separator {
         width: 12px;
         height: 12px;
+        
+        svg {
+            width: 12px;
+            height: 12px;
+        }
     }
 }
 

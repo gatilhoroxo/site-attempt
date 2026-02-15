@@ -1,0 +1,7 @@
+{%- if site.data.nav-bar.sections -%}
+    {%- for section in site.data.nav-bar.sections -%}
+        <a href="{{ '/' | append: section.path | relative_url }}">{{ section.name }}</a>
+    {%- endfor -%}
+{%- else -%}
+    <span>Nenhuma seção configurada em nav-bar.yml</span>
+{%- endif -%}

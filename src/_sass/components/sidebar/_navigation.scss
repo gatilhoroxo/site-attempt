@@ -9,22 +9,23 @@
     margin-bottom: 4rem;
 }
 
-.navigation-section h3 {
+.navigation-section-title {
     font-size: 0.75rem;
     text-transform: uppercase;
     color: var(--accent);
     margin-bottom: 0.25rem;
     padding-bottom: 0.25rem;
     border-bottom: 1px solid var(--border);
+    font-weight: 700;
 }
 
-.navigation-section h3 a {
+.navigation-section-title a {
     color: var(--accent);
     text-decoration: none;
     @include transition(color, 0.2s, ease);
 }
 
-.navigation-section h3 a:hover {
+.navigation-section-title a:hover {
     color: var(--link-hover);
 }
 

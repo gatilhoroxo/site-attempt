@@ -1,4 +1,4 @@
-<nav class="navigation-mode" id="navigation-mode" hidden>
+<nav class="navigation-mode" id="navigation-mode" data-nav hidden>
     {%- comment -%}
       Navegação dinâmica baseada em src/_data/navigation.yml
       Processada pelo plugin navigation_generator.rb
@@ -7,11 +7,11 @@
     {%- if site.data.navigation_tree -%}
         {%- for section in site.data.navigation_tree -%}
             <div class="navigation-section" data-section="{{ section.path }}">
-                <h3>
+                <div class="navigation-section-title">
                     <a href="{{ '/' | append: section.path_prefix | append: section.path | relative_url }}">
                         {{ section.name }}
                     </a>
-                </h3>
+                </div>
                 
                 {%- if section.tree -%}
                     {%- include scripts/sidebar/navigation-tree.html tree=section.tree depth=0 -%}

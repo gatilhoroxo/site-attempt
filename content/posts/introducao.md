@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Introdução
+date: "2026-02-16"
 ---
 
 Texto pode ser **negrito**, _itálico_, ~~cortado~~ ou `palavra-chave`.

@@ -1,11 +1,11 @@
 <!-- Barra lateral vertical para ícones -->
 <aside class="icon-bar">
-  <button id="sidebar-toggle" class="navigation-toggle" data-state="navigation" aria-label="Toggle navigation"></button>
-  <button id="search-toggle" class="search-toggle" data-state="search" aria-label="Toggle search"></button>
-  <button id="repositories-toggle" class="repositories-toggle" data-state="repositories" aria-label="Toggle repositories"></button>
+  <button id="sidebar-toggle" data-sidebar-toggle data-nav-state class="navigation-toggle" data-state="navigation" aria-label="Toggle navigation" aria-expanded="false"></button>
+  <button id="search-toggle" data-search-state class="search-toggle" data-state="search" aria-label="Toggle search" aria-expanded="false"></button>
+  <button id="repositories-toggle" data-repos-state class="repositories-toggle" data-state="repositories" aria-label="Toggle repositories" aria-expanded="false"></button>
 </aside>
 
-<aside id="sidebar" class="sidebar">
+<aside id="sidebar" data-sidebar class="sidebar">
   <!-- Modo de busca (inicialmente oculto) -->
   {% include scripts/sidebar/search-mode.html %}
 

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'date'
+
 # Plugin para gerar árvore de navegação dinâmica da sidebar
 # Pré-processa a estrutura de pastas e arquivos de content/ para performance
 
@@ -130,7 +132,19 @@ end
 def sort_files(files, sort_by)
   case sort_by
   when 'date'
-    files.sort_by { |f| f['date'] || Time.at(0) }.reverse
+    files.sort_by do |f|
+      date = f['date']
+      # Convert to Time for consistent comparison
+      if date.is_a?(String)
+        date = Time.parse(date) rescue Time.at(0)
+      elsif date.is_a?(Date)
+        date = date.to_time
+      elsif date.is_a?(Time)
+        date
+      else
+        Time.at(0)
+      end
+    end.reverse
   when 'name'
     files.sort_by { |f| f['path'] }
   else # 'title'

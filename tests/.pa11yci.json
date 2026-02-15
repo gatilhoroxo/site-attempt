@@ -1,0 +1,28 @@
+{
+  "defaults": {
+    "timeout": 30000,
+    "wait": 1000,
+    "chromeLaunchConfig": {
+      "ignoreHTTPSErrors": true,
+      "args": ["--no-sandbox", "--disable-dev-shm-usage"]
+    }
+  },
+  "urls": [
+    "http://localhost:4000/site-attempt/",
+    "http://localhost:4000/site-attempt/content/gatilhos/",
+    "http://localhost:4000/site-attempt/content/posts/",
+    "http://localhost:4000/site-attempt/content/projects/",
+    "http://localhost:4000/site-attempt/docs/",
+    "http://localhost:4000/site-attempt/content/gatilhos/conceitos-fundamentais/",
+    "http://localhost:4000/site-attempt/content/gatilhos/diario-de-aprendizado/",
+    "http://localhost:4000/site-attempt/content/projects/mc-journey/"
+  ],
+  "standard": "WCAG2AA",
+  "ignore": [
+    "color-contrast"
+  ],
+  "hideElements": [],
+  "actions": [
+    "wait for element body to be visible"
+  ]
+}

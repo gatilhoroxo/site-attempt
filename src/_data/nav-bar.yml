@@ -1,0 +1,19 @@
+# Configuração da navegação da barra abaixo do titulo
+# Apenas as seções listadas aqui aparecerão nessa navegação
+
+sections:
+  - name: "Inicio"
+    path: ""
+
+  - name: "Gatilhos"
+    path: "content/gatilhos/"
+  
+  - name: "Posts"
+    path: "content/posts"
+  
+  - name: "Projects"
+    path: "content/projects"
+
+  - name: "Docs"
+    path: "docs"
+  

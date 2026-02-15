@@ -47,11 +47,12 @@ header {
     position: relative;
 }
 
-header h1 {
+.site-title {
     font-family: var(--font-heading);
     font-size: var(--font-size-2xl);
     margin: 0.25rem 0;
     line-height: 1.2;
+    font-weight: 700;
 }
 
 /* ============================================

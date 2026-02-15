@@ -1,0 +1,138 @@
+# Build and HTML Validation Tests
+
+## HTML Validation Configuration
+html_proofer:
+  # Check for broken links
+  check_links: true
+  
+  # Validate HTML structure
+  check_html: true
+  
+  # Check for missing images
+  check_images: true
+  
+  # Check for favicon presence
+  check_favicon: true
+  
+  # Allow hash href (for anchor links)
+  allow_hash_href: true
+  
+  # Ignore external links during build
+  external_only: false
+  
+  # Ignore specific URLs (for development)
+  url_ignore:
+    - "/assets/"
+    - "mailto:"
+    - "tel:"
+  
+  # File extensions to check
+  extensions:
+    - ".html"
+  
+  # Ignore specific files
+  file_ignore:
+    - "_site/404.html"
+
+## Build Validation Rules
+build_validation:
+  # Required Jekyll configuration
+  required_config:
+    - title
+    - description
+    - baseurl
+    - url
+    
+  # Required layout files (paths are determined from _config.yml)
+  required_layouts:
+    - default.html
+    - post.html
+    - pasta.html
+    - diario.html
+    - gatilho.html
+    
+  # Required data files (paths are determined from _config.yml)
+  required_data:
+    - navigation.yml
+    - repositories.yml
+    - breadcrumb_config.yml
+
+## Frontmatter Validation Schema
+# Note: With jekyll-optional-front-matter plugin, 'layout' field is optional
+# and will use the default layout from _config.yml if not specified
+frontmatter_schema:
+  default_layout:
+    required_fields:
+      - title
+    optional_fields:
+      - layout
+      - description
+      - date
+      - author
+      
+  pasta_layout:
+    required_fields:
+      - title
+      - layout
+    optional_fields:
+      - description
+      - icon
+      
+  post_layout:
+    required_fields:
+      - layout
+      - title
+      - date
+    optional_fields:
+      - description
+      - author
+      - tags
+      - categories
+      
+  diario_layout:
+    required_fields:
+      - title
+      - date
+    optional_fields:
+      - layout
+      - tags
+      - mood
+      - progress
+      
+  gatilho_layout:
+    required_fields:
+      - title
+      - layout
+    optional_fields:
+      - description
+      - date
+
+## Search Index Validation
+search_index:
+  required_fields:
+    - title
+    - url
+    - content
+  
+  max_content_length: 5000
+  
+  excluded_layouts:
+    - 404
+    - redirect
+
+  required_content_types:
+    - posts
+    - pages
+    - projects
+
+## Performance Validation
+performance_checks:
+  max_page_size: 500000  # 500KB
+  max_image_size: 50000  # 50KB
+  max_css_size: 100000   # 100KB
+  max_js_size: 100000    # 100KB
+  
+  required_optimizations:
+    - image_compression
+    - css_minification
+    - html_minification

@@ -5,9 +5,11 @@
 -->
 
 {% if include.config.icon_type == "svg" %}
-  <svg class="breadcrumb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-    <path d="{{ include.config.svg_path }}" />
-  </svg>
+  <li aria-hidden="true">
+    <svg class="breadcrumb-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+      <path d="{{ include.config.svg_path }}" />
+    </svg>
+  </li>
 {% elsif include.config.icon_type == "emoji" %}
   <span class="breadcrumb-emoji">{{ include.config.emoji }}</span>
 {% endif %}

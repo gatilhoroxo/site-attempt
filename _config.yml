@@ -39,6 +39,7 @@ baseurl: "/site-attempt" # Use "/site-attempt" em produção
 # Incluir diretórios customizados
 include:
   - content
+  - src/assets
 
 # Manter arquivos estáticos
 keep_files:

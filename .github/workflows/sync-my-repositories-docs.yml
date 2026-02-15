@@ -1,4 +1,4 @@
-name: Sync MC Journey Docs
+name: Sync My Repository Docs
 
 on:
   schedule:
@@ -25,29 +25,20 @@ jobs:
       
       - name: Install Python dependencies
         run: pip install pyyaml
-          
-      - name: Clone mc-journey-attempt repository
-        run: |
-          git clone --depth 1 https://github.com/gatilhoroxo/mc-journey-attempt.git temp-repo
-          
-      - name: Process and copy docs
-        run: python3 .github/scripts/process_docs.py
-          
-      - name: Update repository metadata
-        run: python3 .github/scripts/update_repositories_metadata.py
-          
-      - name: Cleanup temp repository
-        run: rm -rf temp-repo
-          
+
+      - name: Sync all repositories docs
+        run: python3 .github/scripts/sync_all_repos.py
+        
       - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "actions@github.com"
-          git add content/projects/mc-journey src/_data/repositories.yml
+          git add content/projects/ src/_data/repositories.yml
           
           if git diff --staged --quiet; then
             echo "No changes to commit"
           else
-            git commit -m "docs: sync mc-journey docs [automated]"
+            git commit -m "docs: sync all repos docs [automated]"
             git push
           fi
+

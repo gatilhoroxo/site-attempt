@@ -1,12 +1,13 @@
 /* ============================================
    REPOSITORIES MODE
    ============================================ */
-.repositories-container h3 {
+.repositories-title {
     margin: 0 0 1rem 0;
     font-size: 1.05rem;
     color: var(--text-color);
     border-bottom: 1px solid var(--border-color);
     padding-bottom: 0.5rem;
+    font-weight: 700;
 }
 
 .repositories-list {
