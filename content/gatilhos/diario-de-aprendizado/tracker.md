@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Tracker de Progresso
+title: _Tracker 
 ---
 
 # 📊 Tracker de Progresso
