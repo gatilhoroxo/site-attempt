@@ -1,0 +1,28 @@
+═══════════════════════════════════════════════════════════════════
+RESUMO DE TESTES - Site Attempt
+═══════════════════════════════════════════════════════════════════
+Gerado em: 2026-02-17 14:17:54
+
+STATUS DOS TESTES:
+  Build Jekyll:        ✅ Passou
+  JavaScript Unit:     ✅ Passou
+  Ruby Unit:           ✅ Passou
+  Python Unit:         ✅ Passou
+  Validação:          ❌ Falhou
+  E2E (Playwright):    ❌ Falhou
+  Acessibilidade:      ❌ Falhou
+  pa11y-ci:           ❌ Falhou
+
+COBERTURA DE CÓDIGO:
+  JavaScript: 88%
+  Python:     Disponível
+  Ruby:       Disponível
+
+TESTES E2E:
+  Total:      0
+  Passaram:   0
+  Falharam:   0
+
+═══════════════════════════════════════════════════════════════════
+Relatório completo: test-reports/unified/index.html
+═══════════════════════════════════════════════════════════════════
