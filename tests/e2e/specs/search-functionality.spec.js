@@ -2,8 +2,13 @@
 import { test, expect } from '@playwright/test';
 import { SearchPage, SidebarPage } from '../helpers/page-objects.js';
 import { testUrls, searchQueries } from '../fixtures/test-data.js';
+import { validateServerRunning } from '../helpers/server-check.js';
 
 test.describe('Search Functionality', () => {
+  // Validate server is running before any tests
+  test.beforeAll(async () => {
+    await validateServerRunning('http://localhost:4000');
+  });
   /** @type {SearchPage} */
   let searchPage;
   /** @type {SidebarPage} */

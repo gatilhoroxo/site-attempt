@@ -2,8 +2,14 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { testUrls } from '../e2e/fixtures/test-data.js';
+import { validateServerRunning } from '../e2e/helpers/server-check.js';
 
 test.describe('Automated Accessibility Tests', () => {
+  // Validate server is running before any tests
+  test.beforeAll(async () => {
+    await validateServerRunning('http://localhost:4000');
+  });
+  
   const testPages = [
     { name: 'Homepage', url: testUrls.homepage },
     { name: 'Gatilhos', url: testUrls.gatilhos },

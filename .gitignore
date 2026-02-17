@@ -4,12 +4,15 @@
 *.tmp
 
 # testes
+reports
+**/.venv
 .pytest_cache 
 __pycache__
+.coverage
 node_modules
 test-results
 playwright-report
-packege-lock.json
+package-lock.json
 
 #rest
 Gemfile.lock

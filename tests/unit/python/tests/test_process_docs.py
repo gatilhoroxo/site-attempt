@@ -145,6 +145,7 @@ class TestProcessDocs:
         assert "layout: pasta" in written_content
         assert "layout: default" not in written_content
 
+    @patch('sys.argv', ['process_docs.py', 'fake-source', 'fake-target', 'test-repo'])
     @patch('process_docs.target_dir')
     @patch('process_docs.source_dir')
     @patch('shutil.rmtree')

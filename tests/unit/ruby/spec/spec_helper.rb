@@ -1,5 +1,13 @@
 # frozen_string_literal: true
 
+# SimpleCov for coverage reporting
+require 'simplecov'
+SimpleCov.start do
+  add_filter '/spec/'
+  add_filter '/vendor/'
+  coverage_dir File.expand_path('../../../../test-reports/unified/embedded/coverage-ruby', __dir__)
+end
+
 require 'jekyll'
 require 'rspec'
 require 'rspec/mocks'

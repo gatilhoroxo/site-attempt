@@ -49,17 +49,19 @@ test-unit-js-coverage:
 
 # Testes Unitários Ruby (RSpec)
 test-unit-ruby:
-	cd tests/unit/ruby && bundle exec rspec
+	cd tests/unit/ruby && bundle exec rspec --format json --out ../../../test-reports/data/rspec-results.json --format progress
 
 test-unit-ruby-verbose:
 	cd tests/unit/ruby && bundle exec rspec --format documentation
 
 # Testes Unitários Python (pytest)
 test-unit-python:
+	@mkdir -p test-reports/data
 	PYTHONPATH=$(PWD)/.github/scripts:$$PYTHONPATH tests/unit/python/.venv/bin/python -m pytest -c tests/unit/python/config/pytest.ini tests/unit/python/tests -v
 
 test-unit-python-coverage:
-	PYTHONPATH=$(PWD)/.github/scripts:$$PYTHONPATH tests/unit/python/.venv/bin/python -m pytest -c tests/unit/python/config/pytest.ini tests/unit/python/tests -v --cov=.github/scripts --cov-report=html --cov-report=term
+	@mkdir -p test-reports/data test-reports/unified/embedded/coverage-python
+	PYTHONPATH=$(PWD)/.github/scripts:$$PYTHONPATH tests/unit/python/.venv/bin/python -m pytest -c tests/unit/python/config/pytest.ini tests/unit/python/tests -v --cov=.github/scripts --cov-report=html:test-reports/unified/embedded/coverage-python --cov-report=term
 
 # Testes de Validação de Build
 test-validation:
@@ -70,17 +72,22 @@ test-validation:
 test-validation-html:
 	tests/unit/python/.venv/bin/python tests/validation/html_validator.py
 
-# Comandos consolidados
-test-fast: test-unit-js test-unit-ruby test-unit-python
-test-all: test-build test-unit-js test-unit-ruby test-unit-python test-e2e test-a11y test-validation test-validation-html
+# Comandos consolidadosvalidation test-validation-html
+test-all-with-e2e: test-build test-unit-js test-unit-ruby test-unit-python test-e2e test-a11y test-validation test-validation-html
 test-coverage: test-unit-js-coverage test-unit-python-coverage
 
 # Automação e Relatórios
 setup-tests:
-	./scripts/setup-tests.sh
+	./tests/scripts/setup-tests.sh
 
-coverage-report:
-	./scripts/coverage-report.sh
+# Gera relatório consolidado de todos os testes (HTML único)
+test-report:
+	@echo "⚠️  IMPORTANTE: Para incluir testes E2E, execute 'make serve' em outro terminal primeiro"
+	./tests/scripts/generate-unified-report.sh
+
+# Regenera apenas o relatório HTML dos resultados existentes
+test-report-only:
+	./tests/scripts/generate-unified-report.sh --skip-tests
 
 # Linting e formatação
 lint:
@@ -99,11 +106,11 @@ clean:
 # Limpar arquivos gerados dos testes
 clean-test:
 	rm -rf node_modules package-lock.json
-	rm -rf .pytest_cache playwright-report test-results
+	rm -rf .pytest_cache playwright-report test-results reports
 
 # Limpa todoso os arquivos gerados
 clean-all:
-	clean && clean-test
+	make clean && make clean-test
 
 # Instalar dependências
 install:
@@ -124,6 +131,7 @@ help:
 	@echo "  make test               - Executar testes básicos (build + links)"
 	@echo ""
 	@echo "Testes E2E:"
+	@echo "  ⚠️  REQUISITO: Execute 'make serve' em terminal separado antes de rodar E2E/A11y"
 	@echo "  make test-e2e           - Testes E2E headless (rápido)"
 	@echo "  make test-e2e-headed    - Testes E2E com interface gráfica"
 	@echo "  make test-e2e-debug     - Testes E2E com Playwright inspector"
@@ -141,12 +149,14 @@ help:
 	@echo ""
 	@echo "Comandos consolidados:"
 	@echo "  make test-fast          - Testes unitários (JS + Ruby + Python, desenvolvimento)"
-	@echo "  make test-all           - Todos os testes (build + unit + e2e + a11y + validation)"
+	@echo "  make test-all           - Todos os testes SEM E2E (build + unit + validation)"
+	@echo "  make test-all-with-e2e  - Todos os testes COM E2E (requer 'make serve' rodando)"
 	@echo "  make test-coverage      - Relatórios de cobertura (JS + Python)"
 	@echo ""
 	@echo "Automação e Relatórios:"
 	@echo "  make setup-tests        - Configurar ambiente de testes completo"
-	@echo "  make coverage-report    - Gerar relatório consolidado de cobertura"
+	@echo "  make test-report    - Gerar relatório consolidado (HTML único, abre no navegador)"
+	@echo "  make test-report-only   - Regenerar relatório HTML dos resultados existentes"
 	@echo ""
 	@echo "Outros:"
 	@echo "  make lint               - Análise de código (linting)"

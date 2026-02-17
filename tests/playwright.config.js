@@ -8,7 +8,10 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: 'html',
+  reporter: [
+    ['html', { open: 'never'}], 
+    ['json', { outputFile: 'test-reports/data/playwright-results.json' }]
+  ],
   use: {
     baseURL: 'http://localhost:4000/site-attempt',
     trace: 'on-first-retry',
@@ -30,10 +33,5 @@ export default defineConfig({
       name: 'Mobile Chrome',
       use: { ...devices['Pixel 5'] },
     },
-  ],
-  webServer: {
-    command: 'make serve', 
-    port: 4000,
-    reuseExistingServer: !process.env.CI,
-  },
+  ]
 });

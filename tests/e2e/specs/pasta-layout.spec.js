@@ -1,8 +1,13 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 import { testUrls } from '../fixtures/test-data.js';
+import { validateServerRunning } from '../helpers/server-check.js';
 
 test.describe('Pasta Layout', () => {
+  // Validate server is running before any tests
+  test.beforeAll(async () => {
+    await validateServerRunning('http://localhost:4000');
+  });
   
   test.beforeEach(async ({ page }) => {
     // Enable JavaScript for folder listing functionality

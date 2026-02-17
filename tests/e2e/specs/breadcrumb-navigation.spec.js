@@ -2,8 +2,13 @@
 import { test, expect } from '@playwright/test';
 import { BreadcrumbPage } from '../helpers/page-objects.js';
 import { testUrls } from '../fixtures/test-data.js';
+import { validateServerRunning } from '../helpers/server-check.js';
 
 test.describe('Breadcrumb Navigation', () => {
+  // Validate server is running before any tests
+  test.beforeAll(async () => {
+    await validateServerRunning('http://localhost:4000');
+  });
   /** @type {BreadcrumbPage} */
   let breadcrumbPage;
 

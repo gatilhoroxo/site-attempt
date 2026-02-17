@@ -75,8 +75,13 @@ fi
 
 # Instalar dependências Python
 echo "🐍 Instalando dependências Python..."
-if [ -f "tests/unit/python/requirements-dev.txt" ]; then
-    pip3 install -r tests/unit/python/requirements-dev.txt
+if [ ! -d "tests/unit/python/.venv" ]; then
+    # Criar e ativar ambiente virtual Python
+    python3 -m venv --upgrade-deps tests/unit/python/.venv
+fi
+source tests/unit/python/.venv/bin/activate
+if [ -f "tests/unit/python/config/requirements-dev.txt" ]; then
+    pip install -r tests/unit/python/config/requirements-dev.txt
     echo "✅ Dependências Python instaladas"
 else
     echo "❌ requirements-dev.txt não encontrado"
@@ -101,7 +106,7 @@ echo "🧪 Executando testes de verificação..."
 
 # Teste JavaScript
 echo "  Testando JavaScript..."
-if npm run test:unit; then
+if npx vitest run tests/unit/js/ --config tests/vitest.config.js >/dev/null 2>&1; then
     echo "  ✅ Testes JavaScript OK"
 else
     echo "  ⚠️  Problemas nos testes JavaScript (pode ser normal se não há testes ainda)"
@@ -109,23 +114,31 @@ fi
 
 # Teste Ruby
 echo "  Testando Ruby..."
-if bundle exec rspec; then
-    echo "  ✅ Testes Ruby OK"
+if find tests/unit/ruby/spec -type f -name '*_spec.rb' | grep -q .; then
+    (cd tests/unit/ruby && bundle exec rspec spec >/dev/null 2>&1)
+    if [ $? -eq 0 ]; then
+        echo "  ✅ Testes Ruby OK"
+    else
+        echo "  ⚠️  Problemas nos testes Ruby"
+    fi
 else
-    echo "  ⚠️  Problemas nos testes Ruby (pode ser normal se não há testes ainda)"
+    echo "  ⚠️  Nenhum teste Ruby encontrado (spec/*_spec.rb)"
 fi
 
 # Teste Python
 echo "  Testando Python..."
-if python3 -m pytest tests/unit/python/ -v; then
+PYTHONPATH=.github/scripts python3 -m pytest tests/unit/python/tests -v >/dev/null 2>&1
+if [ $? -eq 0 ]; then
     echo "  ✅ Testes Python OK"
+    deactivate
 else
     echo "  ⚠️  Problemas nos testes Python (pode ser normal se não há testes ainda)"
+    deactivate
 fi
 
 # Criar diretórios de relatórios se não existirem
-mkdir -p reports/coverage/{js,ruby,python}
-mkdir -p reports/test-results/{e2e,unit,accessibility,validation}
+mkdir -p test-reports/coverage/{js,ruby,python}
+mkdir -p test-reports/test-results/{e2e,unit,accessibility,validation}
 
 echo ""
 echo "🎉 Configuração concluída com sucesso!"

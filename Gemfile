@@ -19,6 +19,7 @@ end
 
 group :test do
   gem "html-proofer", "~> 5.0"
+  gem "simplecov", "~> 0.22", require: false
 end
 
 # Windows e JRuby não incluem arquivos de zona de tempo

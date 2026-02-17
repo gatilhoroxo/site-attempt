@@ -14,8 +14,8 @@ export default defineConfig({
       'node_modules/**'
     ],
     coverage: {
-      reporter: ['text', 'html', 'lcov'],
-      reportsDirectory: './tests/coverage/js',
+      reporter: ['text', 'html', 'lcov', 'json-summary'],
+      reportsDirectory: './test-reports/unified/embedded/coverage-js',
       include: ['src/assets/js/**/*.js'],
       exclude: ['tests/**', 'node_modules/**']
     },

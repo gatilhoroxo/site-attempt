@@ -1,8 +1,13 @@
 // @ts-check
 import { test, expect } from '@playwright/test';
 import { testUrls } from '../e2e/fixtures/test-data.js';
+import { validateServerRunning } from '../e2e/helpers/server-check.js';
 
 test.describe('Keyboard Navigation Tests', () => {
+  // Validate server is running before any tests
+  test.beforeAll(async () => {
+    await validateServerRunning('http://localhost:4000');
+  });
   
   test('should enable Tab navigation through all focusable elements', async ({ page }) => {
     await page.goto(testUrls.homepage);
