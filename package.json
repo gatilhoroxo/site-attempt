@@ -10,9 +10,9 @@
     "test:e2e:debug": "playwright test tests/e2e/ --debug --config tests/playwright.config.js",
     "test:a11y": "playwright test tests/accessibility/ --config tests/playwright.config.js",
     "test:a11y:pa11y": "pa11y-ci --config ./tests/.pa11yci.json",
-    "test:unit": "vitest run tests/unit/js/ --config tests/vitest.config.js",
+    "test:unit": "vitest run tests/unit/js/ --config tests/vitest.config.js --reporter=json --reporter=default --reporter=json-summary",
     "test:unit:watch": "vitest tests/unit/js/ --config tests/vitest.config.js",
-    "test:unit:coverage": "vitest run tests/unit/js/ --coverage --config tests/vitest.config.js",
+    "test:unit:coverage": "vitest run tests/unit/js/ --coverage --reporter=json --reporter=default --config tests/vitest.config.js",
     "test:all": "npm run test:unit && npm run test:e2e && npm run test:a11y",
     "install:browsers": "playwright install"
   },
