@@ -94,7 +94,16 @@ test: test-build test-links
 
 # Limpar arquivos gerados
 clean:
-	rm -rf _site .jekyll-cache .sass-cache
+	rm -rf _site .jekyll-cache .sass-cache 
+
+# Limpar arquivos gerados dos testes
+clean-test:
+	rm -rf node_modules package-lock.json
+	rm -rf .pytest_cache playwright-report test-results
+
+# Limpa todoso os arquivos gerados
+clean-all:
+	clean && clean-test
 
 # Instalar dependências
 install:
@@ -142,6 +151,8 @@ help:
 	@echo "Outros:"
 	@echo "  make lint               - Análise de código (linting)"
 	@echo "  make clean              - Limpar arquivos gerados"
+	@echo "  make clean-test		 - Limpar arquivos gerados dos testes"
+	@echo "  make clean-all 		 - Limpa todoso os arquivos gerados"
 	@echo "  make install            - Instalar dependências"
 	@echo "  make update             - Atualizar dependências"
 	@echo "  make help               - Mostrar esta ajuda"
