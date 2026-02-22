@@ -597,7 +597,7 @@ Você agora domina:
 - ✅ Capacidade de integrar sistemas complexos
 
 **Próximo Nível:**
-🔼 **[Nível 3 - Avançado](../nivel-3-avancado/info-avancado.md)**
+🔼 **[Nível 3 - Avançado]**
 
 O que você vai aprender:
 - FreeRTOS avançado (queues, semaphores, mutexes)
@@ -619,11 +619,6 @@ O que você vai aprender:
 - 📖 [ESP HTTP Server](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-reference/protocols/esp_http_server.html)
 - 📺 [Andreas Spiess - ESP32 Tutorials](https://www.youtube.com/@AndreasSpiess)
 - 💻 [I2C Scanner Tool](https://github.com/espressif/esp-idf/tree/master/examples/peripherals/i2c/i2c_tools)
-
-**Voltar:**
-- 🏠 [README Principal ESP32](../../README.md)
-- 📚 [Roadmap Geral](../../../../learn/roadmap_geral.md)
-- 📝 [Nível 1 - Básico](../nivel-1-basico/info-basico.md)
 
 ---
 
